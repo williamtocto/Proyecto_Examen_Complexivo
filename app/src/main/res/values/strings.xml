@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Proyecto_Examen_Complexivo</string>
+    <string name="title_view_login">Login</string>
+    <string name="label_login_user">Usuario</string>
+    <string name="label_login_clave">Contraseña</string>
+    <string name="hint_login_usuario">Usuario</string>
+    <string name="hint_login_clave">Contraseña</string>
+
 </resources>
