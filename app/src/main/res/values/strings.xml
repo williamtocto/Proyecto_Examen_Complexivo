@@ -7,5 +7,43 @@
     <string name="hint_login_clave">Contraseña</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_mostrar_producto">activity_mostrar_producto</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_compra_producto">compra_producto</string>
+    <string name="descripcion">Descripcion:</string>
+    <string name="_10">10</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="imagen_producto_servicio">Imagen Producto/Servicio</string>
+    <string name="hola_soy_una_descripcion">Hola soy una descripcion</string>
+    <string name="v_unitario">V. Unitario:</string>
+    <string name="_0_00">0.00</string>
+    <string name="v_total">V. Total:</string>
+    <string name="_0_000">0.00</string>
+    <string name="todo">TODO</string>
+    <string name="aaronviracocha7_gmail_com">aaronviracocha7@gmail.com</string>
+    <string name="cdla_camio_ponce">Cdla Camio Ponce</string>
+    <string name="cedula">Cedula:</string>
+    <string name="usuario">Usuario:</string>
+    <string name="lista_de_productos_o_servicios_seleccionados">Lista de Productos o Servicios seleccionados</string>
+    <string name="_0107952566">0107952566</string>
+    <string name="telefono">Telefono:</string>
+    <string name="fecha">Fecha:</string>
+    <string name="direccion">Direccion:</string>
+    <string name="super_aaron_viraoccha">Super Aaron Viraoccha</string>
+    <string name="correo">Correo:</string>
+    <string name="_0963067447">0963067447</string>
+    <string name="comprar">Comprar</string>
+    <string name="_15_12_2022">15/12/2022</string>
+    <string name="_220_25">220.25</string>
+    <string name="total">Total:</string>
+    <string name="facturacion">Facturacion</string>
+    <string name="todo333">TODO</string>
 
 </resources>
