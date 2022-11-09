@@ -5,5 +5,7 @@
     <string name="label_login_clave">Contraseña</string>
     <string name="hint_login_usuario">Usuario</string>
     <string name="hint_login_clave">Contraseña</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
