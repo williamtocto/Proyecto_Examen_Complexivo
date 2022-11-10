@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/drawable/gradient_color.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/drawable/ic_baseline_room_service_24.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_login.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_main.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_navegacion.xml" value="0.28703703703703703" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_pantalla_inicio.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_sign_up1.xml" value="0.12228260869565218" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_splash_scream.xml" value="0.12228260869565218" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_productos.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_servicios.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_usuario.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/header_nav.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/toolbar.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/menu/barra_menu.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/menu/search_button.xml" value="0.23958333333333334" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="corretto-11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

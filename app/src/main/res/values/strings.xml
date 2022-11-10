@@ -45,5 +45,12 @@
     <string name="total">Total:</string>
     <string name="facturacion">Facturacion</string>
     <string name="todo333">TODO</string>
+    <string name="hint_txt_nombre">Nombre</string>
+    <string name="hint_txt_apellido">Apellido</string>
+    <string name="titulo_btn_sign_up_siguiente">Siguiente</string>
+    <string name="title_splash">Odiseum</string>
+    <string name="sub_title_splash">Lo que tu Buscas!</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Close</string>
 
 </resources>
