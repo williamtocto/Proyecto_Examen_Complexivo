@@ -5,32 +5,35 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SplashScream" android:background="@color/blanco_azulado">
+        tools:context=".SplashScream" android:background="@color/verde_odiseum"><![CDATA[
 
-    <TextView
+    TextView
             android:text="@string/title_splash"
             android:layout_width="270dp"
             android:layout_height="53dp" android:id="@+id/titulo_tienda"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textStyle="bold" android:textSize="40sp"
-            app:layout_constraintTop_toBottomOf="@+id/logo_tienda" android:layout_marginTop="184dp"
+            app:layout_constraintTop_toBottomOf="@+id/logo_tienda" android:layout_marginTop="88dp"
             android:textColor="@color/gris_oscuro" android:fontFamily="@font/allerta"
-            app:layout_constraintHorizontal_bias="0.495" android:elevation="500dp" android:textAlignment="center"/>
+            app:layout_constraintHorizontal_bias="0.496" android:elevation="500dp" android:textAlignment="center"/>
+
+
+    ]]>
     <TextView
             android:text="@string/sub_title_splash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/sub_titulo_tienda"
-            app:layout_constraintTop_toBottomOf="@+id/titulo_tienda"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:textSize="20sp"
             app:layout_constraintVertical_bias="0.402" android:textColor="@color/gris_oscuro"
-            android:textStyle="bold" app:layout_constraintHorizontal_bias="0.497"/>
+            android:textStyle="bold" android:layout_marginBottom="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/logo_tienda"/>
     <ImageView
             android:layout_width="258dp"
-            android:layout_height="255dp" app:srcCompat="@drawable/logo_app" android:id="@+id/logo_tienda"
+            android:layout_height="255dp" app:srcCompat="@drawable/LogoOdiseum_png" android:id="@+id/logo_tienda"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="184dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="188dp"
             app:layout_constraintHorizontal_bias="0.496"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

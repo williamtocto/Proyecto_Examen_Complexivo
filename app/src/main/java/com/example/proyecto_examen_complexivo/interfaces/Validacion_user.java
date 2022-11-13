@@ -1,4 +1,4 @@
-package com.example.proyecto_examen_complexivo.validaciones;
+package com.example.proyecto_examen_complexivo.interfaces;
 
 public interface Validacion_user {
     void toggleProgressBar(boolean status);
