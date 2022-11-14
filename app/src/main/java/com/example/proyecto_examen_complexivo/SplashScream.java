@@ -21,11 +21,10 @@ public class SplashScream extends AppCompatActivity {
         Animation animation2= AnimationUtils.loadAnimation(this,R.anim.desplazamiento_abajo);
 
         TextView textNombreApp= findViewById(R.id.titulo_tienda);
-        TextView textSloganApp= findViewById(R.id.sub_titulo_tienda);
+
         ImageView logo= findViewById(R.id.logo_tienda);
 
         textNombreApp.setAnimation(animation2);
-        textSloganApp.setAnimation(animation2);
         logo.setAnimation(animation1);
 
         new Handler().postDelayed(new Runnable() {
