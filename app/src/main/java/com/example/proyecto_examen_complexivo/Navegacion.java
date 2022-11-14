@@ -20,12 +20,14 @@ import com.example.proyecto_examen_complexivo.Fragments.ServiciosFragment;
 import com.google.android.material.navigation.NavigationView;
 
 
-    public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         Toolbar toolbar;
         ActionBarDrawerToggle toggle;
+
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,10 @@ import com.google.android.material.navigation.NavigationView;
 
             //Dar acciones a los items del menu
             navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
 
         }
 
@@ -128,6 +134,8 @@ import com.google.android.material.navigation.NavigationView;
 
             return super.onCreateOptionsMenu(menu);
         }
+
+
 
 
     }
