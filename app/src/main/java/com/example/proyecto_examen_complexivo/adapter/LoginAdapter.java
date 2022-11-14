@@ -5,8 +5,8 @@ import android.os.AsyncTask;
 
 import com.example.proyecto_examen_complexivo.Inicio_Login;
 import com.example.proyecto_examen_complexivo.MainActivity;
-import com.example.proyecto_examen_complexivo.modelo.Login;
-import com.example.proyecto_examen_complexivo.validaciones.Validacion_user;
+import com.example.proyecto_examen_complexivo.modelo.Usuario;
+import com.example.proyecto_examen_complexivo.service.Validacion_user;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class LoginAdapter extends  AsyncTask < Object,Void, Boolean> {
 
     private Validacion_user comunicacion;
 
-    ArrayList<Login> array= Inicio_Login.arrayDatos;
+    ArrayList<Usuario> array= Inicio_Login.arrayDatos;
 
     //Contructor
     public LoginAdapter(Validacion_user comunicacion) {
@@ -36,7 +36,7 @@ public class LoginAdapter extends  AsyncTask < Object,Void, Boolean> {
         String user=objects[0].toString();
         String pass=objects[1].toString();
             for (int i=0; i<array.size();i++){
-                if (array.get(i).getUsuario().equals(user) && array.get(i).getClave().equals(pass)){
+                if (array.get(i).getUsuusuario().equals(user) && array.get(i).getUsu_contrasena().equals(pass)){
                     return true;
                 }
             }

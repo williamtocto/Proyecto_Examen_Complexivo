@@ -8,30 +8,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
-import com.example.proyecto_examen_complexivo.modelo.Login;
-import com.example.proyecto_examen_complexivo.validaciones.Validacion_user;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.proyecto_examen_complexivo.service.UsuarioInterface;
+import com.example.proyecto_examen_complexivo.modelo.Usuario;
+import com.example.proyecto_examen_complexivo.service.Validacion_user;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
-    public static ArrayList<Login> arrayDatos =new ArrayList<Login>();
+    public static ArrayList<Usuario> arrayDatos = new ArrayList<Usuario>();
 
     private ProgressBar progressBar;
     private Button btn_ingresa;
-    private TextView txtUsuario,txtClave;
+    private TextView txtUsuario, txtClave;
 
-
+    private static final String BASE_URL = "http://10.0.2.2:8080/api/usuario/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,52 +37,47 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         btn_ingresa = findViewById(R.id.btn_ingresar);
         txtUsuario = findViewById(R.id.txt_usuario);
         txtClave = findViewById(R.id.txt_contraseña);
-        progressBar=findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
 
         btn_ingresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 obtenerDatos();
-                new LoginAdapter(Inicio_Login.this).execute(txtUsuario.getText(), txtClave.getText(),3000);
-
+                new LoginAdapter(Inicio_Login.this).execute(txtUsuario.getText(), txtClave.getText(), 3000);
             }
         });
     }
 
-    private void obtenerDatos(){
+    private void obtenerDatos() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        UsuarioInterface json = retrofit.create(UsuarioInterface.class);
+        Call<List<Usuario>> call = json.getPosts();
 
-        String direccion="https://tecnistoreaapi.rj.r.appspot.com/usuario";
-        JsonArrayRequest jsonArrayRequest= new JsonArrayRequest(direccion, new Response.Listener<JSONArray>() {
+        call.enqueue(new Callback<List<Usuario>>() {
             @Override
-            public void onResponse(JSONArray response) {
-                pasarJson(response);
+            public void onResponse(Call<List<Usuario>> call, retrofit2.Response<List<Usuario>> response) {
+                List<Usuario> post = response.body();
+                try {
+                    for (Usuario u : post) {
+                        u.getUsuusuario();
+                        u.getUsuusuario();
+                        arrayDatos.add(u);
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
-        }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(),Toast.LENGTH_LONG).show();
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                System.out.println(t.fillInStackTrace());
+                System.out.println(t.getMessage());
             }
         });
-        Request<JSONArray> add = Volley.newRequestQueue(this).add(jsonArrayRequest);
     }
 
-    private void pasarJson( JSONArray array) {
-
-        for (int i = 0; i < array.length(); i++) {
-            Login post = new Login();
-
-            JSONObject json = null;
-            try {
-                json = array.getJSONObject(i);
-                post.setUsuario(json.getString("usuario"));
-                post.setClave(json.getString("clave"));
-                arrayDatos.add(post);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
 
     @Override
     public void toggleProgressBar(boolean status) {
@@ -94,7 +86,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         } else {
             progressBar.setVisibility(View.GONE);
         }
-
     }
 
     @Override
