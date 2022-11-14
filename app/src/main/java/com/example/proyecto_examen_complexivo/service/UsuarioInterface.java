@@ -1,4 +1,4 @@
-package com.example.proyecto_examen_complexivo.interfaces;
+package com.example.proyecto_examen_complexivo.service;
 
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import retrofit2.Call;

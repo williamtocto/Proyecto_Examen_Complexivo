@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import com.example.proyecto_examen_complexivo.Inicio_Login;
 import com.example.proyecto_examen_complexivo.MainActivity;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
-import com.example.proyecto_examen_complexivo.interfaces.Validacion_user;
+import com.example.proyecto_examen_complexivo.service.Validacion_user;
 
 import java.util.ArrayList;
 

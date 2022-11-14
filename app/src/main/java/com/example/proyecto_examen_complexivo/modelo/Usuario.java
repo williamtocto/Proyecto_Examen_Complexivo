@@ -1,8 +1,18 @@
 package com.example.proyecto_examen_complexivo.modelo;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Usuario {
+
+    @SerializedName("usuusuario")
+    @Expose
     private String usuusuario;
+    @SerializedName("usu_contrasena")
+    @Expose
     private String usu_contrasena;
+    @SerializedName("rol_id")
+    @Expose
     private String rol_id;
 
     public String getUsuusuario() {

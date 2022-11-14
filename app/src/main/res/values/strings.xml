@@ -52,5 +52,8 @@
     <string name="sub_title_splash">Lo que tu Buscas!</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+    <string name="login_txt_password">Clave</string>
+    <string name="login_txt_password_repi">Confirmar Clave</string>
+    <string name="login_txt_username">Usuario</string>
 
 </resources>
