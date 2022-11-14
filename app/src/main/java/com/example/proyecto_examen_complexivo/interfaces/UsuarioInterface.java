@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import java.util.List;
 
 public interface UsuarioInterface {
-    @GET("lista")
+    @GET("listar")
     Call <List<Usuario>> getPosts();
 }

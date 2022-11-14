@@ -27,15 +27,16 @@
             android:layout_marginTop="20dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:textSize="22sp" android:textStyle="bold"
             android:fontFamily="@font/allerta" android:textAlignment="center"/>
+
     <pl.droidsonroids.gif.GifImageView
-            android:layout_width="403dp"
-            android:layout_height="117dp"
-            android:src="@drawable/LogoOdiseum_iso"
+            android:scaleType="centerCrop"
+            android:layout_width="226dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo_2"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/gifImageView"/>
-
     <TextView
             android:text="Si aun te has registrado puedes hacerlo pulsando el boton de Registro"
             android:layout_width="wrap_content"
@@ -63,7 +64,6 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="20sp" android:textStyle="bold"
-            app:layout_constraintHorizontal_bias="0.542" android:layout_marginBottom="124dp"/>
-
+            app:layout_constraintHorizontal_bias="0.533" android:layout_marginBottom="116dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
