@@ -19,24 +19,6 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up1);
 
-        backView= findViewById(R.id.btnBackView);
-        backView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent pantallaInicial= new Intent(SignUp.this, PantallaInicio.class);
-                startActivity(pantallaInicial);
-                finish();
-            }
-        });
 
-        btnSiguiente= findViewById(R.id.btn_siguiente_datos_persona);
-        btnSiguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent navegacion= new Intent(SignUp.this, Navegacion.class);
-                startActivity(navegacion);
-                finish();
-            }
-        });
     }
 }

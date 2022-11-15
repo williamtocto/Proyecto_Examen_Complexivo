@@ -1,14 +1,32 @@
 package com.example.proyecto_examen_complexivo.modelo;
 
-public class Persona {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+public class Persona {
+    @SerializedName("idpersona")
+    @Expose
     private int idpersona;
+    @SerializedName("cedula")
+    @Expose
     private String cedula;
+    @SerializedName("nombre")
+    @Expose
     private String nombre;
+    @SerializedName("apellido")
+    @Expose
     private String apellido;
+    @SerializedName("celular")
+    @Expose
     private String celular;
+    @SerializedName("telefono")
+    @Expose
     private String telefono;
+    @SerializedName("correo")
+    @Expose
     private String correo;
+    @SerializedName("direccion")
+    @Expose
     private String direccion;
 
 

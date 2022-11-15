@@ -1,107 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".SignUp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignUp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="@color/azul_brillante"
-        android:backgroundTint="@color/verde_odiseum"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"/>
+    <TextView
+        android:id="@+id/lbl_registrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="REGISTRARSE"
+        android:textColor="@color/verde_odiseum"
+        android:textSize="50dp"
+        tools:fontFamily="monospace" />
 
-        <TextView
-            android:id="@+id/textView9"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="95dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/borde_redondo"
-            android:fontFamily="@font/allerta"
-            android:text="Registrarse"
-            android:textColor="@color/blanco_azulado"
-            android:textSize="34sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/btnBackView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            app:srcCompat="@drawable/icon_btn_back_view" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-            android:layout_width="298dp"
-            android:layout_height="45dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.505" app:cardCornerRadius="20dp" app:cardElevation="20dp"
-            android:id="@+id/cardView3" app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            android:layout_marginTop="52dp">
-        <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_txt_nombre" tools:ignore="TouchTargetSizeCheck"
-                    android:backgroundTint="@android:color/transparent"/>
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-            android:layout_width="298dp"
-            android:layout_height="45dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3"
-            app:cardCornerRadius="20dp" app:cardElevation="20dp" app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintBottom_toTopOf="@+id/btn_siguiente_datos_persona">
-        <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_txt_apellido" tools:ignore="TouchTargetSizeCheck"
-                    android:backgroundTint="@android:color/transparent"/>
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.cardview.widget.CardView>
-    <Button
-            android:background="@color/verde_odiseum"
-            android:text="@string/titulo_btn_sign_up_siguiente"
-            android:layout_width="182dp"
-            android:layout_height="56dp" android:id="@+id/btn_siguiente_datos_persona"
-            android:textSize="24sp" android:fontFamily="@font/allerta"
-            android:textColor="@color/blanco_azulado"
-            android:elevation="50dp" android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.573" app:layout_constraintVertical_bias="0.937"/>
     <ImageView
-            android:layout_width="111dp"
-            android:layout_height="105dp" app:srcCompat="@drawable/icons_users_sign_up"
-            android:id="@+id/imageView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="456dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:src="@drawable/icons_users_sign_up" />
+
+    <EditText
+        android:id="@+id/txt_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edt_style"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/hint_txt_nombre"
+
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txt_apellido"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+
+        android:background="@drawable/edt_style"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/hint_txt_apellido"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txt_direccion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edt_style"
+        android:drawableLeft="@drawable/dire"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/direccion"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txt_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edt_style"
+        android:drawableLeft="@drawable/telefono"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/telefono"
+        android:inputType="textPersonName" />
+
+
+    <EditText
+        android:id="@+id/txt_gmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edt_style"
+        android:drawableLeft="@drawable/gmail_new"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Gmail"
+        android:inputType="textEmailAddress" />
+
+    <Button
+
+        android:id="@+id/btn_registrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/borde_redondo"
+        android:text="SIGUIENTE"
+        android:textColor="@color/white" />
+
+</LinearLayout>
