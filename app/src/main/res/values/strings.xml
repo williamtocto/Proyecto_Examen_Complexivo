@@ -55,5 +55,18 @@
     <string name="login_txt_password">Clave</string>
     <string name="login_txt_password_repi">Confirmar Clave</string>
     <string name="login_txt_username">Usuario</string>
+    <string name="detalle_de_sus_compras">Detalle de sus compras</string>
+    <string name="comprar2">Comprar</string>
+    <string name="cancelar2">Cancelar</string>
+    <string name="total_de_sus_compras">Total de sus compras:</string>
+    <string name="_120_36">120.36</string>
+    <string name="Eliminar2">Eliminar</string>
+    <string name="producto_o_servicio">Producto o Servicio:</string>
+    <string name="totalss">Total:</string>
+    <string name="_100_0">100.0</string>
+    <string name="hola_mundo">Hola Mundo</string>
+    <string name="hola_mundossss">Hola Mundo</string>
+    <string name="descripcionsss">Descripcion:</string>
+    <string name="todowwww">TODO</string>
 
 </resources>
