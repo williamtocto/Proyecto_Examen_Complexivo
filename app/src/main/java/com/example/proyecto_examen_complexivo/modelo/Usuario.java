@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
-
+    @SerializedName("usu_id ")
+    @Expose
+    private long usu_id;
     @SerializedName("usuusuario")
     @Expose
     private String usuusuario;

@@ -1,12 +1,14 @@
 package com.example.proyecto_examen_complexivo.service;
 
 import com.example.proyecto_examen_complexivo.modelo.Persona;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
-import java.util.List;
 
-public interface PersonaInterface {
-    @GET("listar")
-    Call<List<Persona>> getPosts();
+public interface PersonaService {
+    @POST("crear")
+    Call<Persona> createPerson(@Body Persona persona);
 }

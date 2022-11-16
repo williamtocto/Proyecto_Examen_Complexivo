@@ -27,15 +27,12 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         Toolbar toolbar;
         ActionBarDrawerToggle toggle;
 
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
             //Referencias UI
-
             drawerLayout= findViewById(R.id.contenidoPrincipal);
             navigationView= findViewById(R.id.nav_view_bar);
             toolbar= findViewById(R.id.toolBar);
@@ -50,14 +47,8 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             toggle= setDrawerToggle();
             drawerLayout.addDrawerListener(toggle);
 
-
             //Dar acciones a los items del menu
             navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
-
         }
 
         private ActionBarDrawerToggle setDrawerToggle() {
@@ -101,7 +92,6 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     break;
                 case R.id.nav_servicios:
                     ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
-
                     /*codigo para llamr un activity
                     ft.replace(R.id.contentFrame, new Categoria()).commit();
                    Intent i = new Intent(MainActivity.this, AllCategoria.class);
@@ -112,7 +102,6 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     break;
 
             }
-
             setTitle(item.getTitle());
             drawerLayout.closeDrawers();
         }
@@ -134,8 +123,5 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
             return super.onCreateOptionsMenu(menu);
         }
-
-
-
 
     }

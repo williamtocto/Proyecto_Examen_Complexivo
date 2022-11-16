@@ -29,7 +29,6 @@ public class Persona {
     @Expose
     private String direccion;
 
-
     public int getIdpersona() {
         return idpersona;
     }

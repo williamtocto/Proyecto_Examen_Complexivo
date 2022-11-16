@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
-import com.example.proyecto_examen_complexivo.service.UsuarioInterface;
+import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Validacion_user;
 import retrofit2.Call;
@@ -53,7 +53,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        UsuarioInterface json = retrofit.create(UsuarioInterface.class);
+        UsuarioService json = retrofit.create(UsuarioService.class);
         Call<List<Usuario>> call = json.getPosts();
 
         call.enqueue(new Callback<List<Usuario>>() {

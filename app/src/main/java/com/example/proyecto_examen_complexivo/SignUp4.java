@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
-import com.example.proyecto_examen_complexivo.modelo.UsuarioService;
 import com.example.proyecto_examen_complexivo.service.Apis;
 
+import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.google.android.material.textfield.TextInputLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,8 +26,6 @@ public class SignUp4 extends AppCompatActivity {
     private ImageView backView;
     private LottieAnimationView imgSignUp;
     private Button btnRegistrarme;
-
-
     private EditText txt_usu, txt_contra, txt_confir_contra;
     private TextInputLayout labelUsuario, labelContraseña, labelConfirmContraseña;
     private ConstraintLayout layoutInputDatos;
@@ -36,21 +34,16 @@ public class SignUp4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up4);
-
         imgSignUp= findViewById(R.id.imgRegistir);
         labelUsuario=findViewById(R.id.labelUsuarioSignup);
         labelContraseña=findViewById(R.id.labelContraseñaSignUp);
         labelConfirmContraseña=findViewById(R.id.labelCofirmContraseñaSignUp);
         layoutInputDatos= findViewById(R.id.layoutSignUp);
-        setAnimation();
-
+       // setAnimation();
         txt_usu=findViewById(R.id.txt_usuarioSignUp);
         txt_contra=findViewById(R.id.txt_contraseñaSignUp);
         txt_confir_contra=findViewById(R.id.txt_contraseñaConfirmarSignUp);
-
         backView= findViewById(R.id.btnBackView);
-
-
 
         backView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +84,8 @@ public class SignUp4 extends AppCompatActivity {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     UsuarioService usuarioService;
 
-    /**/public void addUsuario(Usuario usuario) {
+
+    public void addUsuario(Usuario usuario) {
         usuarioService = Apis.getUsuarioService();
         Call<Usuario> call = usuarioService.addUsuario(usuario);
         call.enqueue(new Callback<Usuario>() {
@@ -99,19 +93,14 @@ public class SignUp4 extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     //Toast.makeText(SignUp4.this, "Usuario agregado", Toast.LENGTH_SHORT).show();
-                    /*GUARDAMOS EL USUARIO EN LA BASE TEMP PARA VALIDAR EL INGRESO A LA APP*/
+                    //GUARDAMOS EL USUARIO EN LA BASE TEMP PARA VALIDAR EL INGRESO A LA APP
                     SQLiteOpenHelper  bd1 = new SQLiteOpenHelper(SignUp4.this);
-
                     boolean bandera =bd1.agregarUsuario(txt_usu.getText().toString(), "cliente", txt_contra.getText().toString(), "registrado");
                     if(bandera!=false){
                         Toast.makeText(SignUp4.this, "Usuario agregado", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(SignUp4.this, "Error al agregar usuario 234234", Toast.LENGTH_SHORT).show();
                     }
-
-
-
-
                 }
             }
 
@@ -130,15 +119,11 @@ public class SignUp4 extends AppCompatActivity {
 
     private void setAnimation(){
         Animation desplazamientoIzquierdaDerecha= AnimationUtils.loadAnimation(this,R.anim.desplazamiento_izquierda_derecha);
-
         labelUsuario.setAnimation(desplazamientoIzquierdaDerecha);
         labelContraseña.setAnimation(desplazamientoIzquierdaDerecha);
         labelConfirmContraseña.setAnimation(desplazamientoIzquierdaDerecha);
-
         Animation desplazamientoAbajo= AnimationUtils.loadAnimation(this,R.anim.desplazamiento_arriba);
-
         layoutInputDatos.setAnimation(desplazamientoAbajo);
-
         ///AMIMACION DE IMAGEN ENCABEZADO DE ACTIVITY SIGN UP
         imgSignUp.setAnimation(desplazamientoIzquierdaDerecha);
         imgSignUp.setAnimation(R.raw.effect_sigup_img);
