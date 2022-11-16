@@ -16,13 +16,6 @@
                 android:name=".Prueba"
                 android:exported="true"/>
         <activity
-                android:name=".detalle_compras"
-                android:exported="false">
-            <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
-        </activity>
-        <activity
                 android:name=".facturacion"
                 android:exported="false">
             <meta-data
