@@ -4,36 +4,32 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Servicio {
-    @SerializedName("id")
+    @SerializedName("idservicio")
     @Expose
     private Long id;
 
-    @SerializedName("nombre")
+    @SerializedName("sernombre")
     @Expose
     private String nombre;
 
-    @SerializedName("precio")
+    @SerializedName("serprecio")
     @Expose
     private String precio;
 
-    @SerializedName("foto")
+    @SerializedName("serimagen")
     @Expose
     private String foto;
 
-    @SerializedName("empresa")
-    @Expose
-    private String empresa;
 
     public Servicio() {
 
     }
 
-    public Servicio(Long id, String nombre, String precio, String foto, String empresa) {
+    public Servicio(Long id, String nombre, String precio, String foto) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.foto = foto;
-        this.empresa = empresa;
     }
 
     public Long getId() {
@@ -68,11 +64,4 @@ public class Servicio {
         this.foto = foto;
     }
 
-    public String getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
-    }
 }

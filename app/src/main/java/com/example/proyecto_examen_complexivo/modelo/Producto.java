@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Producto {
 
-    @SerializedName("id")
+    @SerializedName("idproducto")
     @Expose
     private Long id;
 
@@ -13,25 +13,21 @@ public class Producto {
     @Expose
     private String  nombre;
 
-    @SerializedName("Empresa")
-    @Expose
-    private String Empresa;
 
     @SerializedName("precio")
     @Expose
     private double precio;
 
-    @SerializedName("foto")
+    @SerializedName("imagen")
     private String foto;
 
     public Producto() {
 
     }
 
-    public Producto(Long id, String nombre, String empresa, double precio, String foto) {
+    public Producto(Long id, String nombre, double precio, String foto) {
         this.id = id;
         this.nombre = nombre;
-        Empresa = empresa;
         this.precio = precio;
         this.foto = foto;
     }
@@ -60,13 +56,6 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getEmpresa() {
-        return Empresa;
-    }
-
-    public void setEmpresa(String empresa) {
-        Empresa = empresa;
-    }
 
     public double getPrecio() {
         return precio;

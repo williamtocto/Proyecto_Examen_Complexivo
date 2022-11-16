@@ -1,6 +1,5 @@
 package com.example.proyecto_examen_complexivo;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.Menu;
 import androidx.annotation.NonNull;
@@ -18,9 +17,6 @@ import android.view.MenuItem;
 
 import com.example.proyecto_examen_complexivo.Fragments.ProductosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.ServiciosFragment;
-import com.example.proyecto_examen_complexivo.Fragments.detalle_Servicio_Producto;
-import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
-import com.example.proyecto_examen_complexivo.modelo.Categoria;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -96,11 +92,13 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     break;
                 case R.id.nav_servicios:
                     ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
-
+                    /*codigo para llamr un activity
+                    ft.replace(R.id.contentFrame, new CategoriaP()).commit();
+                   Intent i = new Intent(MainActivity.this, AllCategoria.class);
+                   startActivity(i);*/
                     break;
                 case R.id.nav_carrito:
-
-                    ft.replace(R.id.contentFrame, new detalle_compras()).commit();
+                    //ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
                     break;
 
             }

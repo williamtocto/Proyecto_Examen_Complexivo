@@ -1,9 +1,11 @@
 package com.example.proyecto_examen_complexivo.network;
 
-import com.example.proyecto_examen_complexivo.modelo.Categoria;
+import com.example.proyecto_examen_complexivo.modelo.CategoriaP;
+import com.example.proyecto_examen_complexivo.modelo.CategoriaS;
 import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.example.proyecto_examen_complexivo.modelo.Servicio;
-import com.example.proyecto_examen_complexivo.modelo.Subcategoria;
+import com.example.proyecto_examen_complexivo.modelo.SubcategoriaP;
+import com.example.proyecto_examen_complexivo.modelo.SubcategoriaS;
 
 import java.util.List;
 
@@ -11,22 +13,26 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface Api {
-    @GET("servicios")
+    @GET("api/servicio/listar")
     public Call<List<Servicio>> getServicio() ;
 
-    @GET("producto")
+    @GET("api/prodcuto/listar")
     public Call<List<Producto>> getProducto();
 
-    @GET("subcategoria")
-    public Call<List<Subcategoria>> getSubcategoria();
+    @GET("api/subcategoriaproducto/listar")
+    public Call<List<SubcategoriaP>> getSubcategoria();
 
-    @GET("categoria")
-    public Call<List<Categoria>> getCegoria();
-    //servicios
-    @GET("subcategoria")
-    public Call<List<Subcategoria>> getSubcategoriaS();
+    @GET("api/categoriaproducto/listar")
+    public Call<List<CategoriaP>> getCegoria();
 
-    @GET("categoria")
-    public Call<List<Categoria>> getCategoriaS();
+    //servicios subcategoria
+    @GET("api/subcategoriaservicio/listar")
+    public Call<List<SubcategoriaS>> getSubcategoriaS();
+
+    //servicios categoria
+    @GET("api/categoriaservicio/listar")
+    public Call<List<CategoriaS>> getCategoriaS();
+
+
 
 }

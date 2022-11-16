@@ -42,7 +42,7 @@ public class ServiciosAdapter extends RecyclerView.Adapter<ServiciosAdapter.View
         Servicio ser=servicios.get(position);
         holder.txnombre.setText(ser.getNombre());
         holder.servicioprecio.setText("$ "+ser.getPrecio());
-        Picasso.get().load(ser.getFoto()).resize(300,300).centerCrop()
+        Picasso.get().load(ser.getFoto()).resize(300,450).centerCrop()
                 .into(holder.imageView);
 
     }

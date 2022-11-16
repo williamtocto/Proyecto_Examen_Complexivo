@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_examen_complexivo.R;
-import com.example.proyecto_examen_complexivo.modelo.Subcategoria;
+import com.example.proyecto_examen_complexivo.modelo.SubcategoriaP;
 
 import java.util.List;
 
-public class SubcategoriaAdapter extends RecyclerView.Adapter<SubcategoriaAdapter.ViewHolder> {
+public class SubcategoriaPAdapter extends RecyclerView.Adapter<SubcategoriaPAdapter.ViewHolder> {
 
-    private List<Subcategoria> listsubcategoria;
+    private List<SubcategoriaP> listsubcategoria;
     private Context context;
 
-    public SubcategoriaAdapter(List<Subcategoria> listsubcategoria, Context context) {
+    public SubcategoriaPAdapter(List<SubcategoriaP> listsubcategoria, Context context) {
         this.listsubcategoria = listsubcategoria;
         this.context = context;
     }
@@ -34,7 +34,7 @@ public class SubcategoriaAdapter extends RecyclerView.Adapter<SubcategoriaAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Subcategoria sub=listsubcategoria.get(position);
+        SubcategoriaP sub=listsubcategoria.get(position);
         holder.nombresubcategoria.setText(sub.getNombre());
     }
 
