@@ -1,10 +1,12 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.ContentFrameLayout;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -20,6 +22,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto_examen_complexivo.MainActivity;
+import com.example.proyecto_examen_complexivo.ProductoServicioDetalle;
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.adapter.CategoriaPAdapter;
 import com.example.proyecto_examen_complexivo.adapter.ProductoAdapter;
@@ -118,8 +122,6 @@ public class ProductosFragment extends Fragment {
         recyclerViewcategoria.setAdapter(adaptercategoria);
         retrofitCategoria();
 
-
-
         //subcategoria
         adaptersubcategoria=new SubcategoriaPAdapter(subcategoriaList,getContext());
         recyclersubcategoria=binding.recyclersubcategoria;
@@ -133,6 +135,19 @@ public class ProductosFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(adapter);
         retrofitIni();
+
+
+        //aun no lo logro consumir porque no me muestra mi activity
+
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductosFragment.this.getActivity().getBaseContext(),  ProductoServicioDetalle.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         //busqueda producto
         txtfiltro=binding.filtro;

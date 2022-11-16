@@ -16,10 +16,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
+public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> implements View.OnClickListener {
 
     private List<Producto> listproducto;
     private Context context;
+    private View.OnClickListener listener;
 
     public ProductoAdapter(List<Producto> listproducto, Context context) {
         this.listproducto = listproducto;
@@ -48,15 +49,27 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         return listproducto.size();
     }
 
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (listener != null) {
+            listener.onClick(view);
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
-        private TextView nombreproducto,precioproducto;
+        private TextView nombreproducto,precioproducto, id;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nombreproducto=itemView.findViewById(R.id.nombreproducto);
             imageView=itemView.findViewById(R.id.imagenproducto);
             precioproducto=itemView.findViewById(R.id.precioproducto);
+
         }
     }
 }

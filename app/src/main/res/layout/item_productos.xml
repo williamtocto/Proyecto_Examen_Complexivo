@@ -45,11 +45,11 @@
 
                 <TextView
                     android:id="@+id/nombreproducto"
-                    android:layout_width="wrap_content"
+                    android:layout_width="87dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
                     android:text="TITULO"
-                    android:layout_margin="10dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />

@@ -19,6 +19,10 @@ public interface Api {
     @GET("api/prodcuto/listar")
     public Call<List<Producto>> getProducto();
 
+    @GET("api/prodcuto/listar/")
+    public Call<List<Producto>> getIdProducto();
+
+
     @GET("api/subcategoriaproducto/listar")
     public Call<List<SubcategoriaP>> getSubcategoria();
 

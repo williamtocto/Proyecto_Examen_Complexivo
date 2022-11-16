@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.proyecto_examen_complexivo.Fragments.ProductosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.ServiciosFragment;
+import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -99,6 +100,8 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     break;
                 case R.id.nav_carrito:
                     //ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
+                    ft.replace(R.id.contentFrame, new detalle_compras()).commit();
+
                     break;
 
             }
