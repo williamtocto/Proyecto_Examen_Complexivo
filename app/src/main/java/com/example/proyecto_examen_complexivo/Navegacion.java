@@ -93,7 +93,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                 case R.id.nav_servicios:
                     ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
                     /*codigo para llamr un activity
-                    ft.replace(R.id.contentFrame, new Categoria()).commit();
+                    ft.replace(R.id.contentFrame, new CategoriaP()).commit();
                    Intent i = new Intent(MainActivity.this, AllCategoria.class);
                    startActivity(i);*/
                     break;

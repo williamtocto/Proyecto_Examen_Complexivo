@@ -10,38 +10,40 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_examen_complexivo.R;
-import com.example.proyecto_examen_complexivo.modelo.Categoria;
+import com.example.proyecto_examen_complexivo.modelo.CategoriaS;
 
 import java.util.List;
 
-public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.ViewHolder> {
-    private List<Categoria> categoriaList;
+public class CategoriaSAdapter extends RecyclerView.Adapter<CategoriaSAdapter.ViewHolder> {
+
+    private List<CategoriaS> categoriaSList;
     private Context context;
 
-    public CategoriaAdapter(List<Categoria> categoriaList, Context context) {
-        this.categoriaList = categoriaList;
+    public CategoriaSAdapter(List<CategoriaS> categoriaSList, Context context) {
+        this.categoriaSList = categoriaSList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CategoriaAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(context).inflate(R.layout.item_categoria,parent,false);
+    public CategoriaSAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(context).inflate(R.layout.item_categoria,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoriaAdapter.ViewHolder holder, int position) {
-        Categoria ca=categoriaList.get(position);
+    public void onBindViewHolder(@NonNull CategoriaSAdapter.ViewHolder holder, int position) {
+
+        CategoriaS ca=categoriaSList.get(position);
         holder.nombrecategoria.setText(ca.getNombre());
     }
 
     @Override
     public int getItemCount() {
-        return categoriaList.size();
+        return categoriaSList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder  extends RecyclerView.ViewHolder{
         private TextView nombrecategoria;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

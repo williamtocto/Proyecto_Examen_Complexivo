@@ -3,19 +3,19 @@ package com.example.proyecto_examen_complexivo.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Subcategoria {
-    @SerializedName("id")
+public class SubcategoriaP {
+    @SerializedName("subcatproid")
     @Expose
     private Long id;
 
-    @SerializedName("nombre")
+    @SerializedName("subcatpronombre")
     @Expose
     private String nombre;
 
-    public Subcategoria() {
+    public SubcategoriaP() {
     }
 
-    public Subcategoria(Long id, String nombre) {
+    public SubcategoriaP(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

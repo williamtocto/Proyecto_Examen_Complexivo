@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.modelo.Producto;
-import com.example.proyecto_examen_complexivo.modelo.Subcategoria;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,7 +39,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         Producto pro=listproducto.get(position);
         holder.nombreproducto.setText(pro.getNombre());
         holder.precioproducto.setText("$ "+pro.getPrecio());
-        Picasso.get().load(pro.getFoto()).resize(300,300).centerCrop()
+        Picasso.get().load(pro.getFoto()).resize(300,450).centerCrop()
                 .into(holder.imageView);
     }
 
