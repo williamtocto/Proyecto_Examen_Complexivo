@@ -7,16 +7,6 @@
     tools:context=".ProductoServicioDetalle"
     tools:layout_editor_absoluteY="25dp">
 
-    <TextView
-        android:id="@+id/txtCantidad_Producto3"
-        android:layout_width="297dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="192dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imgfotoproductocompra3"
         android:layout_width="248dp"
@@ -26,36 +16,29 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:ignore="ImageContrastCheck"
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/todosss" />
 
     <TextView
         android:id="@+id/txtPrecio_Producto3"
         android:layout_width="297dp"
         android:layout_height="41dp"
-        android:layout_marginTop="260dp"
-        android:text="TextView"
+        android:layout_marginTop="216dp"
+        android:text="@string/textviewasd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnCancelar3"
-        android:layout_width="282dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="596dp"
-        android:text="Cancelar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtDescripcionProducto3"
-        android:layout_width="297dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="320dp"
-        android:text="TextView"
+        android:layout_width="300dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="272dp"
+        android:text="@string/textviewasdasd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,19 +46,10 @@
         android:id="@+id/txtNombre_Producto3"
         android:layout_width="297dp"
         android:layout_height="41dp"
-        android:layout_marginTop="384dp"
-        android:text="TextView"
+        android:layout_marginTop="168dp"
+        android:text="@string/textview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtEmpresaProducto3"
-        android:layout_width="297dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="448dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,8 +58,35 @@
         android:layout_width="291dp"
         android:layout_height="58dp"
         android:layout_marginTop="512dp"
-        android:text="@string/comprar"
+        android:text="@string/qqqq"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextCantidadCarrito"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="432dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="180dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="392dp"
+        android:text="@string/cantidaddeee"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

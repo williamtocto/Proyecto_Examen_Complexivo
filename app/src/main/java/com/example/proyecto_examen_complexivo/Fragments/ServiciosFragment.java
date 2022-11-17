@@ -1,5 +1,6 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,8 +18,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto_examen_complexivo.ProductoServicioDetalle;
+import com.example.proyecto_examen_complexivo.ServicioDetalle;
 import com.example.proyecto_examen_complexivo.adapter.CategoriaPAdapter;
 import com.example.proyecto_examen_complexivo.adapter.CategoriaSAdapter;
+import com.example.proyecto_examen_complexivo.adapter.ProductoAdapter;
 import com.example.proyecto_examen_complexivo.adapter.ServiciosAdapter;
 import com.example.proyecto_examen_complexivo.adapter.SubcategoriaPAdapter;
 import com.example.proyecto_examen_complexivo.adapter.SubcategoriaSAdapter;
@@ -45,7 +49,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Use the {@link ServiciosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ServiciosFragment extends Fragment {
+public class ServiciosFragment extends Fragment implements ServiciosAdapter.RecyclerItemClick{
 
 
 
@@ -126,7 +130,7 @@ public class ServiciosFragment extends Fragment {
         recyclerViewSuc.setAdapter(adaptersubcategoria);
         retrofitSu();
         //servicios
-        adapter =new ServiciosAdapter(servicioslist,getContext());
+        adapter =new ServiciosAdapter(servicioslist,getContext(), this);
         recyclerView= binding.recycleservicios;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(adapter);
@@ -231,5 +235,12 @@ public class ServiciosFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void itemCLick(Servicio servicio) {
+        Intent intent = new Intent(ServiciosFragment.this.getContext(), ServicioDetalle.class);
+        intent.putExtra("itemDetail", servicio);
+        startActivity(intent);
     }
 }

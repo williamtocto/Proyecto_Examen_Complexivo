@@ -1,6 +1,7 @@
 package com.example.proyecto_examen_complexivo.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,21 +11,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyecto_examen_complexivo.ProductoServicioDetalle;
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> implements View.OnClickListener {
+public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder>  {
 
     private List<Producto> listproducto;
     private Context context;
-    private View.OnClickListener listener;
 
-    public ProductoAdapter(List<Producto> listproducto, Context context) {
+    private RecyclerItemClick itemClick;
+
+
+    public ProductoAdapter(List<Producto> listproducto, Context context, RecyclerItemClick itemClick) {
         this.listproducto = listproducto;
         this.context = context;
+        this.itemClick = itemClick;
     }
 
     @NonNull
@@ -42,6 +47,16 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         holder.precioproducto.setText("$ "+pro.getPrecio());
         Picasso.get().load(pro.getFoto()).resize(300,450).centerCrop()
                 .into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClick.itemCLick(pro);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -49,16 +64,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         return listproducto.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener) {
-        this.listener = listener;
-    }
 
-    @Override
-    public void onClick(View view) {
-        if (listener != null) {
-            listener.onClick(view);
-        }
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
@@ -71,5 +77,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
             precioproducto=itemView.findViewById(R.id.precioproducto);
 
         }
+    }
+
+    public interface RecyclerItemClick{
+        void itemCLick(Producto producto);
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.proyecto_examen_complexivo.R;
+import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.example.proyecto_examen_complexivo.modelo.Servicio;
 import com.squareup.picasso.Picasso;
 
@@ -23,11 +24,12 @@ public class ServiciosAdapter extends RecyclerView.Adapter<ServiciosAdapter.View
 
     private List<Servicio> servicios;
     private Context context;
+    private RecyclerItemClick itemClick;
 
-
-    public ServiciosAdapter(List<Servicio> servicios, Context context) {
+    public ServiciosAdapter(List<Servicio> servicios, Context context,  RecyclerItemClick itemClick) {
         this.servicios = servicios;
         this.context = context;
+        this.itemClick = itemClick;
     }
 
     @NonNull
@@ -44,7 +46,12 @@ public class ServiciosAdapter extends RecyclerView.Adapter<ServiciosAdapter.View
         holder.servicioprecio.setText("$ "+ser.getPrecio());
         Picasso.get().load(ser.getFoto()).resize(300,450).centerCrop()
                 .into(holder.imageView);
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClick.itemCLick(ser);
+            }
+        });
     }
 
     @Override
@@ -62,4 +69,10 @@ public class ServiciosAdapter extends RecyclerView.Adapter<ServiciosAdapter.View
             servicioprecio=itemView.findViewById(R.id.servicioprecio);
         }
     }
+
+
+    public interface RecyclerItemClick{
+        void itemCLick(Servicio servicio);
+    }
+
 }

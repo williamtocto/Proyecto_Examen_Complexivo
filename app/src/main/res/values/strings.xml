@@ -68,5 +68,12 @@
     <string name="hola_mundossss">Hola Mundo</string>
     <string name="descripcionsss">Descripcion:</string>
     <string name="todowwww">TODO</string>
+    <string name="textview">TextView</string>
+    <string name="textviewasd">TextView</string>
+    <string name="textviewasdasd">TextView</string>
+    <string name="textviewasdasdww">TextView</string>
+    <string name="qqqq">Agregar al Carrito</string>
+    <string name="todosss">TODO</string>
+    <string name="cantidaddeee">Cantidad</string>
 
 </resources>
