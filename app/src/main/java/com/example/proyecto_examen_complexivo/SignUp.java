@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class SignUp extends AppCompatActivity {
 
-    private EditText nombre, apellido, direccion, telefono, correo;
+    private EditText nombre, apellido, direccion, telefono, correo,cedula;
     private Button btnSiguiente;
 
     @Override
@@ -35,6 +35,7 @@ public class SignUp extends AppCompatActivity {
         direccion = findViewById(R.id.txt_direccion);
         telefono = findViewById(R.id.txt_telefono);
         correo = findViewById(R.id.txt_gmail);
+        cedula = findViewById(R.id.txt_cedula);
         btnSiguiente = findViewById(R.id.btn_registrar);
 
         //ACCION DEL BOTON
@@ -42,19 +43,18 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||direccion.getText().toString().isEmpty()
-                ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()){
+                ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()||cedula.getText().toString().isEmpty()){
                     Toast.makeText(SignUp.this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
                 }else{
                     Persona p = new Persona();
-                    p.setCedula("0106217395");
+                    p.setNombre(cedula.getText().toString());
                     p.setNombre(nombre.getText().toString());
                     p.setApellido(apellido.getText().toString());
                     p.setDireccion(direccion.getText().toString());
                     p.setCelular(telefono.getText().toString());
-                    p.setTelefono("123456740");
                     p.setCorreo(correo.getText().toString());
                     addPersona(p);
-                    Intent home = new Intent(SignUp.this, Navegacion.class);
+                    Intent home = new Intent(SignUp.this, SignUp2.class);
                     startActivity(home);
                     finish();
                 }
@@ -76,7 +76,6 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Datos Guardados", Toast.LENGTH_LONG).show();
                 }else{
                     try {
-                        //CODIGO PARA mostrar mensjae de error
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         System.out.println( jObjError.getString("message"));
                         System.out.println(jObjError.getJSONObject("message").getString("messageTemplate"));
@@ -85,6 +84,7 @@ public class SignUp extends AppCompatActivity {
                         System.out.println(e.getMessage());
                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
+
                     System.out.println(e.getMessage());
                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
