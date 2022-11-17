@@ -1,6 +1,13 @@
 package com.example.proyecto_examen_complexivo.service;
 
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonObject;
+import org.json.JSONArray;
+
+import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -10,8 +17,8 @@ import java.util.List;
 
 public interface UsuarioService {
     @GET("listar")
-    Call <List<Usuario>> getPosts();
+    Call<List<Usuario>> getPosts();
 
-    @POST("create")
-    Call<Usuario> addUsuario(@Body Usuario usuario);
+    @POST("login")
+    Call<List<Usuario>> addUsuario(@Body Usuario usuario);
 }

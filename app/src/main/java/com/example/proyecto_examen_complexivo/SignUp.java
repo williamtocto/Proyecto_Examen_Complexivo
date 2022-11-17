@@ -67,29 +67,24 @@ public class SignUp extends AppCompatActivity {
     public void addPersona(Persona persona) {
 
         personaService = Apis.getPesonaService();
-        System.out.println(persona.getNombre()+"iiiii");
         Call<Persona> call = personaService.createPerson(persona);
-        System.out.println(call.request());
-        System.out.println(call);
         call.enqueue(new Callback<Persona>() {
             @Override
             public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
 
                 if (response.isSuccessful()) {
-                    System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     Toast.makeText(SignUp.this, "Datos Guardados", Toast.LENGTH_LONG).show();
                 }else{
                     try {
+                        //CODIGO PARA mostrar mensjae de error
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         System.out.println( jObjError.getString("message"));
-
-                       System.out.println(jObjError.getJSONObject("message").getString("messageTemplate"));
+                        System.out.println(jObjError.getJSONObject("message").getString("messageTemplate"));
                         Toast.makeText(SignUp.this, jObjError.getJSONObject("message").getString("message"), Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         System.out.println(e.getMessage());
                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
-
                     System.out.println(e.getMessage());
                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -98,12 +93,9 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Persona> call, Throwable t) {
-                System.out.println("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +t.getMessage());
                 Toast.makeText(SignUp.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
-
             }
         });
-
 
     }
 }

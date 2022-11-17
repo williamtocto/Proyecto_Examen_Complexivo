@@ -18,6 +18,7 @@ import com.example.proyecto_examen_complexivo.service.Apis;
 
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.google.android.material.textfield.TextInputLayout;
+import org.json.JSONArray;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -69,7 +70,7 @@ public class SignUp4 extends AppCompatActivity {
                         usuario.setUsuusuario(txt_usu.getText().toString());
                       //  usuario.setTipoUsuario("cliente");
                         usuario.setUsu_contrasena(txt_contra.getText().toString());
-                        addUsuario(usuario);
+                      //  addUsuario(usuario);
                         limpiarCampos();
                         Intent home= new Intent(SignUp4.this, MainActivity.class);
                         startActivity(home);
@@ -84,11 +85,11 @@ public class SignUp4 extends AppCompatActivity {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     UsuarioService usuarioService;
 
-
+/*
     public void addUsuario(Usuario usuario) {
         usuarioService = Apis.getUsuarioService();
-        Call<Usuario> call = usuarioService.addUsuario(usuario);
-        call.enqueue(new Callback<Usuario>() {
+        Call<JSONArray> call = usuarioService.addUsuario(usuario);
+        call.enqueue(new Callback<JSONArray>() {
             @Override
             public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
                 if (response.isSuccessful()) {
@@ -109,7 +110,7 @@ public class SignUp4 extends AppCompatActivity {
                 Toast.makeText(SignUp4.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
     public  void limpiarCampos(){
         txt_usu.setText("");
