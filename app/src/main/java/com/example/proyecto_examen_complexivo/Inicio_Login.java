@@ -42,8 +42,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
     private Button btn_ingresa;
     private TextView txtUsuario, txtClave;
 
-    private static final String BASE_URL = "http://localhost:8080/api/usuario/";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +62,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         });
     }
 
-    int val;
     public void validar(Usuario u){
 
         UsuarioService usuarioService = Apis.getUsuarioService();
@@ -73,7 +70,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
             @Override
             public void onResponse(Call<Integer> call, retrofit2.Response<Integer> response) {
                 if (response.isSuccessful()) {
-                    val = response.body();
+                    int  val = response.body();
                     new LoginAdapter(Inicio_Login.this).execute(val, 3000);
                 }
             }
@@ -85,15 +82,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
     }
 
-
-    private void pasarJson(JsonArray array) {
-
-        for (int i = 0; i < array.size(); i++) {
-            //  arrayDatos.add(post);
-
-        }
-
-    }
 
     @Override
     public void toggleProgressBar(boolean status) {

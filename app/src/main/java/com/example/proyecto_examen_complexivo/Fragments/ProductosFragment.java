@@ -137,12 +137,6 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
         recyclerView.setAdapter(adapter);
         retrofitIni();
 
-
-
-
-
-
-
         //busqueda producto
         txtfiltro=binding.filtro;
         txtfiltro.setOnKeyListener(new View.OnKeyListener() {
