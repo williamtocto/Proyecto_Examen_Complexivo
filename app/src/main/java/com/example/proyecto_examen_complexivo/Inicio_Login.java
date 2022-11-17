@@ -56,75 +56,35 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         btn_ingresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario u = new Usuario();
-                u.setUsu_contrasena(txtClave.getText().toString());
+                Usuario u=new Usuario();
                 u.setUsuusuario(txtUsuario.getText().toString());
-                enviar_datos_login(u);
-                new LoginAdapter(Inicio_Login.this).execute(txtUsuario.getText(), txtClave.getText(), 3000);
+                u.setUsu_contrasena(txtClave.getText().toString());
+                validar(u);
             }
         });
     }
 
-
-    public void enviar_datos_login(Usuario user) {
-
+    int val;
+    public void validar(Usuario u){
 
         UsuarioService usuarioService = Apis.getUsuarioService();
-        Call<List<Usuario>> call = usuarioService.addUsuario(user);
-
-        call.enqueue(new Callback<List<Usuario>>() {
+        Call<Integer> call = usuarioService.addUsuario(u);
+        call.enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, retrofit2.Response<List<Usuario>> response) {
-                System.out.println(response.body()+ " ssssssssssssssssssssoooooooooooooooooooooooooooooooooo");
-
+            public void onResponse(Call<Integer> call, retrofit2.Response<Integer> response) {
                 if (response.isSuccessful()) {
-                    System.out.println("ssssssssssssss");
-                    Toast.makeText(Inicio_Login.this, "Datos Guardados", Toast.LENGTH_LONG).show();
-                } else {
+                    val = response.body();
+                    new LoginAdapter(Inicio_Login.this).execute(val, 3000);
                 }
             }
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                System.out.println(       t.getMessage());
-
-                Toast.makeText(Inicio_Login.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Integer> call, Throwable t) {
+                t.printStackTrace();
             }
         });
 
     }
 
-/*
-    private void enviarDatos() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        UsuarioService json = retrofit.create(UsuarioService.class);
-
-        JSONObject jsonObject = new JSONObject();
-        Call<List<Usuario>> call = json.getPosts();
-        call.enqueue(new Callback<List<Usuario>>() {
-            @Override
-            public void onResponse(Call<List<Usuario>> call, retrofit2.Response<List<Usuario>> response) {
-                List<Usuario> post = response.body();
-                try {
-                    for (Usuario u : post) {
-                        u.getUsuusuario();
-                        u.getUsuusuario();
-                        arrayDatos.add(u);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                System.out.println(t.fillInStackTrace());
-                System.out.println(t.getMessage());
-            }
-        });
-    }
-*/
 
     private void pasarJson(JsonArray array) {
 

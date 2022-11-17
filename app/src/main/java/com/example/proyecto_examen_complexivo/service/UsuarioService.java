@@ -20,5 +20,5 @@ public interface UsuarioService {
     Call<List<Usuario>> getPosts();
 
     @POST("login")
-    Call<List<Usuario>> addUsuario(@Body Usuario usuario);
+    Call<Integer> addUsuario(@Body Usuario usuario);
 }
