@@ -12,6 +12,12 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Proyecto_Examen_Complexivo"
             android:usesCleartextTraffic="true">
+
+
+
+
+
+
         <activity
             android:name=".ServicioDetalle"
             android:exported="false">
@@ -19,9 +25,6 @@
                     android:name="android.app.lib_name"
                     android:value=""/>
         </activity>
-        <activity
-                android:name=".Prueba"
-                android:exported="true"/>
         <activity
                 android:name=".detalle_compras"
                 android:exported="false">
@@ -65,7 +68,10 @@
             android:exported="true">
 
         </activity>
+<activity android:name=".ProductoServicioDetalle"
+    android:exported="true">
 
+</activity>
         <activity
                 android:name=".SplashScream"
                 android:exported="true">
