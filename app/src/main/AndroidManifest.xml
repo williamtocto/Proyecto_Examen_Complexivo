@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Proyecto_Examen_Complexivo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ServicioDetalle"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ProductoServicioDetalle"
             android:exported="false">
             <meta-data

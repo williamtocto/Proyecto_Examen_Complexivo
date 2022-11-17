@@ -49,7 +49,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Use the {@link ProductosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProductosFragment extends Fragment {
+public class ProductosFragment extends Fragment implements ProductoAdapter.RecyclerItemClick{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +76,7 @@ public class ProductosFragment extends Fragment {
     private List<CategoriaP> categoriaList=new ArrayList<>();
     private CategoriaPAdapter adaptercategoria;
 
+    private Api ApiService;
 
 
     public ProductosFragment() {
@@ -130,22 +131,15 @@ public class ProductosFragment extends Fragment {
         retrofitSubCa();
 
         //producto
-        adapter=new ProductoAdapter(listproducto,getContext());
+        adapter=new ProductoAdapter(listproducto,getContext(), this);
         recyclerView=binding.recycleproductos;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(adapter);
         retrofitIni();
 
 
-        //aun no lo logro consumir porque no me muestra mi activity
 
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProductosFragment.this.getActivity().getBaseContext(),  ProductoServicioDetalle.class);
-                startActivity(intent);
-            }
-        });
+
 
 
 
@@ -252,4 +246,13 @@ public class ProductosFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void itemCLick(Producto producto) {
+        Intent intent = new Intent(ProductosFragment.this.getContext(), ProductoServicioDetalle.class);
+        intent.putExtra("itemDetail", producto);
+        startActivity(intent);
+    }
+
+
 }

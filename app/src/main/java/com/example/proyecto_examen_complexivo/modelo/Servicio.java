@@ -3,7 +3,10 @@ package com.example.proyecto_examen_complexivo.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Servicio {
+import java.io.Serializable;
+
+public class Servicio implements Serializable {
+
     @SerializedName("idservicio")
     @Expose
     private Long id;
@@ -20,16 +23,20 @@ public class Servicio {
     @Expose
     private String foto;
 
+    @SerializedName("serdescripcion")
+    @Expose
+    private String  descripcion;
 
     public Servicio() {
 
     }
 
-    public Servicio(Long id, String nombre, String precio, String foto) {
+    public Servicio(Long id, String nombre, String precio, String foto, String  descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.foto = foto;
+        this.descripcion = descripcion;
     }
 
     public Long getId() {
@@ -38,6 +45,14 @@ public class Servicio {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getNombre() {
