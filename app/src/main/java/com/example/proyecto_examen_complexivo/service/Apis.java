@@ -10,6 +10,6 @@ public class Apis {
     }
 
     public static PersonaService getPesonaService() {
-        return Peticion.peticion("http://10.0.2.2:8080/api/persona/").create(PersonaService.class);
+        return Peticion.peticion(BASE_URL+"persona/").create(PersonaService.class);
     }
 }

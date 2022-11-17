@@ -9,14 +9,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
+import com.example.proyecto_examen_complexivo.modelo.Persona;
+import com.example.proyecto_examen_complexivo.service.Apis;
+import com.example.proyecto_examen_complexivo.service.PersonaService;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Validacion_user;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
+import okhttp3.OkHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +42,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
     private Button btn_ingresa;
     private TextView txtUsuario, txtClave;
 
-    private static final String BASE_URL = "http://10.0.2.2:8080/api/usuario/";
+    private static final String BASE_URL = "http://localhost:8080/api/usuario/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +56,53 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         btn_ingresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                obtenerDatos();
+                Usuario u = new Usuario();
+                u.setUsu_contrasena(txtClave.getText().toString());
+                u.setUsuusuario(txtUsuario.getText().toString());
+                enviar_datos_login(u);
                 new LoginAdapter(Inicio_Login.this).execute(txtUsuario.getText(), txtClave.getText(), 3000);
             }
         });
     }
 
-    private void obtenerDatos() {
+
+    public void enviar_datos_login(Usuario user) {
+
+
+        UsuarioService usuarioService = Apis.getUsuarioService();
+        Call<List<Usuario>> call = usuarioService.addUsuario(user);
+
+        call.enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, retrofit2.Response<List<Usuario>> response) {
+                System.out.println(response.body()+ " ssssssssssssssssssssoooooooooooooooooooooooooooooooooo");
+
+                if (response.isSuccessful()) {
+                    System.out.println("ssssssssssssss");
+                    Toast.makeText(Inicio_Login.this, "Datos Guardados", Toast.LENGTH_LONG).show();
+                } else {
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                System.out.println(       t.getMessage());
+
+                Toast.makeText(Inicio_Login.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+/*
+    private void enviarDatos() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UsuarioService json = retrofit.create(UsuarioService.class);
-        Call<List<Usuario>> call = json.getPosts();
 
+        JSONObject jsonObject = new JSONObject();
+        Call<List<Usuario>> call = json.getPosts();
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, retrofit2.Response<List<Usuario>> response) {
@@ -77,7 +124,16 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
             }
         });
     }
+*/
 
+    private void pasarJson(JsonArray array) {
+
+        for (int i = 0; i < array.size(); i++) {
+            //  arrayDatos.add(post);
+
+        }
+
+    }
 
     @Override
     public void toggleProgressBar(boolean status) {
