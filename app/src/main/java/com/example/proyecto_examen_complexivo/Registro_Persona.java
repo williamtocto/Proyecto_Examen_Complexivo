@@ -17,12 +17,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Registro_Persona extends AppCompatActivity {
 
     private EditText nombre, apellido, direccion, telefono, correo,cedula;
     private Button btnSiguiente;
-
+    static Persona p = new Persona();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -53,35 +55,21 @@ public class Registro_Persona extends AppCompatActivity {
                     p.setDireccion(direccion.getText().toString());
                     p.setCelular(telefono.getText().toString());
                     p.setCorreo(correo.getText().toString());
-                    addPersona(p);
+
+                    abrirVentana();
                 }
             }
         });
 
     }
 
-    PersonaService personaService;
-    public void addPersona(Persona persona) {
-
-        personaService = Apis.getPesonaService();
-        Call<Persona> call = personaService.createPerson(persona);
-        call.enqueue(new Callback<Persona>() {
-            @Override
-            public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
-
-                if (response.isSuccessful()) {
-                    Intent home = new Intent(Registro_Persona.this, Registro_Usuario.class);
-                    startActivity(home);
-                    finish();
-                    Toast.makeText(Registro_Persona.this, "Datos Guardados", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Persona> call, Throwable t) {
-                Toast.makeText(Registro_Persona.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+    public void abrirVentana(){
+        Intent home = new Intent(Registro_Persona.this, Registro_Usuario.class);
+        startActivity(home);
+        finish();
+        Toast.makeText(Registro_Persona.this, "Datos Guardados", Toast.LENGTH_LONG).show();
+        System.out.println("ventanaaaaaaaaaaaaaaaaaaaaaa");
     }
+
+
 }

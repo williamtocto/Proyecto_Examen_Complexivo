@@ -11,4 +11,7 @@ import retrofit2.http.POST;
 public interface PersonaService {
     @POST("crear")
     Call<Persona> createPerson(@Body Persona persona);
+
+    @GET("listar/")
+    Call<Persona> getPerson(@Body String cedula);
 }
