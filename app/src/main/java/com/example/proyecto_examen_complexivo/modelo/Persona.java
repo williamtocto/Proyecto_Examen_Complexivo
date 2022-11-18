@@ -19,9 +19,7 @@ public class Persona {
     @SerializedName("celular")
     @Expose
     private String celular;
-    @SerializedName("telefono")
-    @Expose
-    private String telefono;
+
     @SerializedName("correo")
     @Expose
     private String correo;
@@ -29,16 +27,18 @@ public class Persona {
     @Expose
     private String direccion;
 
-    public Persona() {
+    public Persona(int idpersona) {
+        this.idpersona = idpersona;
     }
+    public Persona() {
 
-    public Persona(int idpersona, String cedula, String nombre, String apellido, String celular, String telefono, String correo, String direccion) {
+    }
+    public Persona(int idpersona, String cedula, String nombre, String apellido, String celular, String correo, String direccion) {
         this.idpersona = idpersona;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
-        this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
     }
@@ -83,13 +83,6 @@ public class Persona {
         this.celular = celular;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
     public String getCorreo() {
         return correo;

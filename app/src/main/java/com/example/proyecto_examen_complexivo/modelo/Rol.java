@@ -15,7 +15,8 @@ public class Rol {
     private String descripcion;
 
 
-    public Rol() {
+    public Rol(long idrol) {
+        this.idrol = idrol;
     }
 
     public Rol(long idrol, String rol, String descripcion) {

@@ -74,16 +74,6 @@ public class Registro_Persona extends AppCompatActivity {
                     startActivity(home);
                     finish();
                     Toast.makeText(Registro_Persona.this, "Datos Guardados", Toast.LENGTH_LONG).show();
-                }else{
-                    try {
-                        JSONObject jObjError = new JSONObject(response.errorBody().string());
-                        Toast.makeText(Registro_Persona.this, jObjError.getJSONObject("message").getString("message"), Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        System.out.println(e.getMessage());
-                        Toast.makeText(Registro_Persona.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    } catch (IOException e) {
-                        Toast.makeText(Registro_Persona.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
                 }
             }
 

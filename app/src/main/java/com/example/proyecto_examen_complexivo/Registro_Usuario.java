@@ -14,6 +14,7 @@ import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.PersonaService;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
+import com.google.gson.JsonArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import retrofit2.Call;
@@ -41,15 +42,11 @@ public class Registro_Usuario extends AppCompatActivity {
                 if (usuario.getText().toString().isEmpty()||contra.getText().toString().isEmpty()||repetir.getText().toString().isEmpty()){
                    Toast.makeText(Registro_Usuario.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
                 }else{
-                    Persona p = new Persona();
-                    p.setIdpersona(1);
-                    p.setCedula("0123456789");
-                    Rol r= new Rol();
-                    r.setIdrol(1);
+                    Persona p = new Persona(1);
+                    Rol r= new Rol(1);
                     Usuario u=new Usuario(usuario.getText().toString(),contra.getText().toString(),p,r);
                     addUsuario(u);
                     Toast.makeText(Registro_Usuario.this, "Persona Agregada", Toast.LENGTH_LONG).show();
-
                 }
             }
         });
@@ -63,29 +60,18 @@ public class Registro_Usuario extends AppCompatActivity {
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
-                System.out.println(response.errorBody().toString()+" wwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
                 if (response.isSuccessful()) {
                     Toast.makeText(Registro_Usuario.this, "Datos Guardados", Toast.LENGTH_LONG).show();
                     Intent home = new Intent(Registro_Usuario.this, Navegacion.class);
                     startActivity(home);
                     finish();
-                }else{
-                    try {
-                        JSONObject jObjError = new JSONObject(response.errorBody().string()+"ssssssssssssssssssssssssssssssssssssssssssssssss");
-                        Toast.makeText(Registro_Usuario.this, jObjError.getJSONObject("message").getString("message"), Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        System.out.println(e.getMessage()+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                        Toast.makeText(Registro_Usuario.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    } catch (IOException e) {
-                        Toast.makeText(Registro_Usuario.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 System.out.println(t.getMessage());
-                System.out.println("Errrowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwr");
+                System.out.println("Error");
             }
 
         });

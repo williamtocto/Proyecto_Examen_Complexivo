@@ -15,8 +15,8 @@
 
 
         <activity
-            android:name=".ServicioDetalle"
-            android:exported="false">
+                android:name=".ServicioDetalle"
+                android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
                     android:value=""/>
@@ -25,8 +25,8 @@
                 android:name=".detalle_compras"
                 android:exported="false">
             <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+                    android:name="android.app.lib_name"
+                    android:value=""/>
         </activity>
         <activity
                 android:name=".facturacion"
@@ -60,14 +60,13 @@
         </activity>
 
         <activity
-            android:name=".Registro_Usuario"
-            android:exported="true">
+                android:name=".Registro_Usuario"
+                android:exported="true">
+        </activity>
+        <activity android:name=".ProductoServicioDetalle"
+                  android:exported="true">
 
         </activity>
-<activity android:name=".ProductoServicioDetalle"
-    android:exported="true">
-
-</activity>
         <activity
                 android:name=".SplashScream"
                 android:exported="true">

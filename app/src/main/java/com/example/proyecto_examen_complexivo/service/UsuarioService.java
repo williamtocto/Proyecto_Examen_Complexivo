@@ -3,6 +3,7 @@ package com.example.proyecto_examen_complexivo.service;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 
 
+import com.google.gson.JsonArray;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
