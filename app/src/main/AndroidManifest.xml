@@ -56,7 +56,7 @@
                 android:name=".PantallaInicio"
                 android:exported="true"/>
         <activity
-                android:name=".SignUp"
+                android:name=".Registro_Persona"
                 android:exported="true">
             <meta-data
                     android:name="android.app.lib_name"
@@ -64,7 +64,7 @@
         </activity>
 
         <activity
-            android:name=".SignUp2"
+            android:name=".Registro_Usuario"
             android:exported="true">
 
         </activity>

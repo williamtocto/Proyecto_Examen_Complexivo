@@ -1,16 +1,35 @@
 package com.example.proyecto_examen_complexivo.modelo;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Rol {
-    private String idRol;
+    @SerializedName("idrol")
+    @Expose
+    private long idrol;
+    @SerializedName("rol")
+    @Expose
     private String rol;
+    @SerializedName("descripcion")
+    @Expose
     private String descripcion;
 
-    public String getIdRol() {
-        return idRol;
+
+    public Rol() {
     }
 
-    public void setIdRol(String idRol) {
-        this.idRol = idRol;
+    public Rol(long idrol, String rol, String descripcion) {
+        this.idrol = idrol;
+        this.rol = rol;
+        this.descripcion = descripcion;
+    }
+
+    public long getIdrol() {
+        return idrol;
+    }
+
+    public void setIdrol(long idrol) {
+        this.idrol = idrol;
     }
 
     public String getRol() {

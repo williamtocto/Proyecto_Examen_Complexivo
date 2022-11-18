@@ -29,6 +29,20 @@ public class Persona {
     @Expose
     private String direccion;
 
+    public Persona() {
+    }
+
+    public Persona(int idpersona, String cedula, String nombre, String apellido, String celular, String telefono, String correo, String direccion) {
+        this.idpersona = idpersona;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.celular = celular;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
+    }
+
     public int getIdpersona() {
         return idpersona;
     }

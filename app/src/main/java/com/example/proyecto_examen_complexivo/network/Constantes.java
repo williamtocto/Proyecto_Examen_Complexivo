@@ -14,7 +14,6 @@ public class Constantes {
                     .baseUrl(API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-
         }
         return retrofit.create(Api.class);
     }

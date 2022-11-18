@@ -20,7 +20,7 @@ public class PantallaInicio extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent signUp1= new Intent(PantallaInicio.this, SignUp.class);
+                Intent signUp1= new Intent(PantallaInicio.this, Registro_Persona.class);
                 startActivity(signUp1);
                 finish();
             }

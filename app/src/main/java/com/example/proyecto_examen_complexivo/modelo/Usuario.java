@@ -13,9 +13,30 @@ public class Usuario {
     @SerializedName("usu_contrasena")
     @Expose
     private String usu_contrasena;
+    @SerializedName("per_id")
+    @Expose
+    private Persona per_id;
     @SerializedName("rol_id")
     @Expose
-    private String rol_id;
+    private Rol rol_id;;
+
+    public Usuario() {
+    }
+
+    public Usuario( String usuusuario, String usu_contrasena, Persona per_id, Rol rol_id) {
+        this.usuusuario = usuusuario;
+        this.usu_contrasena = usu_contrasena;
+        this.per_id = per_id;
+        this.rol_id = rol_id;
+    }
+
+    public long getUsu_id() {
+        return usu_id;
+    }
+
+    public void setUsu_id(long usu_id) {
+        this.usu_id = usu_id;
+    }
 
     public String getUsuusuario() {
         return usuusuario;
@@ -33,11 +54,19 @@ public class Usuario {
         this.usu_contrasena = usu_contrasena;
     }
 
-    public String getRol_id() {
+    public Persona getPer_id() {
+        return per_id;
+    }
+
+    public void setPer_id(Persona per_id) {
+        this.per_id = per_id;
+    }
+
+    public Rol getRol_id() {
         return rol_id;
     }
 
-    public void setRol_id(String rol_id) {
+    public void setRol_id(Rol rol_id) {
         this.rol_id = rol_id;
     }
 }
