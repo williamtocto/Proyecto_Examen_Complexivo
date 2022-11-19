@@ -17,6 +17,7 @@ public class PantallaInicio extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_inicio);
         signIn= findViewById(R.id.btnSignIn);
         signUp= findViewById(R.id.btnSignUp);
+
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

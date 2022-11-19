@@ -19,7 +19,12 @@
     <color name="accentColor">#03A9F4</color>
     <color name="azul_marino">#284363</color>
     <color name="blaco_arena">#E7E7E7</color>
+
     <color name="verde_odiseum">#195e4b</color>
+    <color name="naranja">#F33501</color>
+    <color name="rosa">#FFA084</color>
+    <color name="verde_agua">#00DA9D</color>
+    <color name="celeste">#CAEBE2</color>
 
 
 </resources>
