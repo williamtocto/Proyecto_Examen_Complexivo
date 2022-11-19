@@ -9,20 +9,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.modelo.Persona;
-import com.example.proyecto_examen_complexivo.service.Apis;
-import com.example.proyecto_examen_complexivo.service.PersonaService;
-import org.json.JSONException;
-import org.json.JSONObject;
-import retrofit2.Call;
-import retrofit2.Callback;
-
-import java.io.IOException;
 
 public class Registro_Persona extends AppCompatActivity {
 
     private EditText nombre, apellido, direccion, telefono, correo,cedula;
     private Button btnSiguiente;
-
+    public  static Persona p ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -43,45 +35,31 @@ public class Registro_Persona extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||direccion.getText().toString().isEmpty()
-                ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()||cedula.getText().toString().isEmpty()){
+                        ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()||cedula.getText().toString().isEmpty()){
                     Toast.makeText(Registro_Persona.this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
                 }else{
-                    Persona p = new Persona();
+                    p = new Persona();
                     p.setCedula(cedula.getText().toString());
                     p.setNombre(nombre.getText().toString());
                     p.setApellido(apellido.getText().toString());
                     p.setDireccion(direccion.getText().toString());
                     p.setCelular(telefono.getText().toString());
                     p.setCorreo(correo.getText().toString());
-                    addPersona(p);
+
+                    abrirVentana();
                 }
             }
         });
 
     }
 
-    PersonaService personaService;
-    public void addPersona(Persona persona) {
-
-        personaService = Apis.getPesonaService();
-        Call<Persona> call = personaService.createPerson(persona);
-        call.enqueue(new Callback<Persona>() {
-            @Override
-            public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
-
-                if (response.isSuccessful()) {
-                    Intent home = new Intent(Registro_Persona.this, Registro_Usuario.class);
-                    startActivity(home);
-                    finish();
-                    Toast.makeText(Registro_Persona.this, "Datos Guardados", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Persona> call, Throwable t) {
-                Toast.makeText(Registro_Persona.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+    public void abrirVentana(){
+        Intent home = new Intent(Registro_Persona.this, Registro_Usuario.class);
+        startActivity(home);
+        finish();
+        Toast.makeText(Registro_Persona.this, "Datos Guardados", Toast.LENGTH_LONG).show();
+        System.out.println("ventanaaaaaaaaaaaaaaaaaaaaaa");
     }
+
+
 }
