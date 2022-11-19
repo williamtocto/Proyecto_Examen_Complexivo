@@ -2,13 +2,23 @@ package com.example.proyecto_examen_complexivo.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.proyecto_examen_complexivo.R;
+import com.example.proyecto_examen_complexivo.adapter.detallecomprasAdapter;
+import com.example.proyecto_examen_complexivo.databinding.FragmentDetalleComprasBinding;
+import com.example.proyecto_examen_complexivo.modelo.Carrito;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +31,16 @@ public class detalle_compras extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private FragmentDetalleComprasBinding binding;
+
+
+    //carrito
+    private ArrayList<Carrito> listCarrito = new ArrayList<>();
+    private detallecomprasAdapter adapter;
+
+    //recyclerview
+    private RecyclerView recyclerView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -55,12 +75,35 @@ public class detalle_compras extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        consultarComprasCarrito();
     }
+
+
+    public void consultarComprasCarrito(){
+        Carrito carrito = new Carrito();
+        listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_compras, container, false);
+        binding = FragmentDetalleComprasBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        //carrito
+        adapter = new detallecomprasAdapter(listCarrito, getContext());
+        recyclerView= binding.recyclecompras;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
+        consultarComprasCarrito();
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }

@@ -1,7 +1,6 @@
 package com.example.proyecto_examen_complexivo;
 
 import android.content.Intent;
-import com.example.proyecto_examen_complexivo.base_temp.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,13 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
-import com.example.proyecto_examen_complexivo.service.Apis;
 
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.google.android.material.textfield.TextInputLayout;
-import org.json.JSONArray;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class SignUp4 extends AppCompatActivity {
 

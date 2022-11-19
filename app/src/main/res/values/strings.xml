@@ -75,5 +75,8 @@
     <string name="qqqq">Agregar al Carrito</string>
     <string name="todosss">TODO</string>
     <string name="cantidaddeee">Cantidad</string>
+    <string name="cantidadss">Cantidad:</string>
+    <string name="_1">1</string>
+    <string name="serial">SERIAL</string>
 
 </resources>

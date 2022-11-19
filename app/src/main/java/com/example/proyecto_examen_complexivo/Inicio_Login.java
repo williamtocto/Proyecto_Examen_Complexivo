@@ -1,6 +1,7 @@
 package com.example.proyecto_examen_complexivo;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
+import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
@@ -42,6 +44,13 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 u.setUsuusuario(txtUsuario.getText().toString());
                 u.setUsu_contrasena(txtClave.getText().toString());
                 validar(u);
+                DbHelper dbHelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                if(db!=null){
+                    Toast.makeText(getApplicationContext(), "Base Creada", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Error al Crear la base", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

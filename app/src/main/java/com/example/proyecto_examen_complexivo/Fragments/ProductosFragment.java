@@ -61,13 +61,16 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
     private String mParam2;
 
     private FragmentProductosBinding binding;
+
     //productos
     private List<Producto> listaProductoscompleta =new ArrayList<>();
     private List<Producto> listproducto =new ArrayList<>();
     private ProductoAdapter adapter;
     private TextView txtfiltro;
+
     //recicleviews
     private RecyclerView recyclerView,recyclersubcategoria, recyclerViewcategoria;
+
     //subcategoria
     private List<SubcategoriaP> subcategoriaList =new ArrayList<>();
     private SubcategoriaPAdapter adaptersubcategoria;

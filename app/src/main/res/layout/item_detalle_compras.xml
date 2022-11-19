@@ -21,22 +21,42 @@
         android:id="@+id/BtnEliminarDetalleCompras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="144dp"
         android:contentDescription="@string/Eliminar2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_delete"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
+        android:id="@+id/txtPrecioProductoDetalleCompras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/_100_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:text="@string/producto_o_servicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNombreProductoDetalleCompras"
+        android:layout_width="218dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/hola_mundossss"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="80dp"
         android:text="@string/descripcionsss"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,18 +75,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="144dp"
         android:text="@string/totalss"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPrecioProductoDetalleCompras"
+        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="244dp"
-        android:layout_marginTop="132dp"
-        android:text="@string/_100_0"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="176dp"
+        android:text="@string/cantidadss"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCantidadProductaDeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="176dp"
+        android:text="@string/_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,18 +105,18 @@
         android:layout_width="222dp"
         android:layout_height="39dp"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="100dp"
         android:text="@string/hola_mundo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtNombreProductoDetalleCompras"
-        android:layout_width="218dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/hola_mundossss"
+        android:id="@+id/txtId_Producto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="160dp"
+        android:text="@string/serial"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
