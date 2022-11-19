@@ -58,9 +58,6 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
         super(context, NOMBRE_BD, null, VERSION_BD);
     }
 
-
-
-
     @Override
     public void onCreate(SQLiteDatabase base) {
         base.execSQL(TABLA_CARRITO);
