@@ -4,6 +4,7 @@ import com.example.proyecto_examen_complexivo.modelo.Persona;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 
