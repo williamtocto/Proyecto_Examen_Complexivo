@@ -94,6 +94,5 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
     @Override
     public void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-
     }
 }

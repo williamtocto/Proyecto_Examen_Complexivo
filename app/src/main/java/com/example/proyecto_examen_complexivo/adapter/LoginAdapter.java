@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 import com.example.proyecto_examen_complexivo.Inicio_Login;
 import com.example.proyecto_examen_complexivo.MainActivity;
+import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
@@ -18,13 +19,6 @@ import java.util.ArrayList;
 public class LoginAdapter extends AsyncTask<Object, Void, Boolean> {
 
     private Validacion_user comunicacion;
-
-    public void enviar_datos_login(Usuario user) {
-
-
-    }
-
-    ArrayList<Usuario> array = Inicio_Login.arrayDatos;
 
     //Contructor
     public LoginAdapter(Validacion_user comunicacion) {

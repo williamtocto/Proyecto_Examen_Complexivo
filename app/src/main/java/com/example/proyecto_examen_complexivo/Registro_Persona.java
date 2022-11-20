@@ -38,14 +38,21 @@ public class Registro_Persona extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean validar = false;
                 if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||direccion.getText().toString().isEmpty()
                         ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()||cedula.getText().toString().isEmpty()){
                     Toast.makeText(Registro_Persona.this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
-                }if(cedula.getText().length()<10){
-                    Toast.makeText(Registro_Persona.this, "Cedula incorrecta", Toast.LENGTH_SHORT).show();
-                }if(telefono.getText().length()<10){
-                    Toast.makeText(Registro_Persona.this, "Telefono incorrecto", Toast.LENGTH_SHORT).show();
-                } else{
+                }else{
+                    if(cedula.getText().length()<10){
+                        Toast.makeText(Registro_Persona.this, "Cedula incorrecta", Toast.LENGTH_SHORT).show();
+                        validar =true;
+                    }
+                    if(telefono.getText().length()<10){
+                        Toast.makeText(Registro_Persona.this, "Telefono incorrecto", Toast.LENGTH_SHORT).show();
+                        validar = true;
+                    }
+                }
+                if (validar==false){
                     p = new Persona();
                     p.setCedula(cedula.getText().toString());
                     p.setNombre(nombre.getText().toString());
@@ -55,6 +62,7 @@ public class Registro_Persona extends AppCompatActivity {
                     p.setCorreo(correo.getText().toString());
                     getPersona(cedula.getText().toString());
                 }
+
             }
         });
 
@@ -73,10 +81,11 @@ public class Registro_Persona extends AppCompatActivity {
         call.enqueue(new Callback<Persona>() {
             @Override
             public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
+
                 if (response.isSuccessful()) {
                     Toast.makeText(Registro_Persona.this, "Cedula ya registrada", Toast.LENGTH_SHORT).show();
                     validar = true;
-                } else {
+                } else if(response.body()==null){
                     Toast.makeText(Registro_Persona.this, "Datos Correctos", Toast.LENGTH_SHORT).show();
                     abrirVentana();
                 }

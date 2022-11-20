@@ -14,8 +14,6 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     private static String NOMBRE_BD= "base_temp";
     private static int VERSION_BD= 1;
 
-    //ArrayList<Carrito> listaCarrito=new ArrayList<>();
-
 
     private static String TABLA_CARRITO= "create table carrito (" +
             "idPrdocuto INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
@@ -60,7 +58,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase base) {
-        base.execSQL(TABLA_CARRITO);
+
         base.execSQL(TABLA_USUARIO);
         base.execSQL(TABLA_DATOS_TARJETA);
         base.execSQL(TABLA_DATOS_CLIENTE);
@@ -124,23 +122,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     ///// TABLA USUARIO ///////
 
-    public boolean agregarUsuario(String nombreUsu, String tipoUsu, String claveUsu, String estado){
-        SQLiteDatabase bd= getWritableDatabase();
 
-        if (bd!=null){
-            try{
-                bd.execSQL("DELETE FROM usuario");
-                bd.execSQL("INSERT INTO usuario VALUES("+null+",'"+nombreUsu+"','"+tipoUsu+"','"+claveUsu+"','"+estado+"')");
-                bd.close();
-                return true;
-            }catch (SQLiteConstraintException e){
-                return false;
-            }
-
-        }else{
-            return false;
-        }
-    }
 
     public void editarUsuario(String nombreUsuario, String contrasenia, String datoValidacion){
         SQLiteDatabase bd= getWritableDatabase();
@@ -198,15 +180,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
         }
     }
 
-    public void eliminarDatosCliente(String numTarjeta){
 
-        SQLiteDatabase bd= getWritableDatabase();
-        String sql=null;
-        sql= "DELETE FROM datos_cliente";
-        bd.execSQL(sql);
-        bd.close();
-
-    }
 
     /*public List<Carrito> listar() {
 
@@ -229,13 +203,6 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     }*/
 
 
-    public Cursor query(String sql) {
-        return this.getReadableDatabase().rawQuery(sql, null);
-    }
-
-    public void noQuery(String sql) {
-        this.getWritableDatabase().execSQL(sql);
-    }
 
 
 }
