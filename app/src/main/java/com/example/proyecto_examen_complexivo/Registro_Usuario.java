@@ -126,7 +126,8 @@ public class Registro_Usuario extends AppCompatActivity {
                     //Agregar Usuario Base sqlite
                     DbHelper bd = new DbHelper(Registro_Usuario.this);
                     bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(),p.getCedula(),p.getNombre(),p.getApellido(),
-                            p.getDireccion(),p.getCelular(),p.getCorreo(),usuario1.getRol_id().getIdrol(), usuario1.getIdpersona().getIdpersona());
+                            p.getDireccion(),p.getCelular(),p.getCorreo(),usuario1.getRol_id().getIdrol(),
+                            usuario1.getIdpersona().getIdpersona());
 
                     Toast.makeText(Registro_Usuario.this, "Usuario Agregado", Toast.LENGTH_LONG).show();
                     //ABRIR VENTANA

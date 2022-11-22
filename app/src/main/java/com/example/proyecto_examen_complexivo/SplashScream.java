@@ -45,30 +45,6 @@ public class SplashScream extends AppCompatActivity {
                 /*IF PARA EVITAR QUE EL STRING SEA NULO SI NO HAY DATOS REGISTRADOS EN LA BDD TEMPORAL*/
                 if (usu.listarUsuarioP() == null) {
                     System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
-                    View view = null;
-
-
-                    //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_bar);
-                 /*   View header = navigationView.getHeaderView(0);
-                    TextView text = (TextView) header.findViewById(R.id.nombre_usuario);
-                    text.setText("holaaaaaaaaaaaa");*/
-
-/*
-                    NavigationView navigationView = findViewById(R.id.contenidoPrincipal);
-                    View header = navigationView.getHeaderView(0);
-                    TextView textUsername = header.findViewById(R.id.nombre_usuario);
-                    textUsername.setText("you text here ");*/
-
-                  /*  View headerLayout =
-                            navigationView.inflateHeaderView(R.layout.header_nav);
-                    TextView panel = headerLayout.findViewById(R.id.nombre_usuario);*/
-
-                    /*NavigationView navView= findViewById(R.id.nav_view_bar);
-                    View headerLayout=navView.getHeaderView(1);
-                    nombre_user=headerLayout.findViewById(R.id.nombre_usuario);
-                    nombre_user.setText("holaaaaaaaaa");*/
-
-
                     Intent vista_login = new Intent(SplashScream.this, PantallaInicio.class);
                     startActivity(vista_login);
                     finish();
