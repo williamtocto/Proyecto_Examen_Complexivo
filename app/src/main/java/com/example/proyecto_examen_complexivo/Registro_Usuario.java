@@ -133,10 +133,6 @@ public class Registro_Usuario extends AppCompatActivity {
                     Intent home = new Intent(Registro_Usuario.this, Navegacion.class);
                     startActivity(home);
                     finish();
-
-
-
-
                 } else {
                     Toast.makeText(Registro_Usuario.this, response.message(), Toast.LENGTH_LONG).show();
                 }

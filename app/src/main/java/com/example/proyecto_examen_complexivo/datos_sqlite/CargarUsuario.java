@@ -20,8 +20,6 @@ public class CargarUsuario {
     private ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
 
 
-
-
     public CargarUsuario(Context context) {
         this.context = context;
     }
