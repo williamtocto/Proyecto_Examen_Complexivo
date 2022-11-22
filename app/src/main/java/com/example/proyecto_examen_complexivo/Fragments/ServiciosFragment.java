@@ -232,6 +232,7 @@ public class ServiciosFragment extends Fragment implements ServiciosAdapter.Recy
     @Override
     public void itemCLick(CategoriaS categoriaS) {
         if(categoriaS.getId()==-1){
+            servicioslistcompleto.clear();
             retrofitSu();
             retrofitIni();
         }else {
