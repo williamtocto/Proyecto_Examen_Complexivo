@@ -81,6 +81,8 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
     private List<CategoriaP> categoriaList=new ArrayList<>();
     private CategoriaPAdapter adaptercategoria;
 
+
+
     //retrofit api
     private Constantes constantes=new Constantes();
 
