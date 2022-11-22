@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -130,6 +131,8 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             setTitle(item.getTitle());
             drawerLayout.closeDrawers();
         }
+
+
 
         @Override
         public boolean onOptionsItemSelected(@NonNull MenuItem item) {
