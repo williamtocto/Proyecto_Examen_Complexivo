@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.proyecto_examen_complexivo.Fragments.Fragment_UpdatePerson;
 import com.example.proyecto_examen_complexivo.Fragments.ProductosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.ServiciosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
@@ -119,7 +120,9 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     ft.replace(R.id.contentFrame, new detalle_compras()).commit();
 
                     break;
-
+                case R.id.nav_perfil:
+                    ft.replace(R.id.contentFrame, new Fragment_UpdatePerson()).commit();
+                    break;
 
 
             }

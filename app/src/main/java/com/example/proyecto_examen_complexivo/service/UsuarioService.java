@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface UsuarioService {
     @GET("listar")
-    Call<List<Usuario>> getPosts();
+    Call<List<Usuario>> getUser();
 
     @GET("listar/{usuusuario}")
     Call<Usuario> getUser(@Path("usuusuario") String usuario);
