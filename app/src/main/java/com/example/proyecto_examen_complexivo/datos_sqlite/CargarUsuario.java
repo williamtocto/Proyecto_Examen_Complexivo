@@ -19,9 +19,6 @@ public class CargarUsuario {
     private Context context;
     private ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
 
-
-
-
     public CargarUsuario(Context context) {
         this.context = context;
     }
@@ -30,9 +27,7 @@ public class CargarUsuario {
 
         DbHelper base= new DbHelper(context);
         SQLiteDatabase open= base.getReadableDatabase();
-
         Cursor fila= open.rawQuery("select * from usuario",null );
-
         if (fila.moveToFirst()){
             System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
             do{

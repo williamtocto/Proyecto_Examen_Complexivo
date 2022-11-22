@@ -10,9 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 
 public class SplashScream extends AppCompatActivity {
