@@ -20,8 +20,6 @@ public class CargarUsuario {
     private ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
 
 
-
-
     public CargarUsuario(Context context) {
         this.context = context;
     }
@@ -34,15 +32,18 @@ public class CargarUsuario {
         Cursor fila= open.rawQuery("select * from usuario",null );
 
         if (fila.moveToFirst()){
-            System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
             do{
                 Usuario usuario= new Usuario();
                 usuario.setUsu_id(fila.getLong(1));
                 usuario.setUsuusuario(fila.getString(2));
                 usuario.setUsu_contrasena(fila.getString(3));
                 Persona p=new Persona();
+                p.setCedula(fila.getString(3));
                 p.setNombre(fila.getString(4));
                 p.setApellido(fila.getString(5));
+                p.setDireccion(fila.getString(6));
+                p.setCelular(fila.getString(7));
+                p.setCorreo(fila.getString(8));
                 usuario.setIdpersona(p);
                 usuarioArrayList.add(usuario);
             }while (fila.moveToNext());

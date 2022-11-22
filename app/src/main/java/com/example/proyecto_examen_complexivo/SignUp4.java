@@ -77,35 +77,7 @@ public class SignUp4 extends AppCompatActivity {
             }
         });
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    UsuarioService usuarioService;
 
-/*
-    public void addUsuario(Usuario usuario) {
-        usuarioService = Apis.getUsuarioService();
-        Call<JSONArray> call = usuarioService.addUsuario(usuario);
-        call.enqueue(new Callback<JSONArray>() {
-            @Override
-            public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
-                if (response.isSuccessful()) {
-                    //Toast.makeText(SignUp4.this, "Usuario agregado", Toast.LENGTH_SHORT).show();
-                    //GUARDAMOS EL USUARIO EN LA BASE TEMP PARA VALIDAR EL INGRESO A LA APP
-                    SQLiteOpenHelper  bd1 = new SQLiteOpenHelper(SignUp4.this);
-                    boolean bandera =bd1.agregarUsuario(txt_usu.getText().toString(), "cliente", txt_contra.getText().toString(), "registrado");
-                    if(bandera!=false){
-                        Toast.makeText(SignUp4.this, "Usuario agregado", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(SignUp4.this, "Error al agregar usuario 234234", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(SignUp4.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }*/
 
     public  void limpiarCampos(){
         txt_usu.setText("");

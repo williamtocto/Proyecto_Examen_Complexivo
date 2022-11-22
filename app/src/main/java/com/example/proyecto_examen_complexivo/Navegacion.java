@@ -2,6 +2,8 @@ package com.example.proyecto_examen_complexivo;
 
 import android.content.res.Configuration;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -9,15 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.proyecto_examen_complexivo.Fragments.Fragment_UpdatePerson;
 import com.example.proyecto_examen_complexivo.Fragments.ProductosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.ServiciosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
+import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -27,6 +32,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         NavigationView navigationView;
         Toolbar toolbar;
         ActionBarDrawerToggle toggle;
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,18 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
             //Dar acciones a los items del menu
             navigationView.setNavigationItemSelectedListener(this);
+
+            // ENVIAR DATOS DE USUARIO AL HEADER NAV
+            NavigationView navigationView = findViewById(R.id.nav_view_bar);
+            View header = navigationView.getHeaderView(0);
+            TextView textUsername = header.findViewById(R.id.nombre_usuario);
+
+            //Consulta base de datos sqlite
+            CargarUsuario usu = new CargarUsuario(Navegacion.this);
+            textUsername.setText(usu.listarUsuarioP().get(0).getIdpersona().getNombre()+" " +usu.listarUsuarioP().get(0).getIdpersona().getApellido());
+
+
+
         }
 
         private ActionBarDrawerToggle setDrawerToggle() {
@@ -103,11 +121,18 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     ft.replace(R.id.contentFrame, new detalle_compras()).commit();
 
                     break;
+                case R.id.nav_perfil:
+                    ft.replace(R.id.contentFrame, new Fragment_UpdatePerson()).commit();
+                    break;
+
 
             }
+
             setTitle(item.getTitle());
             drawerLayout.closeDrawers();
         }
+
+
 
         @Override
         public boolean onOptionsItemSelected(@NonNull MenuItem item) {

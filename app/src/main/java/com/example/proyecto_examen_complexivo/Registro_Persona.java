@@ -14,11 +14,12 @@ import com.example.proyecto_examen_complexivo.service.PersonaService;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class Registro_Persona extends AppCompatActivity {
+public class Registro_Persona<validar> extends AppCompatActivity {
 
     private EditText nombre, apellido, direccion, telefono, correo,cedula;
     private Button btnSiguiente;
     public  static Persona p ;
+    boolean validar = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -38,7 +39,7 @@ public class Registro_Persona extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean validar = false;
+
                 if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||direccion.getText().toString().isEmpty()
                         ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()||cedula.getText().toString().isEmpty()){
                     Toast.makeText(Registro_Persona.this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
@@ -72,9 +73,10 @@ public class Registro_Persona extends AppCompatActivity {
         startActivity(home);
         finish();
     }
-    boolean validar=false;
-    public void getPersona(String cedula) {
 
+
+    public void getPersona(String cedula) {
+        validar=false;
         PersonaService personaService;
         personaService = Apis.getPesonaService();
         Call<Persona> call = personaService.getPerson(cedula);

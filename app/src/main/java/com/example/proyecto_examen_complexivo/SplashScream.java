@@ -42,7 +42,6 @@ public class SplashScream extends AppCompatActivity {
                 CargarUsuario usu = new CargarUsuario(SplashScream.this);
                 /*IF PARA EVITAR QUE EL STRING SEA NULO SI NO HAY DATOS REGISTRADOS EN LA BDD TEMPORAL*/
                 if (usu.listarUsuarioP() == null) {
-                    System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
                     Intent vista_login = new Intent(SplashScream.this, PantallaInicio.class);
                     startActivity(vista_login);
                     finish();
@@ -50,7 +49,6 @@ public class SplashScream extends AppCompatActivity {
                     //AGREGAR NOMBRE USUARIO
                     System.out.println(usu.listarUsuarioP().get(0).getIdpersona().getNombre());
                     // Registro_Usuario.nombreUser.setText(usu.listarUsuarioP().get(0).getIdpersona().getNombre()+" " +usu.listarUsuarioP().get(0).getIdpersona().getApellido());
-                    System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
                     Intent vista_login = new Intent(SplashScream.this, MainActivity.class);
                     startActivity(vista_login);
                     finish();
