@@ -19,9 +19,12 @@ public class SubcategoriaSAdapter extends RecyclerView.Adapter<SubcategoriaSAdap
     private List<SubcategoriaS> subcategoriaSList;
     private Context context;
 
-    public SubcategoriaSAdapter(List<SubcategoriaS> subcategoriaSList, Context context) {
+    private RecyclerItemClicks itemClicks;
+
+    public SubcategoriaSAdapter(List<SubcategoriaS> subcategoriaSList, Context context, RecyclerItemClicks itemClicks) {
         this.subcategoriaSList = subcategoriaSList;
         this.context = context;
+        this.itemClicks = itemClicks;
     }
 
     @NonNull
@@ -37,6 +40,13 @@ public class SubcategoriaSAdapter extends RecyclerView.Adapter<SubcategoriaSAdap
         SubcategoriaS sub=subcategoriaSList.get(position);
         holder.nombresubcategoria.setText(sub.getNombre());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClicks.itemCLick(sub);
+            }
+        });
+
     }
 
     @Override
@@ -50,5 +60,9 @@ public class SubcategoriaSAdapter extends RecyclerView.Adapter<SubcategoriaSAdap
             super(itemView);
             nombresubcategoria=itemView.findViewById(R.id.subcategorias);
         }
+    }
+
+    public interface RecyclerItemClicks{
+        void itemCLick(SubcategoriaS subcategoriaS);
     }
 }

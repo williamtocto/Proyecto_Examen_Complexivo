@@ -35,7 +35,7 @@ public class SignUp4 extends AppCompatActivity {
         labelContraseña=findViewById(R.id.labelContraseñaSignUp);
         labelConfirmContraseña=findViewById(R.id.labelCofirmContraseñaSignUp);
         layoutInputDatos= findViewById(R.id.layoutSignUp);
-        setAnimation();
+       // setAnimation();
         txt_usu=findViewById(R.id.txt_usuarioSignUp);
         txt_contra=findViewById(R.id.txt_contraseñaSignUp);
         txt_confir_contra=findViewById(R.id.txt_contraseñaConfirmarSignUp);

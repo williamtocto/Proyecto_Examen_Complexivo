@@ -25,6 +25,12 @@ public class CategoriaP {
         this.nombre = nombre;
     }
 
+    public CategoriaP(Long id, String nombre, String catprodescripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.catprodescripcion = catprodescripcion;
+    }
+
     public Long getId() {
         return id;
     }

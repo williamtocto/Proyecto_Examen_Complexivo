@@ -19,9 +19,12 @@ public class CategoriaSAdapter extends RecyclerView.Adapter<CategoriaSAdapter.Vi
     private List<CategoriaS> categoriaSList;
     private Context context;
 
-    public CategoriaSAdapter(List<CategoriaS> categoriaSList, Context context) {
+    private RecyclerItemClicks itemClicks;
+
+    public CategoriaSAdapter(List<CategoriaS> categoriaSList, Context context, RecyclerItemClicks itemClicks) {
         this.categoriaSList = categoriaSList;
         this.context = context;
+        this.itemClicks = itemClicks;
     }
 
     @NonNull
@@ -36,6 +39,13 @@ public class CategoriaSAdapter extends RecyclerView.Adapter<CategoriaSAdapter.Vi
 
         CategoriaS ca=categoriaSList.get(position);
         holder.nombrecategoria.setText(ca.getNombre());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClicks.itemCLick(ca);
+            }
+        });
     }
 
     @Override
@@ -49,5 +59,9 @@ public class CategoriaSAdapter extends RecyclerView.Adapter<CategoriaSAdapter.Vi
             super(itemView);
             nombrecategoria=itemView.findViewById(R.id.categorias);
         }
+    }
+
+    public interface  RecyclerItemClicks{
+        void itemCLick(CategoriaS categoriaS);
     }
 }

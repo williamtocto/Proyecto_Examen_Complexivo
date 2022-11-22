@@ -13,14 +13,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportFragmentManager().beginTransaction().add(R.id.contentFrame, new FragmentNombreUsuario()).commit();
         setContentView(R.layout.activity_main);
         Intent intent=new Intent(MainActivity.this,Navegacion.class);
         startActivity(intent);
-
-
-
-
 
         }
     }

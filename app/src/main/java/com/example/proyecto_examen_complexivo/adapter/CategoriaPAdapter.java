@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.modelo.CategoriaP;
+import com.example.proyecto_examen_complexivo.modelo.Producto;
 
 import java.util.List;
 
@@ -19,11 +21,13 @@ public class CategoriaPAdapter extends RecyclerView.Adapter<CategoriaPAdapter.Vi
     private List<CategoriaP> categoriaList;
     private Context context;
 
+    private RecyclerItemClickc itemClickc;
 
 
-    public CategoriaPAdapter(List<CategoriaP> categoriaList, Context context) {
+    public CategoriaPAdapter(List<CategoriaP> categoriaList, Context context, RecyclerItemClickc itemClickc) {
         this.categoriaList = categoriaList;
         this.context = context;
+        this.itemClickc = itemClickc;
     }
 
     @NonNull
@@ -37,6 +41,12 @@ public class CategoriaPAdapter extends RecyclerView.Adapter<CategoriaPAdapter.Vi
     public void onBindViewHolder(@NonNull CategoriaPAdapter.ViewHolder holder, int position) {
         CategoriaP ca=categoriaList.get(position);
         holder.nombrecategoria.setText(ca.getNombre());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickc.itemCLick(ca);
+            }
+        });
     }
 
     @Override
@@ -53,5 +63,9 @@ public class CategoriaPAdapter extends RecyclerView.Adapter<CategoriaPAdapter.Vi
             nombrecategoria=itemView.findViewById(R.id.categorias);
         }
 
+    }
+
+    public interface RecyclerItemClickc{
+        void itemCLick(CategoriaP categoriaP);
     }
 }

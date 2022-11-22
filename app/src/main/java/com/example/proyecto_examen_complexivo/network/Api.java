@@ -11,6 +11,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface Api {
     @GET("api/servicio/listar")
@@ -37,6 +38,21 @@ public interface Api {
     @GET("api/categoriaservicio/listar")
     public Call<List<CategoriaS>> getCategoriaS();
 
+    //buscar product categoria
+    @GET("api/prodcuto/listar/categoria/{id}")
+    Call<List<Producto>> getProductoCat(@Path("id") long id);
+
+    //buscar product subcategoria
+    @GET("api/prodcuto/listar/subcategoria/{id}")
+    Call<List<Producto>> getProductoSub(@Path("id") long id);
+
+    //buscar servicio categoria
+    @GET("api/servicio/listar/categoria/{id}")
+    Call<List<Servicio>> getServicioCat(@Path("id") long id);
+
+    //buscar servicio subcategoria
+    @GET("api/servicio/listar/subcategoria/{id}")
+    Call<List<Servicio>> getServicioSub(@Path("id") long id);
 
 
 }

@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.L;
 import com.example.proyecto_examen_complexivo.MainActivity;
 import com.example.proyecto_examen_complexivo.ProductoServicioDetalle;
 import com.example.proyecto_examen_complexivo.R;
@@ -33,6 +34,7 @@ import com.example.proyecto_examen_complexivo.modelo.CategoriaP;
 import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.example.proyecto_examen_complexivo.modelo.SubcategoriaP;
 import com.example.proyecto_examen_complexivo.network.Api;
+import com.example.proyecto_examen_complexivo.network.Constantes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Use the {@link ProductosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProductosFragment extends Fragment implements ProductoAdapter.RecyclerItemClick{
+public class ProductosFragment extends Fragment implements ProductoAdapter.RecyclerItemClick, CategoriaPAdapter.RecyclerItemClickc, SubcategoriaPAdapter.RecyclerItemClickc {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,7 +81,8 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
     private List<CategoriaP> categoriaList=new ArrayList<>();
     private CategoriaPAdapter adaptercategoria;
 
-    private Api ApiService;
+    //retrofit api
+    private Constantes constantes=new Constantes();
 
 
     public ProductosFragment() {
@@ -120,14 +123,14 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
         View root=binding.getRoot();
 
         //categoria
-        adaptercategoria=new CategoriaPAdapter(categoriaList,getContext());
+        adaptercategoria=new CategoriaPAdapter(categoriaList,getContext(),this);
         recyclerViewcategoria=binding.recyclercategoria;
         recyclerViewcategoria.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewcategoria.setAdapter(adaptercategoria);
         retrofitCategoria();
 
         //subcategoria
-        adaptersubcategoria=new SubcategoriaPAdapter(subcategoriaList,getContext());
+        adaptersubcategoria=new SubcategoriaPAdapter(subcategoriaList,getContext(), this);
         recyclersubcategoria=binding.recyclersubcategoria;
         recyclersubcategoria.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclersubcategoria.setAdapter(adaptersubcategoria);
@@ -169,13 +172,7 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
     }
 
     private void retrofitIni(){
-        Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Api apicliente=retrofit.create(Api.class);
-
-        Call<List<Producto>> res=apicliente.getProducto();
+        Call<List<Producto>> res=constantes.getApiService().getProducto();
         res.enqueue(new Callback<List<Producto>>() {
             @Override
             public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
@@ -183,7 +180,6 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
                 listproducto.clear();
                 listproducto.addAll(listaProductoscompleta);
                 adapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), "productos "+listproducto.size(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -195,13 +191,7 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
         });
     }
     private void retrofitSubCa(){
-        Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Api apicliente=retrofit.create(Api.class);
-
-        Call<List<SubcategoriaP>> res=apicliente.getSubcategoria();
+        Call<List<SubcategoriaP>> res=constantes.getApiService().getSubcategoria();
         res.enqueue(new Callback<List<SubcategoriaP>>() {
             @Override
             public void onResponse(Call<List<SubcategoriaP>> call, Response<List<SubcategoriaP>> response) {
@@ -220,17 +210,12 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
         });
     }
     private void retrofitCategoria(){
-        Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Api apicliente=retrofit.create(Api.class);
-
-        Call<List<CategoriaP>> res=apicliente.getCegoria();
+        Call<List<CategoriaP>> res=constantes.getApiService().getCegoria();
         res.enqueue(new Callback<List<CategoriaP>>() {
             @Override
             public void onResponse(Call<List<CategoriaP>> call, Response<List<CategoriaP>> response) {
                 categoriaList.clear();
+                categoriaList.add(new CategoriaP(-1L,"Todo","todo"));
                 categoriaList.addAll(response.body());
                 adaptercategoria.notifyDataSetChanged();
             }
@@ -252,4 +237,52 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
     }
 
 
+    @Override
+    public void itemCLick(CategoriaP categoriaP) {
+        if(categoriaP.getId()==-1){
+            retrofitSubCa();
+            retrofitIni();
+        }else{
+            Call<List<Producto>> res=constantes.getApiService().getProductoCat(categoriaP.getId());
+            res.enqueue(new Callback<List<Producto>>() {
+                @Override
+                public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
+                    listaProductoscompleta.clear();
+                    listaProductoscompleta.addAll(response.body());
+                    listproducto.clear();
+                    listproducto.addAll(listaProductoscompleta);
+                    adapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onFailure(Call<List<Producto>> call, Throwable t) {
+                    t.printStackTrace();
+                    Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void itemCLick(SubcategoriaP subcategoriaP) {
+        Call<List<Producto>> res=constantes.getApiService().getProductoSub(subcategoriaP.getId());
+        res.enqueue(new Callback<List<Producto>>() {
+            @Override
+            public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
+                listaProductoscompleta.clear();
+                listaProductoscompleta.addAll(response.body());
+                listproducto.clear();
+                listproducto.addAll(listaProductoscompleta);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Producto>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 }
