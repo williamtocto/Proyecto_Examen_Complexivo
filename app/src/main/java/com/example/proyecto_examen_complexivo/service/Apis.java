@@ -3,6 +3,7 @@ package com.example.proyecto_examen_complexivo.service;
 public class Apis {
 
     public static final String BASE_URL = "http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/";
+   // public static final String BASE_URL = "http://10.0.2.2:8080/api/";
 
 
     public static UsuarioService getUsuarioService() {

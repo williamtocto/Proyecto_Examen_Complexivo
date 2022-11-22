@@ -1,7 +1,11 @@
 package com.example.proyecto_examen_complexivo;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,10 +19,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.proyecto_examen_complexivo.Fragments.Fragment_updatePerson;
 import com.example.proyecto_examen_complexivo.Fragments.ProductosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.ServiciosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
 import com.google.android.material.navigation.NavigationView;
+
+import java.sql.SQLOutput;
 
 
 public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,9 +41,9 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             setContentView(R.layout.activity_main);
 
             //Referencias UI
-            drawerLayout= findViewById(R.id.contenidoPrincipal);
-            navigationView= findViewById(R.id.nav_view_bar);
-            toolbar= findViewById(R.id.toolBar);
+            drawerLayout = findViewById(R.id.contenidoPrincipal);
+            navigationView = findViewById(R.id.nav_view_bar);
+            toolbar = findViewById(R.id.toolBar);
 
             //Configurar Fragment por defecto (El que aparece al principio)
             getSupportFragmentManager().beginTransaction().add(R.id.contentFrame, new ProductosFragment()).commit();
@@ -45,11 +52,13 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             //Configuracion de ToolBars
             setSupportActionBar(toolbar);
 
-            toggle= setDrawerToggle();
+            toggle = setDrawerToggle();
             drawerLayout.addDrawerListener(toggle);
 
             //Dar acciones a los items del menu
             navigationView.setNavigationItemSelectedListener(this);
+
+
         }
 
         private ActionBarDrawerToggle setDrawerToggle() {
@@ -75,9 +84,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
             listerSelectedItem(item);
-
             return true;
         }
 
@@ -86,6 +93,8 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             FragmentManager fm= getSupportFragmentManager();
             FragmentTransaction ft= fm.beginTransaction();
 
+
+
             switch (item.getItemId()){
 
                 case R.id.nav_home:
@@ -93,15 +102,14 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     break;
                 case R.id.nav_servicios:
                     ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
-                    /*codigo para llamr un activity
-                    ft.replace(R.id.contentFrame, new CategoriaP()).commit();
-                   Intent i = new Intent(MainActivity.this, AllCategoria.class);
-                   startActivity(i);*/
                     break;
                 case R.id.nav_carrito:
                     //ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
                     ft.replace(R.id.contentFrame, new detalle_compras()).commit();
+                    break;
 
+                case R.id.nav_perfil:
+                    ft.replace(R.id.contentFrame, new Fragment_updatePerson()).commit();
                     break;
 
             }
@@ -119,11 +127,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.search_button, menu);
             MenuItem menuItem= menu.findItem(R.id.search_button);
-            SearchView searchView= (SearchView) menuItem.getActionView();
-            searchView.setQueryHint("Busca un prodcuto");
-
             return super.onCreateOptionsMenu(menu);
         }
 

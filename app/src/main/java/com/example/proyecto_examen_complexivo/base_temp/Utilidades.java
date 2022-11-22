@@ -33,9 +33,15 @@ public class Utilidades {
             "ud_id INTEGER PRIMARY KEY NOT NULL," +
             "usuusuario text, " +
             "usu_contrasena text, " +
+            "cedula text, " +
+            "nombre text, " +
+            "apellido text, " +
+            "direccion text, " +
+            "telefono text, " +
+            "correo text, " +
             "rol_id INTEGER, " +
-            "persona_id INTEGER, " +
-            "estado text)";
+            "persona_id INTEGER) ";
+
 
 
 

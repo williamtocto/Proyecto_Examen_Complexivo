@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-import com.example.proyecto_examen_complexivo.Registro_Usuario;
+
 
 public class DbHelper extends   SQLiteOpenHelper {
 
@@ -48,13 +48,13 @@ public class DbHelper extends   SQLiteOpenHelper {
 
 
     //TABLA USUARIO
-    public boolean agregarUsuario(long usu_id, String usuusuario, String usu_contrasena, long rol_id, int persona_id,String estado){
+    public boolean agregarUsuario(long usu_id, String usuusuario, String usu_contrasena,  String cedula,String nombre, String apellido,String direccion, String telefono, String correo,long rol_id, int persona_id){
         SQLiteDatabase bd= getWritableDatabase();
 
         if (bd!=null){
             try{
                 bd.execSQL("DELETE FROM usuario");
-                bd.execSQL("INSERT INTO usuario VALUES("+usu_id+",'"+usuusuario+"','"+usu_contrasena+"','"+rol_id+"','"+persona_id+"','"+estado+"')");
+                bd.execSQL("INSERT INTO usuario VALUES("+usu_id+",'"+usuusuario+"','"+usu_contrasena+"','"+cedula+"','"+nombre+"','"+apellido+"','"+direccion+"','"+telefono+"','"+correo+"','"+rol_id+"','"+persona_id+"')");
                 bd.close();
                 return true;
             }catch (SQLiteConstraintException e){

@@ -3,6 +3,7 @@ package com.example.proyecto_examen_complexivo;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class Registro_Usuario extends AppCompatActivity {
     private EditText usuario, contra, repetir;
     private Button btnregistra;
     boolean validar = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +58,6 @@ public class Registro_Usuario extends AppCompatActivity {
                         validar=true;
                         Toast.makeText(Registro_Usuario.this, "La contraseñas no coinciden", Toast.LENGTH_LONG).show();
                     }
-
-
-
 
                 }
 
@@ -122,10 +121,15 @@ public class Registro_Usuario extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     Usuario usuario1 = response.body();
+                    System.out.println(usuario1.getIdpersona().getNombre()+" WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
+
+                    //Agregar Usuario Base sqlite
                     DbHelper bd = new DbHelper(Registro_Usuario.this);
-                    bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(),
-                            usuario1.getRol_id().getIdrol(), usuario1.getIdpersona().getIdpersona(), "activo");
+                    bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(),p.getCedula(),p.getNombre(),p.getApellido(),
+                            p.getDireccion(),p.getCelular(),p.getCorreo(),usuario1.getRol_id().getIdrol(), usuario1.getIdpersona().getIdpersona());
+
                     Toast.makeText(Registro_Usuario.this, "Usuario Agregado", Toast.LENGTH_LONG).show();
+                    //ABRIR VENTANA
                     Intent home = new Intent(Registro_Usuario.this, Navegacion.class);
                     startActivity(home);
                     finish();
