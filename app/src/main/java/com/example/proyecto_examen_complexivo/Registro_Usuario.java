@@ -15,6 +15,7 @@ import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.PersonaService;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
+import com.google.android.material.navigation.NavigationView;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -121,8 +122,6 @@ public class Registro_Usuario extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     Usuario usuario1 = response.body();
-                    System.out.println(usuario1.getIdpersona().getNombre()+" WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-
                     //Agregar Usuario Base sqlite
                     DbHelper bd = new DbHelper(Registro_Usuario.this);
                     bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(),p.getCedula(),p.getNombre(),p.getApellido(),
@@ -130,10 +129,14 @@ public class Registro_Usuario extends AppCompatActivity {
                             usuario1.getIdpersona().getIdpersona());
 
                     Toast.makeText(Registro_Usuario.this, "Usuario Agregado", Toast.LENGTH_LONG).show();
-                    //ABRIR VENTANA
+                    //ABRIR VENTANA de navegacion
                     Intent home = new Intent(Registro_Usuario.this, Navegacion.class);
                     startActivity(home);
                     finish();
+
+
+
+
                 } else {
                     Toast.makeText(Registro_Usuario.this, response.message(), Toast.LENGTH_LONG).show();
                 }
