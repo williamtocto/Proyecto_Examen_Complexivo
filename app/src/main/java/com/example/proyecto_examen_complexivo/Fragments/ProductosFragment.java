@@ -241,7 +241,6 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
 
     @Override
     public void itemCLick(CategoriaP categoriaP) {
-        Toast.makeText(getContext(), ""+categoriaP.getId(), Toast.LENGTH_SHORT).show();
         if(categoriaP.getId()==-1){
             listaProductoscompleta.clear();
             retrofitSubCa();
