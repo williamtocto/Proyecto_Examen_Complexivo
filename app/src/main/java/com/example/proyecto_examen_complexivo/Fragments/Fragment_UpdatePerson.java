@@ -147,7 +147,7 @@ public class Fragment_UpdatePerson extends Fragment {
                     Usuario usuario1;
                     usuario1 = response.body();
                     //Agregar Usuario Base sqlite
-                    DbHelper bd = new DbHelper(getContext());
+                    DbHelper bd = new DbHelper(getContext(), "basetemp", null, 2);
                     bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(), txtCedula.getText().toString(), txtNombre.getText().toString(), txtApellido.getText().toString(), txtDireccion.getText().toString(), txtTelefono.getText().toString(), txtEmail.getText().toString(), usuario1.getRol_id().getIdrol(), usuario1.getIdpersona().getIdpersona());
 
                     Toast.makeText(getContext(), "Usuario Actualizado", Toast.LENGTH_LONG).show();

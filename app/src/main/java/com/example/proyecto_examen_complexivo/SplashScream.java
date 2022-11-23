@@ -39,9 +39,9 @@ public class SplashScream extends AppCompatActivity {
             @Override
             public void run() {
 
-                CargarUsuario usu = new CargarUsuario(SplashScream.this);
+               CargarUsuario usu = new CargarUsuario(SplashScream.this);
                 /*IF PARA EVITAR QUE EL STRING SEA NULO SI NO HAY DATOS REGISTRADOS EN LA BDD TEMPORAL*/
-                if (usu.listarUsuarioP() == null) {
+               if (usu.listarUsuarioP() == null) {
                     Intent vista_login = new Intent(SplashScream.this, PantallaInicio.class);
                     startActivity(vista_login);
                     finish();
@@ -53,7 +53,6 @@ public class SplashScream extends AppCompatActivity {
                     startActivity(vista_login);
                     finish();
                 }
-
             }
         }, 4000);
 

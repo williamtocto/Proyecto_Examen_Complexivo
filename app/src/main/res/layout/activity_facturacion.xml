@@ -50,24 +50,24 @@
       app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
-      android:id="@+id/textView15"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="172dp"
-      android:layout_marginTop="204dp"
-      android:text="@string/total"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/recyclerView" />
-
-  <TextView
       android:id="@+id/txtTotalPagar"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="212dp"
-      android:layout_marginTop="40dp"
+      android:layout_marginStart="228dp"
+      android:layout_marginTop="32dp"
       android:text="@string/_220_25"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+      app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura" />
+
+  <TextView
+      android:id="@+id/textView15"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="144dp"
+      android:layout_marginTop="192dp"
+      android:text="@string/total"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/recyclerViewFactura" />
 
   <TextView
       android:id="@+id/textView9"
@@ -164,21 +164,22 @@
       android:id="@+id/btnComprarFacturacion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="544dp"
+      android:layout_marginTop="572dp"
       android:text="@string/comprar"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.487"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recyclerView"
+      android:id="@+id/recyclerViewFactura"
       android:layout_width="393dp"
       android:layout_height="166dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.532"
+      app:layout_constraintVertical_bias="0.618"
       tools:listitem="@layout/item_productos_facturacion" />
 
   <TextView

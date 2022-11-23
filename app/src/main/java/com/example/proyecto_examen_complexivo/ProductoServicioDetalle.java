@@ -59,6 +59,7 @@ public class ProductoServicioDetalle extends AppCompatActivity {
                 carritoActual.setCantidad(Integer.parseInt(txtCantidad.getText().toString()));
                 carritoActual.setImg(productoDetalle.getFoto());
                 carritoActual.Guardar(ProductoServicioDetalle.this);
+                finish();
             }
         });
 
@@ -83,6 +84,8 @@ public class ProductoServicioDetalle extends AppCompatActivity {
         txtPrecio.setText(String.valueOf(productoDetalle.getPrecio()));
         txtDescripcion.setText(productoDetalle.getDescripcion());
     }
+
+
     public String CodigoArchivo() {
        // txtCodigoArchivo = findViewById(R.id.txtCodigoArchivoPdf);
         String serial = "";

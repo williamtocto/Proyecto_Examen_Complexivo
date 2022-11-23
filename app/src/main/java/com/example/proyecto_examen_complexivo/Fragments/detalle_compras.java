@@ -1,5 +1,6 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,21 +12,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.proyecto_examen_complexivo.EditarProductoDetalle;
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.adapter.detallecomprasAdapter;
 import com.example.proyecto_examen_complexivo.databinding.FragmentDetalleComprasBinding;
+import com.example.proyecto_examen_complexivo.facturacion;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
+import com.example.proyecto_examen_complexivo.modelo.Producto;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link detalle_compras#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class detalle_compras extends Fragment {
+public class detalle_compras extends Fragment implements detallecomprasAdapter.RecyclerItemClick {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +46,8 @@ public class detalle_compras extends Fragment {
     //carrito
     private ArrayList<Carrito> listCarrito = new ArrayList<>();
     private detallecomprasAdapter adapter;
-
+    private TextView txtTotalCompras;
+    private Button btnComprar;
     //recyclerview
     private RecyclerView recyclerView;
 
@@ -76,12 +85,14 @@ public class detalle_compras extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         consultarComprasCarrito();
+
     }
 
 
     public void consultarComprasCarrito(){
         Carrito carrito = new Carrito();
         listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
+
     }
 
 
@@ -93,11 +104,28 @@ public class detalle_compras extends Fragment {
         binding = FragmentDetalleComprasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         //carrito
-        adapter = new detallecomprasAdapter(listCarrito, getContext());
+        adapter = new detallecomprasAdapter(listCarrito, getContext(), this);
         recyclerView= binding.recyclecompras;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
         consultarComprasCarrito();
+        txtTotalCompras = binding.txtTotalComprasCarrito;
+        Carrito carrito = new Carrito();
+        listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
+        double resultado = 0;
+        for (Carrito car: listCarrito){
+            resultado += car.getPrecio_producto();
+        }
+        txtTotalCompras.setText(String.valueOf(resultado));
+        btnComprar = binding.btnComprar;
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(detalle_compras.this.getContext(), facturacion.class);
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 
@@ -105,5 +133,12 @@ public class detalle_compras extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+
+    @Override
+    public void itemCLick(Carrito producto) {
+        Intent intent = new Intent(detalle_compras.this.getContext(), EditarProductoDetalle.class);
+        intent.putExtra("productodetalle", producto);
+        startActivity(intent);
     }
 }

@@ -78,5 +78,7 @@
     <string name="cantidadss">Cantidad:</string>
     <string name="_1">1</string>
     <string name="serial">SERIAL</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="actualizar">Actualizar</string>
 
 </resources>

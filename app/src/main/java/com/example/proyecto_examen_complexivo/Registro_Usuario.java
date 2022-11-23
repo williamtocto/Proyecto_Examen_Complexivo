@@ -123,7 +123,7 @@ public class Registro_Usuario extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Usuario usuario1 = response.body();
                     //Agregar Usuario Base sqlite
-                    DbHelper bd = new DbHelper(Registro_Usuario.this);
+                    DbHelper bd = new DbHelper(Registro_Usuario.this, "basetemp", null, 2);
                     bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(),p.getCedula(),p.getNombre(),p.getApellido(),
                             p.getDireccion(),p.getCelular(),p.getCorreo(),usuario1.getRol_id().getIdrol(),
                             usuario1.getIdpersona().getIdpersona());

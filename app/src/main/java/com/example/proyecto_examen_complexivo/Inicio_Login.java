@@ -47,11 +47,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 validar(u);
                 DbHelper dbHelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if(db!=null){
-                    Toast.makeText(getApplicationContext(), "Base Creada", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Error al Crear la base", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
     }

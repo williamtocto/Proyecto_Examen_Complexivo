@@ -4,10 +4,15 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
+import com.example.proyecto_examen_complexivo.base_temp.Utilidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Carrito {
+public class Carrito implements Serializable {
+
+
+
 
     private String Id_producto;
     private String nombre_producto;
@@ -86,6 +91,7 @@ public class Carrito {
         dbhelper.close();
     }
 
+    //Listar Carrito
     public ArrayList<Carrito> getcomprados(Context context){
         DbHelper dbHelper = new DbHelper(context, "basetemp", null, 2);
         String sql = "SELECT * FROM carrito;";
@@ -104,6 +110,25 @@ public class Carrito {
         }
         return comprados;
     }
+
+    //Actualizar Carrito
+    public void ActualizarCarrito(Context context, String id){
+        DbHelper dbHelper = new DbHelper(context);
+        String nosql = "UPDATE "+Utilidades.TABLA_CARRITO+" SET "+
+                " cantidad='"+getCantidad()+"' "+
+                " WHERE id_carrito='"+id+"';";
+        dbHelper.noQuery(nosql);
+        dbHelper.close();
+    }
+
+    //Eliminar del Carrito
+    public void EliminarCarrito(Context context, String id){
+        DbHelper dbHelper = new DbHelper(context);
+        String nosql = "DELETE FROM "+ Utilidades.TABLA_CARRITO+" WHERE id_carrito='"+id+"';";
+        dbHelper.noQuery(nosql);
+        dbHelper.close();
+    }
+
 
 
 
