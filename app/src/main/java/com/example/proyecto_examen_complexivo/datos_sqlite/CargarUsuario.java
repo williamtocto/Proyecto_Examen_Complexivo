@@ -26,10 +26,10 @@ public class CargarUsuario {
 
     public ArrayList<Usuario> listarUsuarioP(){
 
-        DbHelper base= new DbHelper(context);
+        DbHelper base= new DbHelper(context, "basetemp", null, 2);
         SQLiteDatabase open= base.getReadableDatabase();
 
-        Cursor fila= open.rawQuery("select * from usuario",null );
+        Cursor fila= open.rawQuery("SELECT * FROM usuario",null );
 
         if (fila.moveToFirst()){
             do{

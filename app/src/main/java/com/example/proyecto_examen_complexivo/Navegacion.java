@@ -63,10 +63,8 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             TextView textUsername = header.findViewById(R.id.nombre_usuario);
 
             //Consulta base de datos sqlite
-            CargarUsuario usu = new CargarUsuario(Navegacion.this);
-            textUsername.setText(usu.listarUsuarioP().get(0).getIdpersona().getNombre()+" " +usu.listarUsuarioP().get(0).getIdpersona().getApellido());
-
-
+           // CargarUsuario usu = new CargarUsuario(Navegacion.this);
+           // textUsername.setText(usu.listarUsuarioP().get(0).getIdpersona().getNombre()+" " +usu.listarUsuarioP().get(0).getIdpersona().getApellido());
 
         }
 
