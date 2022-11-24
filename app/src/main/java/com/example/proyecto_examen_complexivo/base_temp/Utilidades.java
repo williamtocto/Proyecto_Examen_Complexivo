@@ -1,5 +1,7 @@
 package com.example.proyecto_examen_complexivo.base_temp;
 
+import android.widget.ImageView;
+
 import com.example.proyecto_examen_complexivo.modelo.Persona;
 import com.example.proyecto_examen_complexivo.modelo.Rol;
 import com.google.gson.annotations.Expose;
@@ -29,18 +31,36 @@ public class Utilidades {
             + DESCRIPCION_PRODUCTO + " TEXT,"
             + IMAGENFOTO + " TEXT)";
 
-    public static final String TABLA_USUARIO= "create table usuario (" +
-            "ud_id INTEGER PRIMARY KEY NOT NULL," +
-            "usuusuario text, " +
-            "usu_contrasena text, " +
-            "cedula text, " +
-            "nombre text, " +
-            "apellido text, " +
-            "direccion text, " +
-            "telefono text, " +
-            "correo text, " +
-            "rol_id INTEGER, " +
-            "persona_id INTEGER) ";
+
+    public static final String TABLA_USUARIO = "usuario ";
+    public static final String ID_USUARIO = "ud_id ";
+    public static final String USUUSUARIO = "usuusuario ";
+    public static final String USU_CONTRASENA = "usu_contrasena ";
+    public static final String CEDULA = "cantidad ";
+    public static final String NOMBRE = "precio ";
+    public static final String APELLIDO = "descripcion_producto ";
+    public static final String IMAGEN = "IMAGEN ";
+    public static final String TELEFONO = "telefono ";
+    public static final String DIRECCION = "direccion ";
+    public static final String CORREO = "correo ";
+    public static final String ROL_ID = "rol_id ";
+    public static final String PERSONA_ID = "persona_id ";
+
+
+
+    public static final String CREAR_TABLA_USUARIO= "CREATE TABLE "+TABLA_USUARIO+" (" +
+            " "+ID_USUARIO+" INTEGER PRIMARY KEY NOT NULL," +
+            " "+USUUSUARIO+" text, " +
+            " "+USU_CONTRASENA+" text, " +
+            " "+CEDULA+" text, " +
+            " "+NOMBRE+" text, " +
+            " "+APELLIDO+" text, " +
+            " "+DIRECCION+" text, " +
+            " "+TELEFONO+" text, " +
+            " "+ IMAGEN+ " text, "+
+            " "+CORREO+" text, " +
+            " "+ROL_ID+" INTEGER, " +
+            " "+PERSONA_ID+" INTEGER) ";
 
 
 

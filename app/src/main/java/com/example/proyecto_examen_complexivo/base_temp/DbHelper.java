@@ -27,13 +27,13 @@ public class DbHelper extends   SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_CARRITO);
-        sqLiteDatabase.execSQL(Utilidades.TABLA_USUARIO);
+        sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_USUARIO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_CARRITO);
-        sqLiteDatabase.execSQL(Utilidades.TABLA_USUARIO);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_USUARIO);
         onCreate(sqLiteDatabase);
     }
 

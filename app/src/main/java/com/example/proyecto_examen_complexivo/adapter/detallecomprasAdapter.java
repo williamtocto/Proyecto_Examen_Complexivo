@@ -1,5 +1,6 @@
 package com.example.proyecto_examen_complexivo.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.Image;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
+import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
@@ -24,11 +26,15 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
     private ArrayList<Carrito> ListaCarrito;
 
     private Context context;
+    private RecyclerItemClick itemClick;
 
-    public detallecomprasAdapter(ArrayList<Carrito> listaCarrito, Context context) {
+    public detallecomprasAdapter(ArrayList<Carrito> listaCarrito, Context context, RecyclerItemClick itemClick) {
         ListaCarrito = listaCarrito;
         this.context = context;
+        this.itemClick = itemClick;
+
     }
+
 
     @NonNull
     @Override
@@ -38,7 +44,9 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull detallecomprasAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull detallecomprasAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
+
 
         holder.id_Producto.setText(ListaCarrito.get(position).getId_producto());
         holder.Nombre_Producto.setText(ListaCarrito.get(position).getNombre_producto());
@@ -47,6 +55,14 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
         holder.Cantidad_Producto.setText(String.valueOf(ListaCarrito.get(position).getCantidad()));
         Picasso.get().load(ListaCarrito.get(position).getImg()).resize(300,450).centerCrop()
                 .into(holder.img);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Carrito pro = ListaCarrito.get(position);
+                itemClick.itemCLick(pro);
+            }
+        });
+
     }
 
     @Override
@@ -70,5 +86,9 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
             img = itemView.findViewById(R.id.imgFotoDetalleCompras);
 
         }
+    }
+
+    public interface RecyclerItemClick{
+        void itemCLick(Carrito producto);
     }
 }
