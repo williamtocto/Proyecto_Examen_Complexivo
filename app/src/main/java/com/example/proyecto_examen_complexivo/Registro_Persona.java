@@ -34,7 +34,6 @@ public class Registro_Persona<validar> extends AppCompatActivity {
         cedula = findViewById(R.id.txt_cedula);
         btnSiguiente = findViewById(R.id.btn_registrar);
 
-
         //ACCION DEL BOTON
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +62,6 @@ public class Registro_Persona<validar> extends AppCompatActivity {
                     p.setCorreo(correo.getText().toString());
                     getPersona(cedula.getText().toString());
                 }
-
             }
         });
 
@@ -73,7 +71,6 @@ public class Registro_Persona<validar> extends AppCompatActivity {
         startActivity(home);
         finish();
     }
-
 
     public void getPersona(String cedula) {
         validar=false;
@@ -92,7 +89,6 @@ public class Registro_Persona<validar> extends AppCompatActivity {
                     abrirVentana();
                 }
             }
-
             @Override
             public void onFailure(Call<Persona> call, Throwable t) {
                 Toast.makeText(Registro_Persona.this, "Error datos no validos" + t.getMessage(), Toast.LENGTH_SHORT).show();

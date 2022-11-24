@@ -13,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
-
-import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUp4 extends AppCompatActivity {
@@ -59,7 +57,6 @@ public class SignUp4 extends AppCompatActivity {
                 if(txt_usu.getText().toString().isEmpty()&&txt_contra.getText().toString().isEmpty()&&txt_confir_contra.getText().toString().isEmpty()){
                     Toast.makeText(SignUp4.this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
                 }else{
-
                     if(txt_contra.getText().toString().equals(txt_confir_contra.getText().toString())){
                         Usuario usuario= new Usuario();
                         usuario.setUsuusuario(txt_usu.getText().toString());
@@ -77,8 +74,6 @@ public class SignUp4 extends AppCompatActivity {
             }
         });
     }
-
-
     public  void limpiarCampos(){
         txt_usu.setText("");
         txt_contra.setText("");

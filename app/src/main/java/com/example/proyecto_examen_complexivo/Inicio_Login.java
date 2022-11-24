@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
+import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
@@ -19,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
@@ -45,19 +46,12 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 u.setUsuusuario(txtUsuario.getText().toString());
                 u.setUsu_contrasena(txtClave.getText().toString());
                 validar(u);
-                DbHelper dbHelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if(db!=null){
-                    Toast.makeText(getApplicationContext(), "Base Creada", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Error al Crear la base", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
     }
 
     public void validar(Usuario u){
-
         UsuarioService usuarioService = Apis.getUsuarioService();
         Call<Integer> call = usuarioService.validar_login(u);
         call.enqueue(new Callback<Integer>() {
@@ -65,6 +59,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
             public void onResponse(Call<Integer> call, retrofit2.Response<Integer> response) {
                 if (response.isSuccessful()) {
                     int  val = response.body();
+                    getUser();
                     new LoginAdapter(Inicio_Login.this).execute(val, 3000);
                 }
             }
@@ -76,6 +71,28 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
     }
 
+    public static  Usuario user=new Usuario();
+    public void getUser(){
+
+        UsuarioService usuarioService = Apis.getUsuarioService();
+        Call<Usuario> call = usuarioService.getUser(txtUsuario.getText().toString());
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
+                user.getUsu_id();
+                if (response.isSuccessful()) {
+                    user=response.body();
+                    DbHelper bd = new DbHelper(Inicio_Login.this);
+                    bd.agregarUsuario(user.getUsu_id(), user.getUsuusuario(), user.getUsu_contrasena(),user.getIdpersona().getCedula(),user.getIdpersona().getNombre(),user.getIdpersona().getApellido(),
+                            user.getIdpersona().getDireccion(),user.getIdpersona().getCelular(),user.getIdpersona().getCorreo(),user.getRol_id().getIdrol(),user.getIdpersona().getIdpersona());
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
 
     @Override
     public void toggleProgressBar(boolean status) {

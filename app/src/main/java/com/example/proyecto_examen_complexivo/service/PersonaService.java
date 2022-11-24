@@ -12,4 +12,7 @@ public interface PersonaService {
 
     @GET("listar/{cedula}")
     Call<Persona> getPerson(@Path("cedula") String cedula);
+
+    @PUT("editar/{idpersona}")
+    Call<Persona> updatePerson(@Path("idpersona") long idpersona,@Body Persona persona);
 }

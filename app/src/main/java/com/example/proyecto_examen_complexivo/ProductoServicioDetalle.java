@@ -28,8 +28,6 @@ public class ProductoServicioDetalle extends AppCompatActivity {
     private Producto productoDetalle;
     private Button btnGuardar;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +62,6 @@ public class ProductoServicioDetalle extends AppCompatActivity {
 
     }
 
-
-
-
     private void initViews(){
         imgDetail = findViewById(R.id.imgfotoproductocompra3);
         txtNombre = findViewById(R.id.txtNombre_Producto3);
@@ -77,8 +72,7 @@ public class ProductoServicioDetalle extends AppCompatActivity {
     private void initValues(){
 
         productoDetalle = (Producto) getIntent().getExtras().getSerializable("itemDetail");
-        Picasso.get().load(productoDetalle.getFoto()).resize(300,450).centerCrop()
-                    .into(imgDetail);
+        Picasso.get().load(productoDetalle.getFoto()).resize(300,450).centerCrop().into(imgDetail);
         txtNombre.setText(productoDetalle.getNombre());
         txtPrecio.setText(String.valueOf(productoDetalle.getPrecio()));
         txtDescripcion.setText(productoDetalle.getDescripcion());
@@ -101,7 +95,5 @@ public class ProductoServicioDetalle extends AppCompatActivity {
         }
         return serial;
     }
-
-  
 
 }
