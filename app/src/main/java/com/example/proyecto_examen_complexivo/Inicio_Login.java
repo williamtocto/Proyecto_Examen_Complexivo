@@ -1,7 +1,6 @@
 package com.example.proyecto_examen_complexivo;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
-import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;

@@ -36,9 +36,9 @@ public class Utilidades {
     public static final String ID_USUARIO = "ud_id ";
     public static final String USUUSUARIO = "usuusuario ";
     public static final String USU_CONTRASENA = "usu_contrasena ";
-    public static final String CEDULA = "cantidad ";
-    public static final String NOMBRE = "precio ";
-    public static final String APELLIDO = "descripcion_producto ";
+    public static final String CEDULA = "cedula ";
+    public static final String NOMBRE = "nombre ";
+    public static final String APELLIDO = "apellido ";
     public static final String IMAGEN = "IMAGEN ";
     public static final String TELEFONO = "telefono ";
     public static final String DIRECCION = "direccion ";
@@ -57,12 +57,8 @@ public class Utilidades {
             " "+APELLIDO+" text, " +
             " "+DIRECCION+" text, " +
             " "+TELEFONO+" text, " +
-            " "+ IMAGEN+ " text, "+
             " "+CORREO+" text, " +
             " "+ROL_ID+" INTEGER, " +
             " "+PERSONA_ID+" INTEGER) ";
-
-
-
 
 }
