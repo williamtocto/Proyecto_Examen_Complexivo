@@ -57,7 +57,6 @@ public class Utilidades {
             " "+APELLIDO+" text, " +
             " "+DIRECCION+" text, " +
             " "+TELEFONO+" text, " +
-            " "+ IMAGEN+ " text, "+
             " "+CORREO+" text, " +
             " "+ROL_ID+" INTEGER, " +
             " "+PERSONA_ID+" INTEGER) ";

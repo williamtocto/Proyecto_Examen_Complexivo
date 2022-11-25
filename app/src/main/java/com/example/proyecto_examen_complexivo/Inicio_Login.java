@@ -50,11 +50,8 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 Usuario u=new Usuario();
                 u.setUsuusuario(txtUsuario.getText().toString());
                 u.setUsu_contrasena(txtClave.getText().toString());
-                obtener(txtUsuario.getText().toString());
+                //obtener(txtUsuario.getText().toString());
                 validar(u);
-
-
-
             }
         });
     }
@@ -76,9 +73,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 t.printStackTrace();
             }
         });
-
-
-
     }
 
     public static  Usuario user=new Usuario();
@@ -124,7 +118,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-
+/*
     public void obtener(String username){
         //
         Constantes constantes=new Constantes();
@@ -132,10 +126,10 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         res.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
                 usuario= (Usuario) response.body();
                 persona=response.body().getIdpersona();
                 Toast.makeText(Inicio_Login.this, ""+persona.getNombre(), Toast.LENGTH_SHORT).show();
-
                 DbHelper dbhelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
                 String nsql = "INSERT INTO usuario (ud_id, usuusuario, usu_contrasena, cedula, nombre,apellido,direccion, telefono, correo, persona_id) "+
                         "VALUES ('"+usuario.getUsu_id()+"','"+usuario.getUsuusuario()+"','"+usuario.getUsu_contrasena()+"','"+persona.getCedula()+"','"+persona.getNombre()+"','"+persona.getApellido()+"','"+persona.getDireccion()+"','"+persona.getCelular()+"','"+persona.getCorreo()+"','"+persona.getIdpersona()+"')";
@@ -152,5 +146,5 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         });
 
 
-    }
+    }*/
 }

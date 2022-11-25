@@ -59,16 +59,13 @@ public class Registro_Usuario extends AppCompatActivity {
                         validar=true;
                         Toast.makeText(Registro_Usuario.this, "La contraseñas no coinciden", Toast.LENGTH_LONG).show();
                     }
-
                 }
-
 
             }
         });
     }
 
     public void addPersona() {
-
         personaService = Apis.getPesonaService();
         Call<Persona> call = personaService.createPerson(p);
         call.enqueue(new Callback<Persona>() {
@@ -81,7 +78,6 @@ public class Registro_Usuario extends AppCompatActivity {
                     addUsuario(u);
                 }
             }
-
             @Override
             public void onFailure(Call<Persona> call, Throwable t) {
                 Toast.makeText(Registro_Usuario.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
@@ -102,17 +98,14 @@ public class Registro_Usuario extends AppCompatActivity {
                     addPersona();
                 }
             }
-
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 Toast.makeText(Registro_Usuario.this, "Error al agregar usuario", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     UsuarioService usuarioService;
-
     public void addUsuario(Usuario usuario) {
 
         usuarioService = Apis.getUsuarioService();
@@ -127,7 +120,6 @@ public class Registro_Usuario extends AppCompatActivity {
                     bd.agregarUsuario(usuario1.getUsu_id(), usuario1.getUsuusuario(), usuario1.getUsu_contrasena(),p.getCedula(),p.getNombre(),p.getApellido(),
                             p.getDireccion(),p.getCelular(),p.getCorreo(),usuario1.getRol_id().getIdrol(),
                             usuario1.getIdpersona().getIdpersona());
-
                     Toast.makeText(Registro_Usuario.this, "Usuario Agregado", Toast.LENGTH_LONG).show();
                     //ABRIR VENTANA de navegacion
                     Intent home = new Intent(Registro_Usuario.this, Navegacion.class);

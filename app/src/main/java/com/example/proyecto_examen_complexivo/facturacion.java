@@ -77,10 +77,9 @@ public class facturacion extends AppCompatActivity {
 
     public void consultausuario(){
         DbHelper dbHelper = new DbHelper(facturacion.this, "basetemp", null, 2);
-        String sql = "SELECT cedula, nombre, apellido, direccion, telefono, correo FROM usuario where ud_id = '0' ";
+        String sql = "SELECT cedula, nombre, apellido, direccion, telefono, correo FROM usuario ";
         Cursor cursor = dbHelper.query(sql);
         while (cursor.moveToNext()){
-
             persona.setCedula(cursor.getString(0));
             txtCedulaFacturacion.setText(persona.getCedula());
             persona.setNombre(cursor.getString(1));
