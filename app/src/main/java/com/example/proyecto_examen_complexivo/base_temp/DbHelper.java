@@ -48,12 +48,13 @@ public class DbHelper extends   SQLiteOpenHelper {
 
 
     //TABLA USUARIO
-    public boolean agregarUsuario(long usu_id, String usuusuario, String usu_contrasena,  String cedula,String nombre, String apellido,String direccion, String telefono, String correo,long rol_id, int persona_id){
+    public boolean agregarUsuario(long usu_id, String usuusuario, String usu_contrasena,  String cedula,String nombre, String apellido,String direccion, String telefono, String correo,long rol_id, long persona_id){
         SQLiteDatabase bd= getWritableDatabase();
 
         if (bd!=null){
             try{
                 bd.execSQL("DELETE FROM usuario");
+                System.out.println(usuusuario+" pppppppppppppppppppppppppppp");
                 bd.execSQL("INSERT INTO usuario VALUES("+usu_id+",'"+usuusuario+"','"+usu_contrasena+"','"+cedula+"','"+nombre+"','"+apellido+"','"+direccion+"','"+telefono+"','"+correo+"','"+rol_id+"','"+persona_id+"')");
                 bd.close();
                 return true;
@@ -66,6 +67,16 @@ public class DbHelper extends   SQLiteOpenHelper {
         }
     }
 
+    public void editarUsuario(String nombreUsuario, String contrasenia, String user_anterior){
+        SQLiteDatabase bd= getWritableDatabase();
+        bd.execSQL("UPDATE usuario SET usuusuario='"+nombreUsuario+"', usu_contrasena='"+contrasenia+"'"+" WHERE usuusuario= '"+user_anterior+"'");
+        bd.close();
+    }
 
 
+    public void editarPersona(String cedula, String nombre, String apellido, String direccion, String telefono, String correo,String cedula_anterior){
+        SQLiteDatabase bd= getWritableDatabase();
+        bd.execSQL("UPDATE usuario SET cedula='"+cedula+"', nombre='"+nombre+"',apellido='"+ apellido+"',direccion= '"+direccion+"',telefono= '"+telefono+"', correo= '"+correo+"'  WHERE cedula= '"+cedula+"'");
+        bd.close();
+    }
 }

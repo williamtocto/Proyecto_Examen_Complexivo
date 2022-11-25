@@ -1,6 +1,7 @@
 package com.example.proyecto_examen_complexivo;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 
 public class SplashScream extends AppCompatActivity {
@@ -25,7 +27,6 @@ public class SplashScream extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_scream);
-
         TextView txtName = (TextView) findViewById(R.id.nombre_usuario);
         System.out.println(txtName);
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
@@ -39,9 +40,18 @@ public class SplashScream extends AppCompatActivity {
             @Override
             public void run() {
 
-               CargarUsuario usu = new CargarUsuario(SplashScream.this);
-                /*IF PARA EVITAR QUE EL STRING SEA NULO SI NO HAY DATOS REGISTRADOS EN LA BDD TEMPORAL*/
-               if (usu.listarUsuarioP() == null) {
+                CargarUsuario usu = new CargarUsuario(SplashScream.this);
+
+                if (usu.listarUsuarioP() == null) {
+
+                    //CREAR BASE DE DATOS SQLITE
+                    DbHelper dbHelper = new DbHelper(SplashScream.this, "basetemp", null, 2);
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                   /* if(db!=null){
+                        Toast.makeText(getApplicationContext(), "Base Creada", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Error al Crear la base", Toast.LENGTH_SHORT).show();
+                    }*/
                     Intent vista_login = new Intent(SplashScream.this, PantallaInicio.class);
                     startActivity(vista_login);
                     finish();
@@ -53,11 +63,10 @@ public class SplashScream extends AppCompatActivity {
                     startActivity(vista_login);
                     finish();
                 }
+
             }
         }, 4000);
 
     }
-
-
 
 }

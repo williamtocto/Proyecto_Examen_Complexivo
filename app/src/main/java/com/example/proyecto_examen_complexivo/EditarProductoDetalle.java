@@ -2,13 +2,16 @@ package com.example.proyecto_examen_complexivo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
 import com.squareup.picasso.Picasso;
 
@@ -38,6 +41,7 @@ public class EditarProductoDetalle extends AppCompatActivity {
             public void onClick(View view) {
                 Carrito carritoActual = new Carrito();
                 producto = (Carrito) getIntent().getExtras().getSerializable("productodetalle");
+                Toast.makeText(EditarProductoDetalle.this, ""+producto.getId_producto(), Toast.LENGTH_SHORT).show();
                 carritoActual.setCantidad(Integer.parseInt(txtCantidad.getText().toString()));
                 carritoActual.ActualizarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
@@ -52,6 +56,7 @@ public class EditarProductoDetalle extends AppCompatActivity {
             public void onClick(View view) {
                 Carrito carritoActual = new Carrito();
                 producto = (Carrito) getIntent().getExtras().getSerializable("productodetalle");
+                Toast.makeText(EditarProductoDetalle.this, ""+producto.getId_producto(), Toast.LENGTH_SHORT).show();
                 carritoActual.EliminarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
             }

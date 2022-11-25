@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
-    @SerializedName("usu_id ")
+    @SerializedName("usu_id")
     @Expose
     private long usu_id;
     @SerializedName("usuusuario")
@@ -20,6 +20,14 @@ public class Usuario {
     @Expose
     private Rol rol_id;;
 
+    public Usuario(long usu_id, String usuusuario, String usu_contrasena, Persona idpersona, Rol rol_id) {
+        this.usu_id = usu_id;
+        this.usuusuario = usuusuario;
+        this.usu_contrasena = usu_contrasena;
+        this.idpersona = idpersona;
+        this.rol_id = rol_id;
+    }
+
     public Usuario( String usuusuario, String usu_contrasena, Persona idpersona, Rol rol_id) {
         this.usuusuario = usuusuario;
         this.usu_contrasena = usu_contrasena;
@@ -29,9 +37,6 @@ public class Usuario {
 
     public Usuario() {
     }
-
-
-
     public Persona getIdpersona() {
         return idpersona;
     }

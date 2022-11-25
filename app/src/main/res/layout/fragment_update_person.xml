@@ -187,9 +187,10 @@
             <Button
                     android:layout_marginStart="27dp"
                     android:layout_marginTop="10dp"
-                    android:text="Editar"
                     android:layout_width="118dp"
-                    android:layout_height="32dp" android:id="@+id/btnSiguientePago2"
+                    android:text="Editar"
+
+                    android:layout_height="32dp" android:id="@+id/btn_editar"
                     android:textAllCaps="false" android:background="@drawable/backgraound_signup"
                     android:textColor="@color/white" android:textSize="16sp" android:textStyle="bold"
                     android:layout_marginBottom="84dp"/>

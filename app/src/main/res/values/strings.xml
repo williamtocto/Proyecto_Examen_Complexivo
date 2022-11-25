@@ -78,7 +78,18 @@
     <string name="cantidadss">Cantidad:</string>
     <string name="_1">1</string>
     <string name="serial">SERIAL</string>
+    <!-- Strings related to login -->
+    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_email">Email</string>
+    <string name="actualizar">Eliminar</string>
     <string name="eliminar">Eliminar</string>
-    <string name="actualizar">Actualizar</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Cancelar</string>
+    <string name="action_sign_in2">Guardar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+
 
 </resources>

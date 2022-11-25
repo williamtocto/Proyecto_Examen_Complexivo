@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Factura {
 
-
+    @SerializedName("usu_id")
+    @Expose
+private long usu_id;
 
 }
