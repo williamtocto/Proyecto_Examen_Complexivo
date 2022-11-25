@@ -21,7 +21,7 @@ import retrofit2.Callback;
 
 public class Fragment_UpdatePerson extends Fragment {
 
-    EditText txtCedula, txtNombre, txtApellido, txtDireccion, txtTelefono, txtEmail, txtUsuario, txtContrasenia, txt_nueva_contra, confirm_password;
+    EditText txtCedula, txtNombre, txtApellido, txtDireccion, txtTelefono, txtEmail;
     Button btn_guardar, btn_cancelar, btn_editar;
     View view;
     long idpersona;
@@ -42,9 +42,6 @@ public class Fragment_UpdatePerson extends Fragment {
         txtDireccion = view.findViewById(R.id.txtDireccionUpdate);
         txtTelefono = view.findViewById(R.id.txt_telefono_update);
         txtEmail = view.findViewById(R.id.txt_email);
-        txtUsuario = view.findViewById(R.id.txt_usuario_update);
-        txtContrasenia = view.findViewById(R.id.txt_clave_nueva);
-        txt_nueva_contra = view.findViewById(R.id.txt_repetir_clave);
 
         //CARGAR DATOS USUARIO
         if (usu.listarUsuarioP() != null) {
@@ -55,7 +52,6 @@ public class Fragment_UpdatePerson extends Fragment {
             txtDireccion.setText(usu.listarUsuarioP().get(0).getIdpersona().getDireccion());
             txtTelefono.setText(usu.listarUsuarioP().get(0).getIdpersona().getCelular());
             txtEmail.setText(usu.listarUsuarioP().get(0).getIdpersona().getCorreo());
-            txtUsuario.setText(usu.listarUsuarioP().get(0).getUsuusuario());
             idpersona = usu.listarUsuarioP().get(0).getIdpersona().getIdpersona();
 
         }
