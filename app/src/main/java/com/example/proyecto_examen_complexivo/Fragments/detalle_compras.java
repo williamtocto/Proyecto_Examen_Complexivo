@@ -114,10 +114,17 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
         Carrito carrito = new Carrito();
         listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
         double resultado = 0;
+        double suma=0;
         for (Carrito car: listCarrito){
-            resultado += car.getPrecio_producto();
+            if(car.getCantidad()>1){
+                suma=car.getCantidad()*car.getPrecio_producto();
+                resultado+=suma;
+            }else{
+                resultado += car.getPrecio_producto();
+            }
+
         }
-        txtTotalCompras.setText(String.valueOf(resultado));
+        txtTotalCompras.setText("$ "+resultado);
         btnComprar = binding.btnComprar;
         btnComprar.setOnClickListener(new View.OnClickListener() {
             @Override

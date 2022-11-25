@@ -1,7 +1,13 @@
 package com.example.proyecto_examen_complexivo.modelo;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 public class Persona {
     @SerializedName("idpersona")
@@ -98,5 +104,25 @@ public class Persona {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+
+    public Persona getpersona(Context context){
+        DbHelper dbHelper = new DbHelper(context, "basetemp", null, 2);
+        String sql = "SELECT * FROM persona;";
+        Persona persona=new Persona();
+        Cursor cursor = dbHelper.query(sql);
+        while (cursor.moveToNext()){
+
+            persona.setIdpersona(cursor.getInt(0));
+            persona.setNombre(cursor.getString(1));
+            persona.setApellido(cursor.getString(2));
+            persona.setCedula(cursor.getString(3));
+            persona.setCelular(cursor.getString(4));
+            persona.setCorreo(cursor.getString(5));
+            persona.setDireccion(cursor.getString(6));
+            dbHelper.close();
+        }
+        return persona;
     }
 }

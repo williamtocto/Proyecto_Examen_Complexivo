@@ -64,10 +64,10 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="144dp"
-      android:layout_marginTop="192dp"
+      android:layout_marginTop="32dp"
       android:text="@string/total"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/recyclerViewFactura" />
+      app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura" />
 
   <TextView
       android:id="@+id/textView9"
@@ -164,17 +164,18 @@
       android:id="@+id/btnComprarFacturacion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="572dp"
+      android:layout_marginTop="60dp"
       android:text="@string/comprar"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.487"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura" />
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recyclerViewFactura"
       android:layout_width="393dp"
-      android:layout_height="166dp"
+      android:layout_height="266dp"
+      android:layout_marginTop="30dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"

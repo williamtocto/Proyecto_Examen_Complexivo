@@ -11,12 +11,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
+import com.example.proyecto_examen_complexivo.modelo.Persona;
+import com.example.proyecto_examen_complexivo.modelo.Producto;
+import com.example.proyecto_examen_complexivo.network.Constantes;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Validacion_user;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,9 @@ import java.util.List;
 public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
     public static ArrayList<Usuario> arrayDatos = new ArrayList<Usuario>();
+    private Usuario usuario=new Usuario();
+    private Persona persona=new Persona();
+
 
     private ProgressBar progressBar;
     private Button btn_ingresa;
@@ -44,9 +51,12 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 Usuario u=new Usuario();
                 u.setUsuusuario(txtUsuario.getText().toString());
                 u.setUsu_contrasena(txtClave.getText().toString());
+                obtener(txtUsuario.getText().toString());
                 validar(u);
                 DbHelper dbHelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
 
             }
         });
@@ -70,6 +80,8 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
             }
         });
 
+
+
     }
 
 
@@ -91,5 +103,35 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
     @Override
     public void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+
+    public void obtener(String username){
+        //
+        Constantes constantes=new Constantes();
+        Call<Usuario> res=constantes.getApiService().getusuario(username);
+        res.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                usuario= (Usuario) response.body();
+                persona=response.body().getIdpersona();
+                Toast.makeText(Inicio_Login.this, ""+persona.getNombre(), Toast.LENGTH_SHORT).show();
+
+                DbHelper dbhelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
+                String nsql = "INSERT INTO usuario (ud_id, usuusuario, usu_contrasena, cedula, nombre,apellido,direccion, telefono, correo, persona_id) "+
+                        "VALUES ('"+usuario.getUsu_id()+"','"+usuario.getUsuusuario()+"','"+usuario.getUsu_contrasena()+"','"+persona.getCedula()+"','"+persona.getNombre()+"','"+persona.getApellido()+"','"+persona.getDireccion()+"','"+persona.getCelular()+"','"+persona.getCorreo()+"','"+persona.getIdpersona()+"')";
+                dbhelper.noQuery(nsql);
+                dbhelper.close();
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(Inicio_Login.this, "ERROR", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
     }
 }
