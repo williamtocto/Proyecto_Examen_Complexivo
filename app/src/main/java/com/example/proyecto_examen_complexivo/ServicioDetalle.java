@@ -19,7 +19,6 @@ public class ServicioDetalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicio_detalle);
         setTitle(getClass().getSimpleName());
-
         initViews();
         initValues();
     }
@@ -33,8 +32,7 @@ public class ServicioDetalle extends AppCompatActivity {
 
     private void initValues(){
         detalleServicio = (Servicio) getIntent().getExtras().getSerializable("itemDetail");
-        Picasso.get().load(detalleServicio.getFoto()).resize(300,450).centerCrop()
-                .into(imgDetail);
+        Picasso.get().load(detalleServicio.getFoto()).resize(300,450).centerCrop().into(imgDetail);
         txtNombre.setText(detalleServicio.getNombre());
         txtDescripcion.setText(detalleServicio.getDescripcion());
         txtPrecio.setText(String.valueOf(detalleServicio.getPrecio()));

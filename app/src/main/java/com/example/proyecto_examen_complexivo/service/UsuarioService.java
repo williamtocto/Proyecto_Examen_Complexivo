@@ -23,6 +23,6 @@ public interface UsuarioService {
     @POST("crear")
     Call<Usuario> addUsuario(@Body Usuario usuario);
 
-    @PUT("editar")
-    Call<Usuario> updateUsuario(@Body Usuario usuario);
+    @PUT("editar/{usu_id}")
+    Call<Usuario> updateUsuario(@Path("usu_id") long user_id,@Body Usuario usuario);
 }

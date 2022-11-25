@@ -34,9 +34,9 @@ public class CargarUsuario {
         if (fila.moveToFirst()){
             do{
                 Usuario usuario= new Usuario();
-                usuario.setUsu_id(fila.getLong(1));
-                usuario.setUsuusuario(fila.getString(2));
-                usuario.setUsu_contrasena(fila.getString(3));
+                usuario.setUsu_id(fila.getLong(0));
+                usuario.setUsuusuario(fila.getString(1));
+                usuario.setUsu_contrasena(fila.getString(2));
                 Persona p=new Persona();
                 p.setCedula(fila.getString(3));
                 p.setNombre(fila.getString(4));
@@ -44,14 +44,13 @@ public class CargarUsuario {
                 p.setDireccion(fila.getString(6));
                 p.setCelular(fila.getString(7));
                 p.setCorreo(fila.getString(8));
+                p.setIdpersona(fila.getInt(10));
                 usuario.setIdpersona(p);
                 usuarioArrayList.add(usuario);
             }while (fila.moveToNext());
             base.close();
             open.close();
-
             return usuarioArrayList;
-
         }else{
             Toast.makeText(context, "No olvides registrarte", Toast.LENGTH_LONG).show();
             return null;

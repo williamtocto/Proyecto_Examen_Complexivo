@@ -64,7 +64,5 @@ public class Utilidades {
 
 
 
-    ///tabla persona
-
 
 }

@@ -1,7 +1,6 @@
 package com.example.proyecto_examen_complexivo;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
@@ -53,8 +52,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
                 u.setUsu_contrasena(txtClave.getText().toString());
                 obtener(txtUsuario.getText().toString());
                 validar(u);
-                DbHelper dbHelper = new DbHelper(Inicio_Login.this, "basetemp", null, 2);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 
 
@@ -63,7 +60,6 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
     }
 
     public void validar(Usuario u){
-
         UsuarioService usuarioService = Apis.getUsuarioService();
         Call<Integer> call = usuarioService.validar_login(u);
         call.enqueue(new Callback<Integer>() {
@@ -71,6 +67,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
             public void onResponse(Call<Integer> call, retrofit2.Response<Integer> response) {
                 if (response.isSuccessful()) {
                     int  val = response.body();
+                    getUser();
                     new LoginAdapter(Inicio_Login.this).execute(val, 3000);
                 }
             }
@@ -84,6 +81,28 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
 
     }
 
+    public static  Usuario user=new Usuario();
+    public void getUser(){
+
+        UsuarioService usuarioService = Apis.getUsuarioService();
+        Call<Usuario> call = usuarioService.getUser(txtUsuario.getText().toString());
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
+                user.getUsu_id();
+                if (response.isSuccessful()) {
+                    user=response.body();
+                    DbHelper bd = new DbHelper(Inicio_Login.this);
+                    bd.agregarUsuario(user.getUsu_id(), user.getUsuusuario(), user.getUsu_contrasena(),user.getIdpersona().getCedula(),user.getIdpersona().getNombre(),user.getIdpersona().getApellido(),
+                            user.getIdpersona().getDireccion(),user.getIdpersona().getCelular(),user.getIdpersona().getCorreo(),user.getRol_id().getIdrol(),user.getIdpersona().getIdpersona());
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
 
     @Override
     public void toggleProgressBar(boolean status) {
