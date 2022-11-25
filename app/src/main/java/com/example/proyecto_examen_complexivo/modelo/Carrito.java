@@ -20,19 +20,30 @@ public class Carrito implements Serializable {
     private String descricpion_producto;
     private String img;
     private int cantidad;
+    private double total_precio;
     ArrayList<Carrito> comprados;
 
 
     public Carrito() {
     }
 
-    public Carrito(String id_producto, String nombre_producto, double precio_producto, String descricpion_producto, String img, int cantidad) {
+    public Carrito(String id_producto, String nombre_producto, double precio_producto, String descricpion_producto, String img, int cantidad, double total_precio, ArrayList<Carrito> comprados) {
         Id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.precio_producto = precio_producto;
         this.descricpion_producto = descricpion_producto;
         this.img = img;
         this.cantidad = cantidad;
+        this.total_precio = total_precio;
+        this.comprados = comprados;
+    }
+
+    public double getTotal_precio() {
+        return total_precio;
+    }
+
+    public void setTotal_precio(double total_precio) {
+        this.total_precio = total_precio;
     }
 
     public String getId_producto() {
