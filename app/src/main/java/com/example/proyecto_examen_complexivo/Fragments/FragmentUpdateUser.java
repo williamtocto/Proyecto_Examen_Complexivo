@@ -54,7 +54,7 @@ public class FragmentUpdateUser extends Fragment {
                         .replace(R.id.contentFrame,fr)
                         .addToBackStack(null)
                         .commit();
-
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Mi Perfil");
             }
         });
         btn_save.setOnClickListener(new View.OnClickListener() {

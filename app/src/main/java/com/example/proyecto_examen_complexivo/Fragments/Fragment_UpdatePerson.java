@@ -115,6 +115,8 @@ public class Fragment_UpdatePerson extends Fragment {
                         .replace(R.id.contentFrame, fr)
                         .addToBackStack(null)
                         .commit();
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Productos");
+
                 Toast.makeText(getContext(), "Cancelar", Toast.LENGTH_LONG).show();
             }
         });

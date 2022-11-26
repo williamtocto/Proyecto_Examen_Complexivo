@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,13 +126,13 @@ public class FragmentFacturacion extends Fragment {
             @Override
             public void onResponse(Call<Factura> call, retrofit2.Response<Factura> response) {
                 factura.setIdfactura(response.body().getIdfactura());
-                ///////////////////////////aqui para regresar al fragament de producto corregir
                 if (response.isSuccessful()) {
                     ProductosFragment fr = new ProductosFragment();
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.contentFrame, fr)
                             .addToBackStack(null)
                             .commit();
+                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Productos");
                 }
             }
 

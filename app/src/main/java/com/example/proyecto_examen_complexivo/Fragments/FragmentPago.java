@@ -16,7 +16,7 @@ public class FragmentPago extends Fragment {
 
     View view;
     EditText txt_numero_tarjeta;
-    EditText txt_mes,txt_anio,txtCVV;
+    EditText txt_mes, txt_anio, txtCVV;
     Button btn_continuar, btn_cancelar;
 
     @Override
@@ -28,27 +28,59 @@ public class FragmentPago extends Fragment {
         txt_anio = view.findViewById(R.id.txtAnioVencimiento);
         txtCVV = view.findViewById(R.id.txtCVV);
         btn_continuar = view.findViewById(R.id.btn_continuar_pago);
-        btn_cancelar=view.findViewById(R.id.btn_cancelar_pago);
+        btn_cancelar = view.findViewById(R.id.btn_cancelar_pago);
 
         btn_continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentFacturacion fr = new FragmentFacturacion();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.contentFrame, fr)
-                        .addToBackStack(null)
-                        .commit();
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Detalle de Factura");
+              validarCampos();
             }
         });
 
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                detalle_compras fr = new detalle_compras();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contentFrame, fr)
+                        .addToBackStack(null)
+                        .commit();
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Detalle de Compras");
             }
         });
 
         return view;
     }
-}
+
+    public void validarCampos() {
+
+
+        if (txt_numero_tarjeta.getText().toString().isEmpty() || txt_mes.getText().toString().isEmpty() ||
+                txt_anio.getText().toString().isEmpty() || txtCVV.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Llene Todos los campos", Toast.LENGTH_SHORT).show();
+        } else
+            if (txt_numero_tarjeta.getText().toString().length() < 6) {
+                Toast.makeText(getContext(), "Formato de tarjeta icorrecto", Toast.LENGTH_SHORT).show();
+            } else
+                if (Integer.parseInt(txt_mes.getText().toString())< 0 || Integer.parseInt(txt_mes.getText().toString()) > 12) {
+                    Toast.makeText(getContext(), "Mes Incorrecto", Toast.LENGTH_SHORT).show();
+                } else
+                    if (Integer.parseInt(txt_anio.getText().toString()) < 2022) {
+                        Toast.makeText(getContext(), " Incorrecto", Toast.LENGTH_SHORT).show();
+                    } else
+                        if (txtCVV.getText().toString().length() < 3) {
+                            Toast.makeText(getContext(), "CVV incorrecto", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Datos Validados correctamente", Toast.LENGTH_SHORT).show();
+                            FragmentFacturacion fr = new FragmentFacturacion();
+                            getActivity().getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.contentFrame, fr)
+                                    .addToBackStack(null)
+                                    .commit();
+                            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Detalle de Factura");
+
+                        }
+                    }
+                }
+
+
