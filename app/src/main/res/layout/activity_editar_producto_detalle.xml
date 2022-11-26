@@ -25,7 +25,7 @@
         android:layout_width="291dp"
         android:layout_height="58dp"
         android:layout_marginTop="512dp"
-        android:text="@string/actualizar"
+        android:text="Actualizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

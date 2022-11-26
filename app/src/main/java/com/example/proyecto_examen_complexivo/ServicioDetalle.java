@@ -25,12 +25,14 @@ public class ServicioDetalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicio_detalle);
         setTitle(getClass().getSimpleName());
-        guardar();
+
         initViews();
         initValues();
+        guardar();
     }
 
     public void guardar(){
+        detalleServicio = (Servicio) getIntent().getExtras().getSerializable("itemDetail");
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +49,10 @@ public class ServicioDetalle extends AppCompatActivity {
             }
         });
     }
+
+
+
+
     public String CodigoArchivo() {
         // txtCodigoArchivo = findViewById(R.id.txtCodigoArchivoPdf);
         String serial = "";
