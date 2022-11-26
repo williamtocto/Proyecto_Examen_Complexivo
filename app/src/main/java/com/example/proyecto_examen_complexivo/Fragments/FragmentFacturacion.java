@@ -1,64 +1,78 @@
-package com.example.proyecto_examen_complexivo.Fragments;
+    package com.example.proyecto_examen_complexivo.Fragments;
 
-import android.database.Cursor;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import com.example.proyecto_examen_complexivo.R;
-import com.example.proyecto_examen_complexivo.adapter.FacturacionAdapter;
-import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
-import com.example.proyecto_examen_complexivo.facturacion;
-import com.example.proyecto_examen_complexivo.modelo.*;
-import com.example.proyecto_examen_complexivo.network.Constantes;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+    import android.database.Cursor;
+    import android.os.Bundle;
+    import android.widget.Button;
+    import android.widget.TextView;
+    import android.widget.Toast;
+    import androidx.appcompat.app.AppCompatActivity;
+    import androidx.fragment.app.Fragment;
+    import android.view.LayoutInflater;
+    import android.view.View;
+    import android.view.ViewGroup;
+    import androidx.fragment.app.FragmentManager;
+    import androidx.recyclerview.widget.LinearLayoutManager;
+    import androidx.recyclerview.widget.RecyclerView;
+    import com.example.proyecto_examen_complexivo.R;
+    import com.example.proyecto_examen_complexivo.adapter.FacturacionAdapter;
+    import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
+    import com.example.proyecto_examen_complexivo.facturacion;
+    import com.example.proyecto_examen_complexivo.modelo.*;
+    import com.example.proyecto_examen_complexivo.network.Constantes;
+    import retrofit2.Call;
+    import retrofit2.Callback;
+    import retrofit2.Response;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+    import java.text.SimpleDateFormat;
+    import java.util.ArrayList;
+    import java.util.Date;
 
 
-public class FragmentFacturacion extends Fragment {
-    ArrayList<Carrito> listCarrito;
-    Button btnComprarFacturacion;
-    RecyclerView recyclerView1;
-    TextView txtTotalPagar, txtUsuarioFacturacion, txtCedulaFacturacion, txtDireccionFacturacion, txtCorreoFacturacion, txtTelefonoFacturacion, txtFechaFacturacion;
+    public class FragmentFacturacion extends Fragment {
+        ArrayList<Carrito> listCarrito;
+        Button btnComprarFacturacion, btn_cancelar;
+        RecyclerView recyclerView1;
+        TextView txtTotalPagar, txtUsuarioFacturacion, txtCedulaFacturacion, txtDireccionFacturacion, txtCorreoFacturacion, txtTelefonoFacturacion, txtFechaFacturacion;
 
-    private Persona persona = new Persona();
-    private Usuario usuario = new Usuario();
-    private static Factura factura = new Factura();
-    private DetalleFactura detalleFactura = new DetalleFactura();
-    private Servicio servicio = new Servicio();
+        private Persona persona = new Persona();
+        private Usuario usuario = new Usuario();
+        private static Factura factura = new Factura();
+        private DetalleFactura detalleFactura = new DetalleFactura();
+        private Servicio servicio = new Servicio();
 
-    View view;
+        View view;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_facturacion, container, false);
-        listCarrito = new ArrayList<>();
-        recyclerView1 = (RecyclerView) view.findViewById(R.id.recyclerViewFactura);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-        consultarComprasCarrito();
-        FacturacionAdapter adapter = new FacturacionAdapter(listCarrito, getContext());
-        recyclerView1.setAdapter(adapter);
-        txtTotalPagar = view.findViewById(R.id.txtTotalPagar);
-        txtUsuarioFacturacion = view.findViewById(R.id.txtUsuarioFacturacion);
-        txtCedulaFacturacion = view.findViewById(R.id.txtCedulaFacturacion);
-        txtDireccionFacturacion =  view.findViewById(R.id.txtDireccionFacturacion);
-        txtCorreoFacturacion =  view.findViewById(R.id.txtCorreoFacturacion);
-        txtTelefonoFacturacion =  view.findViewById(R.id.txtTelefonoFacturacion);
-        txtFechaFacturacion =  view.findViewById(R.id.txtFechaFacturacion);
-        btnComprarFacturacion =  view.findViewById(R.id.btnComprarFacturacion);
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            view = inflater.inflate(R.layout.fragment_facturacion, container, false);
+            listCarrito = new ArrayList<>();
+            recyclerView1 = (RecyclerView) view.findViewById(R.id.recyclerViewFactura);
+            recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
+            consultarComprasCarrito();
+            FacturacionAdapter adapter = new FacturacionAdapter(listCarrito, getContext());
+            recyclerView1.setAdapter(adapter);
+            txtTotalPagar = view.findViewById(R.id.txtTotalPagar);
+            txtUsuarioFacturacion = view.findViewById(R.id.txtUsuarioFacturacion);
+            txtCedulaFacturacion = view.findViewById(R.id.txtCedulaFacturacion);
+            txtDireccionFacturacion =  view.findViewById(R.id.txtDireccionFacturacion);
+            txtCorreoFacturacion =  view.findViewById(R.id.txtCorreoFacturacion);
+            txtTelefonoFacturacion =  view.findViewById(R.id.txtTelefonoFacturacion);
+            txtFechaFacturacion =  view.findViewById(R.id.txtFechaFacturacion);
+            btnComprarFacturacion =  view.findViewById(R.id.btnComprarFacturacion);
+            btn_cancelar= view.findViewById(R.id.btnCancelaracturacion2);
+            btn_cancelar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                     FragmentPago fr = new FragmentPago();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.contentFrame, fr)
+                            .addToBackStack(null)
+                            .commit();
+                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Datos Pago");
+                }
+            });
+
+
         btnComprarFacturacion.setOnClickListener(x -> {
             crearfactura();
         });
@@ -80,6 +94,10 @@ public class FragmentFacturacion extends Fragment {
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         factura.setFecha_factura(date);
         txtFechaFacturacion.setText(date);
+
+
+
+
         return  view;
     }
     public void consultausuario() {

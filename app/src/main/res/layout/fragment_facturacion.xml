@@ -53,28 +53,26 @@
       app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
-      android:id="@+id/txtTotalPagar"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="228dp"
-      android:layout_marginTop="15dp"
-      android:text="@string/_220_25"
-      android:textColor="#000000"
-      app:layout_constraintBottom_toTopOf="@+id/btnComprarFacturacion"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura" />
-
+          android:id="@+id/txtTotalPagar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="228dp"
+          android:layout_marginTop="15dp"
+          android:text="@string/_220_25"
+          android:textColor="#000000"
+          app:layout_constraintBottom_toTopOf="@+id/btnComprarFacturacion"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura"/>
   <TextView
-      android:id="@+id/textView15"
-      android:layout_width="33dp"
-      android:layout_height="16dp"
-      android:layout_marginStart="144dp"
-      android:layout_marginTop="15dp"
-      android:text="@string/total"
-      app:layout_constraintBottom_toTopOf="@+id/btnComprarFacturacion"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura" />
-
+          android:id="@+id/textView15"
+          android:layout_width="33dp"
+          android:layout_height="16dp"
+          android:layout_marginStart="144dp"
+          android:layout_marginTop="15dp"
+          android:text="@string/total"
+          app:layout_constraintBottom_toTopOf="@+id/btnComprarFacturacion"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/recyclerViewFactura"/>
   <TextView
       android:id="@+id/textView9"
       android:layout_width="wrap_content"
@@ -176,29 +174,38 @@
       app:layout_constraintTop_toBottomOf="@+id/txtCedulaFacturacion" />
 
   <Button
-      android:id="@+id/btnComprarFacturacion"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/comprar"
-      android:layout_marginBottom="15dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.487"
-      app:layout_constraintStart_toStartOf="parent" />
-
+          android:id="@+id/btnComprarFacturacion"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/comprar"
+          android:layout_marginBottom="15dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.487"
+          app:layout_constraintStart_toStartOf="parent"/>
+  <Button
+          android:id="@+id/btnCancelaracturacion2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/cancelar_compra"
+          android:layout_marginBottom="15dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.487"
+          app:layout_constraintStart_toStartOf="parent"/>
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recyclerViewFactura"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:background="@color/blanco_azulado"
-      android:layout_marginTop="15dp"
-      android:layout_marginBottom="45dp"
-      app:layout_constraintBottom_toTopOf="@+id/btnComprarFacturacion"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView14"
-      app:layout_constraintVertical_bias="0.618"
-      tools:listitem="@layout/item_productos_facturacion" />
+          android:id="@+id/recyclerViewFactura"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:background="@color/blanco_azulado"
+          android:layout_marginTop="15dp"
+          android:layout_marginBottom="45dp"
+          app:layout_constraintBottom_toTopOf="@+id/btnComprarFacturacion"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView14"
+          app:layout_constraintVertical_bias="0.618"
+          tools:listitem="@layout/item_productos_facturacion"/>
 
   <TextView
       android:id="@+id/txtFechaFacturacion"

@@ -1,6 +1,6 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +66,7 @@ public class FragmentPago extends Fragment {
                     Toast.makeText(getContext(), "Mes Incorrecto", Toast.LENGTH_SHORT).show();
                 } else
                     if (Integer.parseInt(txt_anio.getText().toString()) < 2022) {
-                        Toast.makeText(getContext(), " Incorrecto", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Año Incorrecto", Toast.LENGTH_SHORT).show();
                     } else
                         if (txtCVV.getText().toString().length() < 3) {
                             Toast.makeText(getContext(), "CVV incorrecto", Toast.LENGTH_SHORT).show();
