@@ -2,6 +2,8 @@ package com.example.proyecto_examen_complexivo.network;
 
 import com.example.proyecto_examen_complexivo.modelo.CategoriaP;
 import com.example.proyecto_examen_complexivo.modelo.CategoriaS;
+import com.example.proyecto_examen_complexivo.modelo.DetalleFactura;
+import com.example.proyecto_examen_complexivo.modelo.Factura;
 import com.example.proyecto_examen_complexivo.modelo.Persona;
 import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.example.proyecto_examen_complexivo.modelo.Servicio;
@@ -12,7 +14,9 @@ import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface Api {
@@ -56,11 +60,12 @@ public interface Api {
     @GET("api/servicio/listar/subcategoria/{id}")
     Call<List<Servicio>> getServicioSub(@Path("id") long id);
 
-    @GET("/api/usuario/listar/{usuusuario}")
-    Call<Usuario> getusuario(@Path("usuusuario") String usuusuario);
-    //Call<List<Usuario>> getusuario(@Path("usuusuario") String usuusuario);
+    @POST("api/factura/crear")
+    Call<Factura> getfactura(@Body Factura factura);
 
-    @GET("/api/usuario/listar/{usuusuario}")
-    Call<Persona> getpersona(@Path("usuusuario") String usuusuario);
+    //crear factura
+    @POST("api/detalle/crear")
+    Call<DetalleFactura> getdetallefactura(@Body DetalleFactura detalle);
+
 
 }

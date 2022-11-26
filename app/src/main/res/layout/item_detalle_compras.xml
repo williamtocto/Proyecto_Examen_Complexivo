@@ -47,6 +47,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="28dp"
         android:text="@string/producto_o_servicio"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,6 +68,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="80dp"
         android:text="@string/descripcionsss"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,6 +79,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="144dp"
         android:text="@string/totalss"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,6 +90,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="176dp"
         android:text="@string/cantidadss"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

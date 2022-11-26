@@ -5,17 +5,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto_examen_complexivo.Fragments.ProductosFragment;
 import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
 import com.example.proyecto_examen_complexivo.adapter.FacturacionAdapter;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
+import com.example.proyecto_examen_complexivo.modelo.DetalleFactura;
+import com.example.proyecto_examen_complexivo.modelo.Factura;
 import com.example.proyecto_examen_complexivo.modelo.Persona;
+import com.example.proyecto_examen_complexivo.modelo.Servicio;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.network.Constantes;
 
@@ -30,11 +36,16 @@ import retrofit2.Response;
 public class facturacion extends AppCompatActivity {
 
     ArrayList<Carrito> listCarrito;
+    Button btnComprarFacturacion;
     RecyclerView recyclerView1;
     TextView txtTotalPagar, txtUsuarioFacturacion, txtCedulaFacturacion, txtDireccionFacturacion,txtCorreoFacturacion, txtTelefonoFacturacion, txtFechaFacturacion;
 
     private Persona persona=new Persona();
     private Usuario usuario=new Usuario();
+    private static Factura factura=new Factura();
+    private DetalleFactura detalleFactura=new DetalleFactura();
+    private Servicio servicio=new Servicio();
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -55,6 +66,9 @@ public class facturacion extends AppCompatActivity {
         txtCorreoFacturacion =findViewById(R.id.txtCorreoFacturacion);
         txtTelefonoFacturacion =findViewById(R.id.txtTelefonoFacturacion);
         txtFechaFacturacion = findViewById(R.id.txtFechaFacturacion);
+        btnComprarFacturacion = findViewById(R.id.btnComprarFacturacion);
+
+        btnComprarFacturacion.setOnClickListener(x->{crearfactura();});
 
 
         double resultado = 0;
@@ -71,6 +85,7 @@ public class facturacion extends AppCompatActivity {
         consultausuario();
         txtTotalPagar.setText(resultado+"");
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        factura.setFecha_factura(date);
         txtFechaFacturacion.setText(date);
 
     }
@@ -93,7 +108,6 @@ public class facturacion extends AppCompatActivity {
             txtCorreoFacturacion.setText(persona.getCorreo());
             dbHelper.close();
         }
-        Toast.makeText(this, ""+persona.getNombre(), Toast.LENGTH_SHORT).show();
 
 
     }
@@ -101,6 +115,69 @@ public class facturacion extends AppCompatActivity {
     public void consultarComprasCarrito(){
         Carrito carrito = new Carrito();
         listCarrito = carrito.getcomprados(facturacion.this);
+
+    }
+
+    public void crearfactura(){
+
+        //crea factura
+        DbHelper dbhelper = new DbHelper(facturacion.this, "basetemp", null, 2);
+        String nsql = "SELECT ud_id from usuario";
+        Cursor cursor = dbhelper.query(nsql);
+        while (cursor.moveToNext()){
+            usuario.setUsu_id(cursor.getInt(0));
+            factura.setUsu_id(usuario);
+            dbhelper.close();
+        }
+        Constantes constantes=new Constantes();
+        Call<Factura> fac=constantes.getApiService().getfactura(factura);
+        fac.enqueue(new Callback<Factura>() {
+            @Override
+            public void onResponse(Call<Factura> call, retrofit2.Response<Factura> response) {
+                factura.setIdfactura(response.body().getIdfactura());
+                }
+
+            @Override
+            public void onFailure(Call<Factura> call, Throwable t) {
+                Toast.makeText(facturacion.this, "Error Factura", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //crea factura
+
+
+        //crea detalle factura
+        //dato quemado servicio
+        servicio.setId(3L);
+        for (Carrito car: listCarrito){
+            double total=0;
+            if(car.getCantidad()>1){
+                total=car.getPrecio_producto()*car.getCantidad();
+            }
+            detalleFactura.setIddetalle(0);
+            detalleFactura.setCantidad(car.getCantidad());
+            detalleFactura.setPrecio(total);
+            detalleFactura.setIdfactura(factura);
+            detalleFactura.setIdservicio(servicio);
+            Call<DetalleFactura> res=constantes.getApiService().getdetallefactura(detalleFactura);
+            res.enqueue(new Callback<DetalleFactura>() {
+                @Override
+                public void onResponse(Call<DetalleFactura> call, Response<DetalleFactura> response) {
+                    Carrito carrito=new Carrito();
+                    carrito.Limpiarcarrito(facturacion.this);
+                    Toast.makeText(facturacion.this, "Compra exitosa", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+                @Override
+                public void onFailure(Call<DetalleFactura> call, Throwable t) {
+                    Toast.makeText(facturacion.this, "Error detalle", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+
+
+
 
     }
 }
