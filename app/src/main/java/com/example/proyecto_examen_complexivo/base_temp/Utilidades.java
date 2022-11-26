@@ -61,7 +61,4 @@ public class Utilidades {
             " "+ROL_ID+" INTEGER, " +
             " "+PERSONA_ID+" INTEGER) ";
 
-
-
-
 }

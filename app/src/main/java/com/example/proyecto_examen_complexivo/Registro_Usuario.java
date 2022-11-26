@@ -74,6 +74,7 @@ public class Registro_Usuario extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Persona p = new Persona(response.body().getIdpersona());
                     Rol r = new Rol(1);
+
                     Usuario u = new Usuario(usuario.getText().toString(), contra.getText().toString(), p, r);
                     addUsuario(u);
                 }

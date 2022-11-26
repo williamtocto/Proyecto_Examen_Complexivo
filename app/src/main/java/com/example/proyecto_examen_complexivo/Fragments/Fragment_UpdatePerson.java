@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +61,6 @@ public class Fragment_UpdatePerson extends Fragment {
 
 
         btn_guardar = (Button) view.findViewById(R.id.btn_guardar);
-
         btn_editar = (Button) view.findViewById(R.id.btn_editar);
         btn_editar.setOnClickListener(new View.OnClickListener() {
             @Override

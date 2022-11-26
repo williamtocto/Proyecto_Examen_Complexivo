@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,14 +61,6 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment detalle_compras.
-     */
     // TODO: Rename and change types and number of parameters
     public static detalle_compras newInstance(String param1, String param2) {
         detalle_compras fragment = new detalle_compras();
@@ -95,8 +88,6 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
         listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -129,8 +120,9 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
         btnComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(detalle_compras.this.getContext(), facturacion.class);
-                startActivity(intent);
+                abrirFragmnet();
+               // Intent intent = new Intent(detalle_compras.this.getContext(), facturacion.class);
+              //  startActivity(intent);
             }
         });
 
@@ -140,6 +132,16 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    public void abrirFragmnet (){
+        FragmentPago fr = new FragmentPago();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contentFrame, fr)
+                .addToBackStack(null)
+                .commit();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Datos Pago");
 
     }
 

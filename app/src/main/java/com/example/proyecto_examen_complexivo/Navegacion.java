@@ -25,6 +25,10 @@ import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
 import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 import com.google.android.material.navigation.NavigationView;
 
+import java.sql.SQLOutput;
+
+import static android.app.PendingIntent.getActivity;
+
 
 public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,6 +42,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
 
             //Referencias UI
             drawerLayout= findViewById(R.id.contenidoPrincipal);
@@ -106,25 +111,21 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
                 case R.id.nav_home:
                     ft.replace(R.id.contentFrame, new ProductosFragment()).commit();
+                    getSupportActionBar().setTitle("Productos");
                     break;
                 case R.id.nav_servicios:
                     ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
-                    /*codigo para llamr un activity
-                    ft.replace(R.id.contentFrame, new CategoriaP()).commit();
-                   Intent i = new Intent(MainActivity.this, AllCategoria.class);
-                   startActivity(i);*/
+                    getSupportActionBar().setTitle("Servicios");
                     break;
                 case R.id.nav_carrito:
-                    //ft.replace(R.id.contentFrame, new ServiciosFragment()).commit();
                     ft.replace(R.id.contentFrame, new detalle_compras()).commit();
-
+                    getSupportActionBar().setTitle("Carrito");
                     break;
                 case R.id.nav_perfil:
                     ft.replace(R.id.contentFrame, new Fragment_UpdatePerson()).commit();
+                    getSupportActionBar().setTitle("Mi Perfil");
                     break;
             }
-
-            setTitle(item.getTitle());
             drawerLayout.closeDrawers();
         }
 
@@ -140,10 +141,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.search_button, menu);
-            MenuItem menuItem= menu.findItem(R.id.search_button);
-            SearchView searchView= (SearchView) menuItem.getActionView();
-            searchView.setQueryHint("Busca un prodcuto");
+
 
             return super.onCreateOptionsMenu(menu);
         }

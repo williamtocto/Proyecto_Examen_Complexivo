@@ -24,7 +24,7 @@
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_facturacion.xml" value="0.25" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_login.xml" value="0.16168478260869565" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_navegacion.xml" value="0.33" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_navegacion.xml" value="0.1" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_pantalla_inicio.xml" value="0.22" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_prueba.xml" value="0.1490036231884058" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_servicio_detalle.xml" value="0.1094224924012158" />
@@ -39,8 +39,9 @@
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment__update_person.xml" value="0.14719202898550723" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_datos_pago.xml" value="0.1" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_datos_pago_ejemplo.xml" value="0.33" />
-        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_detalle_compras.xml" value="0.11865942028985507" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_detalle_compras.xml" value="0.33" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_dialogo_cofirma_pago.xml" value="0.33" />
+        <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_facturacion.xml" value="0.1" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_productos.xml" value="0.16168478260869565" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_servicios.xml" value="0.16168478260869565" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_updateUsuario.xml" value="0.1" />

@@ -66,10 +66,6 @@ public class ServicioDetalle extends AppCompatActivity {
         return serial;
     }
 
-
-
-
-
     private void initViews(){
         imgDetail = findViewById(R.id.imgFotoServicio);
         txtNombre = findViewById(R.id.txtNombre_Servicio);
