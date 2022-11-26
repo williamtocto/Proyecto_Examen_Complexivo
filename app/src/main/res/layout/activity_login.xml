@@ -14,15 +14,15 @@
             android:id="@+id/txtTotalComprasCarrito"
             android:layout_width="match_parent"
             android:layout_height="76dp"
-            android:layout_marginBottom="50dp"
             android:background="@color/verde_odiseum"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-           >
+            android:id="@+id/constraintLayout">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.cardview.widget.CardView
@@ -46,7 +46,7 @@
                 android:backgroundTint="@android:color/transparent">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_usuario"
+                    android:id="@+id/txt_usuario_update"
                     android:layout_width="match_parent"
                     android:layout_height="62dp"
                     android:backgroundTint="@android:color/transparent"

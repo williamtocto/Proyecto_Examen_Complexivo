@@ -11,15 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyecto_examen_complexivo.adapter.LoginAdapter;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.modelo.Persona;
-import com.example.proyecto_examen_complexivo.modelo.Producto;
-import com.example.proyecto_examen_complexivo.network.Constantes;
 import com.example.proyecto_examen_complexivo.service.Apis;
 import com.example.proyecto_examen_complexivo.service.UsuarioService;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.service.Validacion_user;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 import java.util.ArrayList;
 
@@ -40,7 +37,7 @@ public class Inicio_Login extends AppCompatActivity implements Validacion_user {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btn_ingresa = findViewById(R.id.btn_ingresar);
-        txtUsuario = findViewById(R.id.txt_usuario);
+        txtUsuario = findViewById(R.id.txt_usuario_update);
         txtClave = findViewById(R.id.txt_contraseña);
         progressBar = findViewById(R.id.progressBar);
 

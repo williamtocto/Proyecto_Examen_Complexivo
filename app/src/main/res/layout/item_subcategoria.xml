@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/edt_style"
-    android:layout_margin="5dp"
-    >
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/style_border"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/celeste">
 
     <androidx.cardview.widget.CardView
             android:id="@+id/cardSubcategoria"
@@ -34,9 +34,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Subcategoria"
-                    android:textColor="@color/verde_odiseum"
+                    android:textColor="@color/black"
                     android:textSize="17sp"
-                    android:textStyle="bold" android:fontFamily="sans-serif-light"/>
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-light"
+                    android:background="@color/celeste"
+                    android:backgroundTint="@color/celeste"/>
 
         </LinearLayout>
 

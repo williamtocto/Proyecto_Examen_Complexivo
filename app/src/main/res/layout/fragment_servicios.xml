@@ -7,83 +7,85 @@
     tools:context=".Fragments.ServiciosFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="843dp">
 
 
         <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Categorias"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="72dp"
+                android:text="CATEGORIAS"
                 android:textColor="@color/naranja"
-                android:textSize="23dp"
+                android:textSize="24sp"
+                android:fontFamily="serif"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.052"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:fontFamily="casual"/>
-
+                app:layout_constraintTop_toTopOf="parent" android:textStyle="bold"/>
         <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subcategoria"
+                android:text="SUBCATEGORIAS"
                 android:textColor="@color/naranja"
-                android:textSize="23dp"
+                android:textSize="24dp"
+                android:fontFamily="serif"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintHorizontal_bias="0.158"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCS" android:fontFamily="casual"
-                android:layout_marginTop="16dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCS"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCS"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/celeste"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:listitem="@layout/item_categoria"
-            />
-
+                android:id="@+id/recyclerViewCS"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="#FEFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:listitem="@layout/item_categoria"
+        />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleservicios"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewSubCS"
-            tools:listitem="@layout/item_servicio" />
-
+                android:id="@+id/recycleservicios"
+                android:layout_width="408dp"
+                android:layout_height="484dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewSubCS"
+                tools:listitem="@layout/item_servicio" app:layout_constraintVertical_bias="0.035"/>
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewSubCS"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/celeste"
+                android:layout_marginTop="12dp"
+                android:background="#FEFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:listitem="@layout/item_subcategoria"
-                app:layout_constraintTop_toBottomOf="@+id/textView17" app:layout_constraintHorizontal_bias="0.0"/>
+                app:layout_constraintTop_toBottomOf="@+id/textView17"
+                app:layout_constraintHorizontal_bias="0.0"/>
         <EditText
-            android:id="@+id/filtroservicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:hint="Buscar"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.92"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/filtroservicio"
+                android:layout_width="408dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="12dp"
+                android:ems="10"
+                android:hint="Buscar"
+                android:drawableLeft="@drawable/busca" android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.92"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:backgroundTint="@color/verde_agua"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
