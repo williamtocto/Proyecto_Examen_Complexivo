@@ -38,8 +38,8 @@
         private Usuario usuario = new Usuario();
         private static Factura factura = new Factura();
         private DetalleFactura detalleFactura = new DetalleFactura();
-        private Servicio servicio = new Servicio();
-        private Producto producto=new Producto();
+        private static Servicio servicio = new Servicio();
+        private static Producto producto=new Producto();
 
         View view;
 
@@ -170,9 +170,12 @@
             detalleFactura.setIdfactura(factura);
             detalleFactura.setIdservicio(servicio);
             detalleFactura.setIdproducto(producto);
+            Toast.makeText(getContext(), "f"+factura.getIdfactura(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "s"+servicio.getId(), Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(getContext(), "** "+detalleFactura.getIdproducto().getId(), Toast.LENGTH_SHORT).show();
-           Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
+            Toast.makeText(getContext(), "p"+producto.getId(), Toast.LENGTH_SHORT).show();
+
+            Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
             res.enqueue(new Callback<DetalleFactura>() {
                 @Override
                 public void onResponse(Call<DetalleFactura> call, Response<DetalleFactura> response) {

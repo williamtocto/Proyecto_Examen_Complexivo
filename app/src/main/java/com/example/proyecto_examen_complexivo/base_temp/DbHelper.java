@@ -84,6 +84,7 @@ public class DbHelper extends   SQLiteOpenHelper {
         bd.close();
     }
 
+
     public void editarUsuario(String nombreUsuario, String contrasenia, String user_anterior){
         SQLiteDatabase bd= getWritableDatabase();
         bd.execSQL("UPDATE usuario SET usuusuario='"+nombreUsuario+"', usu_contrasena='"+contrasenia+"'"+" WHERE usuusuario= '"+user_anterior+"'");

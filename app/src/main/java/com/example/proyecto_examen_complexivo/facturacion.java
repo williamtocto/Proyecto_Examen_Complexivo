@@ -19,6 +19,7 @@ import com.example.proyecto_examen_complexivo.modelo.Carrito;
 import com.example.proyecto_examen_complexivo.modelo.DetalleFactura;
 import com.example.proyecto_examen_complexivo.modelo.Factura;
 import com.example.proyecto_examen_complexivo.modelo.Persona;
+import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.example.proyecto_examen_complexivo.modelo.Servicio;
 import com.example.proyecto_examen_complexivo.modelo.Usuario;
 import com.example.proyecto_examen_complexivo.network.Constantes;
@@ -44,7 +45,8 @@ public class facturacion extends AppCompatActivity {
     private Usuario usuario = new Usuario();
     private static Factura factura = new Factura();
     private DetalleFactura detalleFactura = new DetalleFactura();
-    private Servicio servicio = new Servicio();
+    private static Servicio servicio = new Servicio();
+    private static Producto producto=new Producto();
 
 
     @SuppressLint("MissingInflatedId")
@@ -146,17 +148,21 @@ public class facturacion extends AppCompatActivity {
         //crea detalle factura
         //dato quemado servicio
         servicio.setId(3L);
+
         for (Carrito car : listCarrito) {
             double total = 0;
             if (car.getCantidad() > 1) {
                 total = car.getPrecio_producto() * car.getCantidad();
             }
+            producto.setId(car.getIdproducto());
             detalleFactura.setIddetalle(0);
             detalleFactura.setCantidad(car.getCantidad());
+            detalleFactura.setTipo(car.getTipo());
             detalleFactura.setTipo(car.getTipo());
             detalleFactura.setPrecio(total);
             detalleFactura.setIdfactura(factura);
             detalleFactura.setIdservicio(servicio);
+            detalleFactura.setIdproducto(producto);
             Toast.makeText(this, ""+detalleFactura.getTipo(), Toast.LENGTH_SHORT).show();
             Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
             res.enqueue(new Callback<DetalleFactura>() {

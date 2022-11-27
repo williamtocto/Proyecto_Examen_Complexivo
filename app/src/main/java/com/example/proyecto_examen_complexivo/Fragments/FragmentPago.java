@@ -1,6 +1,8 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +32,12 @@ public class FragmentPago extends Fragment {
         btn_continuar = view.findViewById(R.id.btn_continuar_pago);
         btn_cancelar = view.findViewById(R.id.btn_cancelar_pago);
 
+        SharedPreferences sharedPreferences= getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        txt_numero_tarjeta.setText(sharedPreferences.getString("num",""));
+        txt_mes.setText(sharedPreferences.getString("mes",""));
+        txt_anio.setText(sharedPreferences.getString("anio",""));
+        txtCVV.setText(sharedPreferences.getString("cvv",""));
+
         btn_continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +62,13 @@ public class FragmentPago extends Fragment {
 
     public void validarCampos() {
 
-
+        SharedPreferences preferences= getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.putString("num",txt_numero_tarjeta.getText().toString());
+        editor.putString("mes",txt_mes.getText().toString());
+        editor.putString("anio",txt_anio.getText().toString());
+        editor.putString("cvv",txtCVV.getText().toString());
+        editor.commit();
         if (txt_numero_tarjeta.getText().toString().isEmpty() || txt_mes.getText().toString().isEmpty() ||
                 txt_anio.getText().toString().isEmpty() || txtCVV.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), "Llene Todos los campos", Toast.LENGTH_SHORT).show();
@@ -72,6 +86,8 @@ public class FragmentPago extends Fragment {
                             Toast.makeText(getContext(), "CVV incorrecto", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getContext(), "Datos Validados correctamente", Toast.LENGTH_SHORT).show();
+
+
                             FragmentFacturacion fr = new FragmentFacturacion();
                             getActivity().getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.contentFrame, fr)
