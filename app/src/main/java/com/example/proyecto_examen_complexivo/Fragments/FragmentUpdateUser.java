@@ -65,39 +65,28 @@ public class FragmentUpdateUser extends Fragment {
             @Override
             public void onClick(View v) {
 
-                new AlertDialog.Builder(getContext()).setIcon(R.drawable.icon_warning).setTitle("Advertencia").setMessage("¿Esta seguro de Cambiar los datos?")
-                        //Boton de Si (Se supone: El Usurio es consiente de lo que esta haciendo)
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                validar = false;
-                                if (txtUser.getText().toString().isEmpty() || txt_password.getText().toString().isEmpty() || txt_confirm_pasword.getText().toString().isEmpty()) {
-                                    Toast.makeText(getContext(), "Llene todos los campos", Toast.LENGTH_LONG).show();
-                                } else {
-                                    if (txt_password.getText().length() <= 5) {
-                                        validar = true;
-                                        Toast.makeText(getContext(), "La contraseña 6 caracteres minimo", Toast.LENGTH_LONG).show();
-                                    } else if (txtUser.getText().length() <= 2) {
-                                        Toast.makeText(getContext(), "Error usuario debe ser mayor 2 caracteres", Toast.LENGTH_LONG).show();
-                                        validar = true;
-                                    } else if (txt_password.getText().toString().equals(txt_confirm_pasword.getText().toString())) {
-                                        if (validar == false) {
-                                            confirm_password_dialog = new Dialog(getActivity());
-                                            confirm_password();
 
-                                        }
-                                    } else {
-                                        validar = true;
-                                        Toast.makeText(getContext(), "La contraseñas no coinciden", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                            }
-                        }).show();
+                validar = false;
+                if (txtUser.getText().toString().isEmpty() || txt_password.getText().toString().isEmpty() || txt_confirm_pasword.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Llene todos los campos", Toast.LENGTH_LONG).show();
+                } else {
+                    if (txt_password.getText().length() <= 5) {
+                        validar = true;
+                        Toast.makeText(getContext(), "La contraseña 6 caracteres minimo", Toast.LENGTH_LONG).show();
+                    } else if (txtUser.getText().length() <= 2) {
+                        Toast.makeText(getContext(), "Error usuario debe ser mayor 2 caracteres", Toast.LENGTH_LONG).show();
+                        validar = true;
+                    } else if (txt_password.getText().toString().equals(txt_confirm_pasword.getText().toString())) {
+                        if (validar == false) {
+                            confirm_password_dialog = new Dialog(getActivity());
+                            confirm_password();
+                        }
+                    } else {
+                        validar = true;
+                        Toast.makeText(getContext(), "La contraseñas no coinciden", Toast.LENGTH_LONG).show();
+                    }
+                }
+
             }
 
         });
@@ -172,8 +161,9 @@ public class FragmentUpdateUser extends Fragment {
 
 
     Dialog confirm_password_dialog;
+
     public void confirm_password() {
-       boolean bandera = false;
+        boolean bandera = false;
         CargarUsuario use = new CargarUsuario(getContext());
         EditText editTextPassword;
         Button cancel;
@@ -190,8 +180,24 @@ public class FragmentUpdateUser extends Fragment {
             @Override
             public void onClick(View v) {
                 if (use.listarUsuarioP().get(0).getUsu_contrasena().equals(editTextPassword.getText().toString())) {
-                    getUser();
-                    confirm_password_dialog.dismiss();
+
+
+                    new AlertDialog.Builder(getContext()).setIcon(R.drawable.icon_warning).setTitle("Advertencia").setMessage("¿Esta seguro de Cambiar los datos?")
+                            //Boton de Si (Se supone: El Usurio es consiente de lo que esta haciendo)
+                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    getUser();
+                                    confirm_password_dialog.dismiss();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            }).show();
+
+
                 } else {
                     Toast.makeText(getContext(), "Contaseña Incorrecta", Toast.LENGTH_LONG).show();
                 }
