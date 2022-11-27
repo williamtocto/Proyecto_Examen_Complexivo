@@ -22,6 +22,7 @@
     import retrofit2.Call;
     import retrofit2.Callback;
     import retrofit2.Response;
+    import retrofit2.Retrofit;
 
     import java.text.SimpleDateFormat;
     import java.util.ArrayList;
@@ -36,10 +37,10 @@
 
         private Persona persona = new Persona();
         private Usuario usuario = new Usuario();
-        private static Factura factura = new Factura();
+        private  Factura factura = new Factura();
         private DetalleFactura detalleFactura = new DetalleFactura();
-        private static Servicio servicio = new Servicio();
-        private static Producto producto=new Producto();
+        private  Servicio servicio = new Servicio();
+        private  Producto producto=new Producto();
 
         View view;
 
@@ -143,56 +144,74 @@
         Call<Factura> fac = constantes.getApiService().getfactura(factura);
         fac.enqueue(new Callback<Factura>() {
             @Override
-            public void onResponse(Call<Factura> call, Response<Factura> response) {
+            public void onResponse(Call<Factura> call, retrofit2.Response<Factura> response) {
                 factura.setIdfactura(response.body().getIdfactura());
-            }
+
+                //crea factura
+                //crea detalle factura
+                //dato quemado servicio
+                for (Carrito car : listCarrito) {
+                    double total = 0;
+                    if (car.getCantidad() > 1) {
+                        total = car.getPrecio_producto() * car.getCantidad();
+                    }
+                    switch (car.getTipo().toString()){
+                        case "producto":
+                            servicio.setId(3L);
+                            producto.setIdproducto(car.getIdproducto());
+
+                            break;
+                        case "servicio":
+                            producto.setIdproducto(4);
+                            servicio.setId(car.getIdproducto());
+                            break;
+                    }
+
+                    detalleFactura.setIddetalle(0);
+                    detalleFactura.setCantidad(car.getCantidad());
+                    detalleFactura.setPrecio(total);
+                    detalleFactura.setTipo(car.getTipo());
+                    detalleFactura.setIdfactura(factura);
+                    detalleFactura.setIdproducto(producto);
+                    detalleFactura.setIdservicio(servicio);
 
 
-            @Override
-            public void onFailure(Call<Factura> call, Throwable t) {
-                Toast.makeText(getContext(), "Error Factura", Toast.LENGTH_SHORT).show();
-            }
-        });
-        //crea factura
-        //crea detalle factura
-        //dato quemado servicio
-        servicio.setId(3L);
-        for (Carrito car : listCarrito) {
-            double total = 0;
-            if (car.getCantidad() > 1) {
-                total = car.getPrecio_producto() * car.getCantidad();
-            }
-            producto.setId(car.getIdproducto());
-            detalleFactura.setIddetalle(0);
-            detalleFactura.setCantidad(car.getCantidad());
-            detalleFactura.setPrecio(total);
-            detalleFactura.setTipo(car.getTipo());
-            detalleFactura.setIdfactura(factura);
-            detalleFactura.setIdservicio(servicio);
-            detalleFactura.setIdproducto(producto);
-            Toast.makeText(getContext(), "f"+factura.getIdfactura(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(getContext(), "s"+servicio.getId(), Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(getContext(), "p"+producto.getId(), Toast.LENGTH_SHORT).show();
-
-            Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
-            res.enqueue(new Callback<DetalleFactura>() {
+                    Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
+                    res.enqueue(new Callback<DetalleFactura>() {
                 @Override
                 public void onResponse(Call<DetalleFactura> call, Response<DetalleFactura> response) {
                     Carrito carrito = new Carrito();
                     carrito.Limpiarcarrito(getContext());
                     Toast.makeText(getContext(), "Compra exitosa", Toast.LENGTH_SHORT).show();
-
+                    ///////////////////////////aqui para regresar al fragament de producto corregir
+                    if (response.isSuccessful()) {
+                        FragmentManager fm= getActivity().getSupportFragmentManager();
+                        fm.beginTransaction().replace(R.id.container, new Fragment_UpdatePerson()).commit();
+                    }
 
                 }
 
+
                 @Override
                 public void onFailure(Call<DetalleFactura> call, Throwable t) {
+                    t.printStackTrace();
                     Toast.makeText(getContext(), "Error detalle", Toast.LENGTH_SHORT).show();
 
                 }
             });
-        }
+
+                }
+
+
+            }
+            @Override
+            public void onFailure(Call<Factura> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(getContext(), "Error Factura", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
     }

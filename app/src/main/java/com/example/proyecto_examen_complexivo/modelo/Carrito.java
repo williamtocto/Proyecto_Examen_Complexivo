@@ -2,6 +2,7 @@ package com.example.proyecto_examen_complexivo.modelo;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.widget.Toast;
 
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.base_temp.Utilidades;
@@ -137,7 +138,7 @@ public class Carrito implements Serializable {
             carritoActual.setDescricpion_producto(cursor.getString(4));
             carritoActual.setImg(cursor.getString(5));
             carritoActual.setTipo(cursor.getString(6));
-            carritoActual.setIdproducto(cursor.getInt(7));
+            carritoActual.setIdproducto((long) cursor.getInt(7));
             comprados.add(carritoActual);
             dbHelper.close();
         }

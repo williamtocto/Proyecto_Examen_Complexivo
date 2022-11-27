@@ -9,7 +9,8 @@ public class Producto  implements Serializable {
 
     @SerializedName("idproducto")
     @Expose
-    private Long id;
+    private long idproducto;
+
 
     @SerializedName("nombre")
     @Expose
@@ -26,6 +27,8 @@ public class Producto  implements Serializable {
     @SerializedName("imagen")
     private String foto;
 
+    private Long id;
+
 
 
 
@@ -33,12 +36,23 @@ public class Producto  implements Serializable {
 
     }
 
-    public Producto(Long id, String nombre, double precio, String foto, String  descripcion) {
+    public Producto(long idproducto, Long id, String nombre, double precio, String foto, String  descripcion) {
         this.id = id;
+        this.idproducto = idproducto;
         this.nombre = nombre;
         this.precio = precio;
         this.foto = foto;
         this.descripcion = descripcion;
+    }
+
+
+    public Long getIdproducto() {
+        return idproducto;
+    }
+
+
+    public void setIdproducto(long idproducto) {
+        this.idproducto = idproducto;
     }
 
     public Long getId() {

@@ -95,6 +95,7 @@ public class ProductoServicioDetalle extends AppCompatActivity {
                     carritoActual.setDescricpion_producto(productoDetalle.getDescripcion());
                     carritoActual.setCantidad(Integer.parseInt(txtCantidad.getText().toString()));
                     carritoActual.setImg(productoDetalle.getFoto());
+                    carritoActual.setIdproducto(productoDetalle.getIdproducto());
                     carritoActual.Guardar(ProductoServicioDetalle.this);
 
                     finish();

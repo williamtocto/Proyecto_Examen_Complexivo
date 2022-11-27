@@ -17,6 +17,10 @@ public class DetalleFactura {
     @Expose
     private double precio;
 
+    @SerializedName("tipo")
+    @Expose
+    private String tipo;
+
     @SerializedName("idproducto")
     @Expose
     private Producto idproducto;
@@ -29,9 +33,6 @@ public class DetalleFactura {
     @Expose
     private Servicio idservicio;
 
-    @SerializedName("tipo")
-    @Expose
-    private String tipo;
 
     public DetalleFactura() {
     }

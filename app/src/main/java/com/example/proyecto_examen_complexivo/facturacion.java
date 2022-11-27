@@ -154,7 +154,8 @@ public class facturacion extends AppCompatActivity {
             if (car.getCantidad() > 1) {
                 total = car.getPrecio_producto() * car.getCantidad();
             }
-            producto.setId(car.getIdproducto());
+
+            producto.setId((long) car.getIdproducto());
             detalleFactura.setIddetalle(0);
             detalleFactura.setCantidad(car.getCantidad());
             detalleFactura.setTipo(car.getTipo());
