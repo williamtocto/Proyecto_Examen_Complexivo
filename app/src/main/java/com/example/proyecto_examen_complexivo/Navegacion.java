@@ -36,8 +36,6 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         NavigationView navigationView;
         Toolbar toolbar;
         ActionBarDrawerToggle toggle;
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -141,8 +139,6 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
-
-
             return super.onCreateOptionsMenu(menu);
         }
 

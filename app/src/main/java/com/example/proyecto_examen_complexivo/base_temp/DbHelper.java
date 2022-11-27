@@ -78,7 +78,11 @@ public class DbHelper extends   SQLiteOpenHelper {
 
     }
 
-
+    public void eliminarUsuario(){
+        SQLiteDatabase bd= getWritableDatabase();
+        bd.execSQL("DELETE FROM usuario");
+        bd.close();
+    }
 
     public void editarUsuario(String nombreUsuario, String contrasenia, String user_anterior){
         SQLiteDatabase bd= getWritableDatabase();

@@ -1,15 +1,21 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.proyecto_examen_complexivo.Inicio_Login;
+import com.example.proyecto_examen_complexivo.MainActivity;
+import com.example.proyecto_examen_complexivo.Navegacion;
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
@@ -23,7 +29,7 @@ import retrofit2.Callback;
 public class Fragment_UpdatePerson extends Fragment {
 
     EditText txtCedula, txtNombre, txtApellido, txtDireccion, txtTelefono, txtEmail, txtUsuario, txtContrasenia, txt_nueva_contra, confirm_password;
-    Button btn_guardar, btn_cancelar, btn_editar;
+    Button btn_guardar, btn_cancelar, btn_editar, btn_cerrar_sesion;
     View view;
     long idpersona;
     boolean validar = false;
@@ -43,6 +49,33 @@ public class Fragment_UpdatePerson extends Fragment {
         txtDireccion = view.findViewById(R.id.txtDireccionUpdate);
         txtTelefono = view.findViewById(R.id.txt_telefono_update);
         txtEmail = view.findViewById(R.id.txt_usuario_update);
+        btn_cerrar_sesion = view.findViewById(R.id.btn_cerrar_sesion);
+
+
+        btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getContext()).setIcon(R.drawable.icon_warning).setTitle("Advertencia").setMessage("¿Esta seguro de Cerrar Sesion?")
+                        //Boton de Si (Se supone: El Usurio es consiente de lo que esta haciendo)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(getContext(), Inicio_Login.class);
+                                startActivity(intent);
+                                DbHelper bd = new DbHelper(getContext());
+                                bd.eliminarUsuario();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }).show();
+
+
+
+            }
+        });
 
 
         //CARGAR DATOS USUARIO
@@ -75,35 +108,51 @@ public class Fragment_UpdatePerson extends Fragment {
         });
 
         btn_guardar.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
-                    validar= false;
-                    if (txtNombre.getText().toString().isEmpty() || txtApellido.getText().toString().isEmpty() || txtDireccion.getText().toString().isEmpty() || txtTelefono.getText().toString().isEmpty() || txtEmail.getText().toString().isEmpty() || txtCedula.getText().toString().isEmpty()) {
-                        validar=true;
-                        Toast.makeText(getContext(), "Llene todos los campos", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (txtCedula.getText().length() < 10) {
-                            Toast.makeText(getContext(), "Cedula incorrecta", Toast.LENGTH_SHORT).show();
-                            validar = true;
-                        }
-                        if (txtTelefono.getText().length() < 10) {
-                            Toast.makeText(getContext(), "Telefono incorrecto", Toast.LENGTH_SHORT).show();
-                            validar = true;
-                        }
-                    }
-                    if (validar == false) {
-                        //CARGAR DATOS OBJETO PERSONA
-                        per.setCedula(txtCedula.getText().toString());
-                        per.setNombre(txtNombre.getText().toString());
-                        per.setApellido(txtApellido.getText().toString());
-                        per.setDireccion(txtDireccion.getText().toString());
-                        per.setCelular(txtTelefono.getText().toString());
-                        per.setCorreo(txtEmail.getText().toString());
-                        confirm_password_dialog=new Dialog(getActivity());
-                        confirm_password();
 
-                    }
-                }
+                new AlertDialog.Builder(getContext()).setIcon(R.drawable.icon_warning).setTitle("Advertencia").setMessage("¿Esta seguro de Cambiar los datos?")
+                        //Boton de Si (Se supone: El Usurio es consiente de lo que esta haciendo)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                validar = false;
+                                if (txtNombre.getText().toString().isEmpty() || txtApellido.getText().toString().isEmpty() || txtDireccion.getText().toString().isEmpty() || txtTelefono.getText().toString().isEmpty() || txtEmail.getText().toString().isEmpty() || txtCedula.getText().toString().isEmpty()) {
+                                    validar = true;
+                                    Toast.makeText(getContext(), "Llene todos los campos", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    if (txtCedula.getText().length() < 10) {
+                                        Toast.makeText(getContext(), "Cedula incorrecta", Toast.LENGTH_SHORT).show();
+                                        validar = true;
+                                    }
+                                    if (txtTelefono.getText().length() < 10) {
+                                        Toast.makeText(getContext(), "Telefono incorrecto", Toast.LENGTH_SHORT).show();
+                                        validar = true;
+                                    }
+                                }
+                                if (validar == false) {
+                                    //CARGAR DATOS OBJETO PERSONA
+                                    per.setCedula(txtCedula.getText().toString());
+                                    per.setNombre(txtNombre.getText().toString());
+                                    per.setApellido(txtApellido.getText().toString());
+                                    per.setDireccion(txtDireccion.getText().toString());
+                                    per.setCelular(txtTelefono.getText().toString());
+                                    per.setCorreo(txtEmail.getText().toString());
+                                    confirm_password_dialog = new Dialog(getActivity());
+                                    confirm_password();
+
+                                }
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }).show();
+
+            }
 
         });
         btn_cancelar = (Button) view.findViewById(R.id.btn_cancelar);
@@ -115,7 +164,7 @@ public class Fragment_UpdatePerson extends Fragment {
                         .replace(R.id.contentFrame, fr)
                         .addToBackStack(null)
                         .commit();
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Productos");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Productos");
 
                 Toast.makeText(getContext(), "Cancelar", Toast.LENGTH_LONG).show();
             }
@@ -123,17 +172,19 @@ public class Fragment_UpdatePerson extends Fragment {
         return view;
 
     }
-    boolean bandera=false;
-    public void confirm_password(){
-        bandera=false;
+
+    boolean bandera = false;
+
+    public void confirm_password() {
+        bandera = false;
         CargarUsuario use = new CargarUsuario(getContext());
         EditText editTextPassword;
         Button cancel;
         Button confirm;
         confirm_password_dialog.setContentView(R.layout.dialog_confirm_password);
-        editTextPassword=confirm_password_dialog.findViewById(R.id.txt_password_dialog);
-        cancel=confirm_password_dialog.findViewById(R.id.btn_cancelar_dialog);
-        confirm=confirm_password_dialog.findViewById(R.id.btn_confirm_dialog);
+        editTextPassword = confirm_password_dialog.findViewById(R.id.txt_password_dialog);
+        cancel = confirm_password_dialog.findViewById(R.id.btn_cancelar_dialog);
+        confirm = confirm_password_dialog.findViewById(R.id.btn_confirm_dialog);
 
 
         confirm_password_dialog.show();
@@ -141,11 +192,11 @@ public class Fragment_UpdatePerson extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(use.listarUsuarioP().get(0).getUsu_contrasena().equals(editTextPassword.getText().toString())){
+                if (use.listarUsuarioP().get(0).getUsu_contrasena().equals(editTextPassword.getText().toString())) {
                     Toast.makeText(getContext(), "Contaseña Correcta", Toast.LENGTH_LONG).show();
                     updatePerson(per);
                     confirm_password_dialog.dismiss();
-                }else {
+                } else {
                     Toast.makeText(getContext(), "Contaseña Incorrecta", Toast.LENGTH_LONG).show();
                 }
             }
@@ -163,6 +214,7 @@ public class Fragment_UpdatePerson extends Fragment {
     PersonaService personaService;
 
     public void updatePerson(Persona person) {
+
         personaService = Apis.getPesonaService();
         Call<Persona> call = personaService.updatePerson(idpersona, person);
         call.enqueue(new Callback<Persona>() {
