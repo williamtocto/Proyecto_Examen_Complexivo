@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
 import com.example.proyecto_examen_complexivo.modelo.Servicio;
 import com.squareup.picasso.Picasso;
@@ -19,13 +21,14 @@ public class ServicioDetalle extends AppCompatActivity {
     private TextView txtNombre, txtPrecio, txtDescripcion;
     private Servicio detalleServicio;
     private Button btnGuardar;
+    private DbHelper conn, db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicio_detalle);
         setTitle(getClass().getSimpleName());
-
+        conn = new DbHelper( ServicioDetalle.this, "basetemp", null, 2);
         initViews();
         initValues();
         guardar();
@@ -33,45 +36,30 @@ public class ServicioDetalle extends AppCompatActivity {
 
     public void guardar(){
         detalleServicio = (Servicio) getIntent().getExtras().getSerializable("itemDetail");
+        db = new DbHelper(ServicioDetalle.this, "basetemp", null, 2);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Carrito carritoActual = new Carrito();
-                carritoActual.setId_producto(CodigoArchivo());
-                carritoActual.setNombre_producto(detalleServicio.getNombre());
-                carritoActual.setCantidad(1);
-                carritoActual.setImg(detalleServicio.getFoto());
-                carritoActual.setPrecio_producto(Double.parseDouble(detalleServicio.getPrecio()));
-                carritoActual.setDescricpion_producto(detalleServicio.getDescripcion());
-                carritoActual.setTotal_precio(Double.parseDouble(detalleServicio.getPrecio()));
-                carritoActual.Guardar(ServicioDetalle.this);
-                finish();
+                Boolean validacion = db.ValidacionCarrito(detalleServicio.getNombre());
+                if (validacion==true){
+                    Toast.makeText(ServicioDetalle.this, "Servicio ya ingresado", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else {
+                    Carrito carritoActual = new Carrito();
+                    carritoActual.setId_producto(String.valueOf(detalleServicio.getId()));
+                    carritoActual.setNombre_producto(detalleServicio.getNombre());
+                    carritoActual.setCantidad(1);
+                    carritoActual.setImg(detalleServicio.getFoto());
+                    carritoActual.setPrecio_producto(Double.parseDouble(detalleServicio.getPrecio()));
+                    carritoActual.setDescricpion_producto(detalleServicio.getDescripcion());
+                    carritoActual.setTotal_precio(Double.parseDouble(detalleServicio.getPrecio()));
+                    carritoActual.Guardar(ServicioDetalle.this);
+                    finish();
+                }
             }
         });
     }
-
-
-
-
-    public String CodigoArchivo() {
-        // txtCodigoArchivo = findViewById(R.id.txtCodigoArchivoPdf);
-        String serial = "";
-        Random random = new Random();
-        String abecedario = "ABCDEFGHIJKMOPRSTUVWXYZ";
-        String cadena = "";
-        int m = 0, pos = 0, num;
-        while (m < 1) {
-            pos = (int) (random.nextDouble() * abecedario.length() - 1 + 0);
-            num = (int) (random.nextDouble() * 9999 + 1000);
-            cadena = cadena + abecedario.charAt(pos) + num;
-            pos = (int) (random.nextDouble() * abecedario.length() - 1 + 0);
-            cadena = cadena + abecedario.charAt(pos);
-            serial = "ARCHIVO-" + cadena;
-            m++;
-        }
-        return serial;
-    }
-
+    
     private void initViews(){
         imgDetail = findViewById(R.id.imgFotoServicio);
         txtNombre = findViewById(R.id.txtNombre_Servicio);

@@ -67,6 +67,19 @@ public class DbHelper extends   SQLiteOpenHelper {
         }
     }
 
+    public Boolean ValidacionCarrito(String id){
+        SQLiteDatabase sql = this.getWritableDatabase();
+        Cursor cursor = sql.rawQuery("SELECT * FROM carrito WHERE nombre_producto = ? ", new String[]{id});
+        if (cursor.getCount()>0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
+
     public void editarUsuario(String nombreUsuario, String contrasenia, String user_anterior){
         SQLiteDatabase bd= getWritableDatabase();
         bd.execSQL("UPDATE usuario SET usuusuario='"+nombreUsuario+"', usu_contrasena='"+contrasenia+"'"+" WHERE usuusuario= '"+user_anterior+"'");

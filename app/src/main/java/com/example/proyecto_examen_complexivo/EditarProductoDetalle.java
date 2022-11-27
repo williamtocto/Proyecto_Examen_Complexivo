@@ -29,6 +29,7 @@ public class EditarProductoDetalle extends AppCompatActivity {
         setContentView(R.layout.activity_editar_producto_detalle);
         initViews();
         initValues();
+
         ActualizarDatos();
         EliminarDatoCarrito();
     }
@@ -43,6 +44,7 @@ public class EditarProductoDetalle extends AppCompatActivity {
                 producto = (Carrito) getIntent().getExtras().getSerializable("productodetalle");
                 Toast.makeText(EditarProductoDetalle.this, ""+producto.getId_producto(), Toast.LENGTH_SHORT).show();
                 carritoActual.setCantidad(Integer.parseInt(txtCantidad.getText().toString()));
+
                 carritoActual.ActualizarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
             }
