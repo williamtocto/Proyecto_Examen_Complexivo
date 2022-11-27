@@ -1,6 +1,7 @@
 package com.example.proyecto_examen_complexivo.Fragments;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.proyecto_examen_complexivo.Inicio_Login;
+import com.example.proyecto_examen_complexivo.MainActivity;
+import com.example.proyecto_examen_complexivo.Navegacion;
 import com.example.proyecto_examen_complexivo.R;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
@@ -23,7 +27,7 @@ import retrofit2.Callback;
 public class Fragment_UpdatePerson extends Fragment {
 
     EditText txtCedula, txtNombre, txtApellido, txtDireccion, txtTelefono, txtEmail, txtUsuario, txtContrasenia, txt_nueva_contra, confirm_password;
-    Button btn_guardar, btn_cancelar, btn_editar;
+    Button btn_guardar, btn_cancelar, btn_editar,btn_cerrar_sesion;
     View view;
     long idpersona;
     boolean validar = false;
@@ -43,6 +47,19 @@ public class Fragment_UpdatePerson extends Fragment {
         txtDireccion = view.findViewById(R.id.txtDireccionUpdate);
         txtTelefono = view.findViewById(R.id.txt_telefono_update);
         txtEmail = view.findViewById(R.id.txt_usuario_update);
+        btn_cerrar_sesion=view.findViewById(R.id.btn_cerrar_sesion);
+
+
+        btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), Inicio_Login.class);
+                startActivity(intent);
+                DbHelper bd = new DbHelper(getContext());
+                bd.eliminarUsuario();
+            }
+        });
+
 
 
         //CARGAR DATOS USUARIO
