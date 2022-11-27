@@ -55,6 +55,7 @@ public class FacturacionAdapter extends RecyclerView.Adapter<FacturacionAdapter.
         Carrito pro = ListaCarrito.get(position);
         holder.txtCantidad.setText(String.valueOf(pro.getCantidad()));
         holder.txtDescripcion.setText(pro.getDescricpion_producto());
+        holder.tipofactura.setText(pro.getTipo());
         holder.txtValorUnitario.setText(String.valueOf(pro.getPrecio_producto()));
         double resultado =0;
         for (int i=0; i<pro.getCantidad(); i++){
@@ -73,7 +74,7 @@ public class FacturacionAdapter extends RecyclerView.Adapter<FacturacionAdapter.
 
     public class ViewHolder  extends RecyclerView.ViewHolder{
 
-        TextView txtCantidad, txtDescripcion, txtValorUnitario, txtValorTotal;
+        TextView txtCantidad, txtDescripcion, txtValorUnitario, txtValorTotal,tipofactura;
         ImageView img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +82,7 @@ public class FacturacionAdapter extends RecyclerView.Adapter<FacturacionAdapter.
             txtDescripcion = itemView.findViewById(R.id.txtDescripcionFactura);
             txtValorUnitario = itemView.findViewById(R.id.txt_valor_unitario);
             txtValorTotal = itemView.findViewById(R.id.txt_valor_total);
+            tipofactura = itemView.findViewById(R.id.tipofactura);
             img = itemView.findViewById(R.id.imgProductoFacturacion);
         }
     }

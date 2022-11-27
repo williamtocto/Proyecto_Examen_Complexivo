@@ -14,6 +14,7 @@ public class Carrito implements Serializable {
 
 
 
+    private long idproducto;
     private String Id_producto;
     private String nombre_producto;
     private double precio_producto;
@@ -21,21 +22,40 @@ public class Carrito implements Serializable {
     private String img;
     private int cantidad;
     private double total_precio;
+    private String tipo;
     ArrayList<Carrito> comprados;
 
 
     public Carrito() {
     }
 
-    public Carrito(String id_producto, String nombre_producto, double precio_producto, String descricpion_producto, String img, int cantidad, double total_precio, ArrayList<Carrito> comprados) {
+    public Carrito(long idproducto,String id_producto, String nombre_producto, double precio_producto, String descricpion_producto, String img, int cantidad, double total_precio,String tipo, ArrayList<Carrito> comprados) {
         Id_producto = id_producto;
+        this.idproducto = idproducto;
         this.nombre_producto = nombre_producto;
         this.precio_producto = precio_producto;
         this.descricpion_producto = descricpion_producto;
         this.img = img;
         this.cantidad = cantidad;
         this.total_precio = total_precio;
+        this.tipo = tipo;
         this.comprados = comprados;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public long getIdproducto() {
+        return idproducto;
+    }
+
+    public void setIdproducto(long idproducto) {
+        this.idproducto = idproducto;
     }
 
     public double getTotal_precio() {
@@ -96,8 +116,8 @@ public class Carrito implements Serializable {
 //En esta parte realizamos nuestras consultas
     public void Guardar(Context context){
         DbHelper dbhelper = new DbHelper(context, "basetemp", null, 2);
-        String nsql = "INSERT INTO carrito (id_carrito, nombre_producto, cantidad, precio, descripcion_producto, IMAGEN) "+
-                "VALUES ('"+getId_producto()+"', '"+getNombre_producto()+"', '"+getCantidad()+"', '"+getPrecio_producto()+"', '"+getDescricpion_producto()+"', '"+getImg()+"')";
+        String nsql = "INSERT INTO carrito (id_carrito, nombre_producto, cantidad, precio, descripcion_producto, IMAGEN, tipo, idproducto) "+
+                "VALUES ('"+getId_producto()+"', '"+getNombre_producto()+"', '"+getCantidad()+"', '"+getPrecio_producto()+"', '"+getDescricpion_producto()+"', '"+getImg()+"','"+getTipo()+"','"+getIdproducto()+"')";
         dbhelper.noQuery(nsql);
         dbhelper.close();
     }
@@ -116,6 +136,8 @@ public class Carrito implements Serializable {
             carritoActual.setPrecio_producto(cursor.getDouble(3));
             carritoActual.setDescricpion_producto(cursor.getString(4));
             carritoActual.setImg(cursor.getString(5));
+            carritoActual.setTipo(cursor.getString(6));
+            carritoActual.setIdproducto(cursor.getInt(7));
             comprados.add(carritoActual);
             dbHelper.close();
         }

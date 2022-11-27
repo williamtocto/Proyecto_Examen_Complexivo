@@ -55,17 +55,19 @@
             app:layout_constraintEnd_toStartOf="@+id/txtTotalComprasCarrito"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintTop_toBottomOf="@+id/recyclecompras" app:layout_constraintVertical_bias="1.0"/>
+
     <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/detalle_de_sus_compras"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="SUS COMPRAS"/>
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/detalle_de_sus_compras"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="SUS COMPRAS" />
 </androidx.constraintlayout.widget.ConstraintLayout>

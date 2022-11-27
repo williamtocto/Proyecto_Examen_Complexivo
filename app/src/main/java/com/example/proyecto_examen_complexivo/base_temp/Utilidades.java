@@ -20,6 +20,8 @@ public class Utilidades {
     public static final String PRECIO = "precio ";
     public static final String DESCRIPCION_PRODUCTO = "descripcion_producto ";
     public static final String IMAGENFOTO = "IMAGEN ";
+    public static final String TIPO = "tipo";
+    public static final String IDPRODUCTO = "idproducto";
 
 
     public static final String CREAR_TABLA_CARRITO = "CREATE TABLE " +
@@ -29,7 +31,9 @@ public class Utilidades {
             + CANTIDAD_CARRITO + " INTEGER,"
             + PRECIO + " DOUBLE, "
             + DESCRIPCION_PRODUCTO + " TEXT,"
-            + IMAGENFOTO + " TEXT)";
+            + IMAGENFOTO + " TEXT,"
+            + TIPO + " TEXT,"
+            + IDPRODUCTO + " INTEGER)";
 
 
     public static final String TABLA_USUARIO = "usuario ";

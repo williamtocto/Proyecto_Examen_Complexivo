@@ -29,7 +29,19 @@ public class DetalleFactura {
     @Expose
     private Servicio idservicio;
 
+    @SerializedName("tipo")
+    @Expose
+    private String tipo;
+
     public DetalleFactura() {
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public long getIddetalle() {

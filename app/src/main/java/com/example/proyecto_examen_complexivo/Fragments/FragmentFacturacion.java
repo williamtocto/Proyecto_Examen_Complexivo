@@ -39,6 +39,7 @@
         private static Factura factura = new Factura();
         private DetalleFactura detalleFactura = new DetalleFactura();
         private Servicio servicio = new Servicio();
+        private Producto producto=new Producto();
 
         View view;
 
@@ -142,16 +143,8 @@
         Call<Factura> fac = constantes.getApiService().getfactura(factura);
         fac.enqueue(new Callback<Factura>() {
             @Override
-            public void onResponse(Call<Factura> call, retrofit2.Response<Factura> response) {
+            public void onResponse(Call<Factura> call, Response<Factura> response) {
                 factura.setIdfactura(response.body().getIdfactura());
-                if (response.isSuccessful()) {
-                    ProductosFragment fr = new ProductosFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.contentFrame, fr)
-                            .addToBackStack(null)
-                            .commit();
-                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Productos");
-                }
             }
 
 
@@ -169,18 +162,24 @@
             if (car.getCantidad() > 1) {
                 total = car.getPrecio_producto() * car.getCantidad();
             }
+            producto.setId(car.getIdproducto());
             detalleFactura.setIddetalle(0);
             detalleFactura.setCantidad(car.getCantidad());
             detalleFactura.setPrecio(total);
+            detalleFactura.setTipo(car.getTipo());
             detalleFactura.setIdfactura(factura);
             detalleFactura.setIdservicio(servicio);
-            Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
+            detalleFactura.setIdproducto(producto);
+
+            Toast.makeText(getContext(), "** "+detalleFactura.getIdproducto().getId(), Toast.LENGTH_SHORT).show();
+           Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
             res.enqueue(new Callback<DetalleFactura>() {
                 @Override
                 public void onResponse(Call<DetalleFactura> call, Response<DetalleFactura> response) {
                     Carrito carrito = new Carrito();
                     carrito.Limpiarcarrito(getContext());
                     Toast.makeText(getContext(), "Compra exitosa", Toast.LENGTH_SHORT).show();
+
 
                 }
 

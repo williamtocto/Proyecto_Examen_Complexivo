@@ -105,4 +105,15 @@
             android:text="@string/serial"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgFotoDetalleCompras" android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/txttipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="tipo"
+        android:textColor="@color/verde_odiseum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

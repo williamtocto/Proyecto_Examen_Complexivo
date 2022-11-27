@@ -51,11 +51,13 @@ public class ProductoServicioDetalle extends AppCompatActivity {
             public void onClick(View view) {
                 Carrito carritoActual = new Carrito();
                 carritoActual.setId_producto(CodigoArchivo());
+                carritoActual.setIdproducto(productoDetalle.getId());
                 carritoActual.setNombre_producto(productoDetalle.getNombre());
                 carritoActual.setPrecio_producto(productoDetalle.getPrecio());
                 carritoActual.setDescricpion_producto(productoDetalle.getDescripcion());
                 carritoActual.setCantidad(Integer.parseInt(txtCantidad.getText().toString()));
                 carritoActual.setImg(productoDetalle.getFoto());
+                carritoActual.setTipo("producto");
                 carritoActual.Guardar(ProductoServicioDetalle.this);
                 finish();
             }

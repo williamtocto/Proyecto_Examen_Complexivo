@@ -53,6 +53,7 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
         holder.Descripcion_Producto.setText(ListaCarrito.get(position).getDescricpion_producto());
         holder.Precio_Producto.setText(String.valueOf(ListaCarrito.get(position).getPrecio_producto()));
         holder.Cantidad_Producto.setText(String.valueOf(ListaCarrito.get(position).getCantidad()));
+        holder.tipo.setText(String.valueOf(ListaCarrito.get(position).getTipo()));
         Picasso.get().load(ListaCarrito.get(position).getImg()).resize(300,450).centerCrop()
                 .into(holder.img);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +75,7 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
 
     public class ViewHolder  extends RecyclerView.ViewHolder{
 
-        TextView Nombre_Producto, Descripcion_Producto, Cantidad_Producto, Precio_Producto, id_Producto;
+        TextView Nombre_Producto, Descripcion_Producto, Cantidad_Producto, Precio_Producto, id_Producto, tipo;
         ImageView img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +84,7 @@ public class detallecomprasAdapter extends RecyclerView.Adapter<detallecomprasAd
             Cantidad_Producto = itemView.findViewById(R.id.txtCantidadProductaDeta);
             Precio_Producto = itemView.findViewById(R.id.txtPrecioProductoDetalleCompras);
             Descripcion_Producto = itemView.findViewById(R.id.txtDescripcionDetalleCompras);
+            tipo = itemView.findViewById(R.id.txttipo);
             img = itemView.findViewById(R.id.imgFotoDetalleCompras);
 
         }

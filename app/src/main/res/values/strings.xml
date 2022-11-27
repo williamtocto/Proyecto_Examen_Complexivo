@@ -56,7 +56,7 @@
     <string name="login_txt_password">Clave</string>
     <string name="login_txt_password_repi">Confirmar Clave</string>
     <string name="login_txt_username">Usuario</string>
-    <string name="detalle_de_sus_compras">Detalle de sus compras</string>
+    <string name="detalle_de_sus_compras">Sus compras</string>
     <string name="comprar2">Comprar</string>
     <string name="cancelar2">Cancelar</string>
     <string name="total_de_sus_compras">Total de sus compras:</string>

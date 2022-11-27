@@ -134,11 +134,6 @@ public class facturacion extends AppCompatActivity {
             @Override
             public void onResponse(Call<Factura> call, retrofit2.Response<Factura> response) {
                 factura.setIdfactura(response.body().getIdfactura());
-               ///////////////////////////aqui para regresar al fragament de producto corregir
-                if (response.isSuccessful()) {
-                    FragmentManager fm= getSupportFragmentManager();
-                    fm.beginTransaction().replace(R.id.container, new Fragment_UpdatePerson()).commit();
-                }
                 }
 
 
@@ -158,9 +153,11 @@ public class facturacion extends AppCompatActivity {
             }
             detalleFactura.setIddetalle(0);
             detalleFactura.setCantidad(car.getCantidad());
+            detalleFactura.setTipo(car.getTipo());
             detalleFactura.setPrecio(total);
             detalleFactura.setIdfactura(factura);
             detalleFactura.setIdservicio(servicio);
+            Toast.makeText(this, ""+detalleFactura.getTipo(), Toast.LENGTH_SHORT).show();
             Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
             res.enqueue(new Callback<DetalleFactura>() {
                 @Override
@@ -168,7 +165,12 @@ public class facturacion extends AppCompatActivity {
                     Carrito carrito = new Carrito();
                     carrito.Limpiarcarrito(facturacion.this);
                     Toast.makeText(facturacion.this, "Compra exitosa", Toast.LENGTH_SHORT).show();
-                    finish();
+
+                    ///////////////////////////aqui para regresar al fragament de producto corregir
+                    if (response.isSuccessful()) {
+                        FragmentManager fm= getSupportFragmentManager();
+                        fm.beginTransaction().replace(R.id.container, new Fragment_UpdatePerson()).commit();
+                    }
                 }
 
                 @Override
@@ -178,6 +180,7 @@ public class facturacion extends AppCompatActivity {
                 }
             });
         }
+
 
 
     }
