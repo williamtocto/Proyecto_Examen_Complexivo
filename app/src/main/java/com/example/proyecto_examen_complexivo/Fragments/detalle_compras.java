@@ -86,7 +86,8 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
     public void consultarComprasCarrito(){
         Carrito carrito = new Carrito();
         listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
-
+      //  listCarrito.clear();
+//        adapter.notifyDataSetChanged();
     }
 
     @Override
