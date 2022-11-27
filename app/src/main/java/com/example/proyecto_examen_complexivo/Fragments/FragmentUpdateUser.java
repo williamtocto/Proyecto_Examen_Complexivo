@@ -82,7 +82,8 @@ public class FragmentUpdateUser extends Fragment {
                                         validar = true;
                                     } else if (txt_password.getText().toString().equals(txt_confirm_pasword.getText().toString())) {
                                         if (validar == false) {
-                                            getUser();
+                                            confirm_password();
+
                                         }
                                     } else {
                                         validar = true;
@@ -166,6 +167,43 @@ public class FragmentUpdateUser extends Fragment {
             }
 
         });
+
+    }
+
+
+    Dialog confirm_password_dialog;
+    public void confirm_password() {
+       boolean bandera = false;
+        CargarUsuario use = new CargarUsuario(getContext());
+        EditText editTextPassword;
+        Button cancel;
+        Button confirm;
+        confirm_password_dialog.setContentView(R.layout.dialog_confirm_password);
+        editTextPassword = confirm_password_dialog.findViewById(R.id.txt_password_dialog);
+        cancel = confirm_password_dialog.findViewById(R.id.btn_cancelar_dialog);
+        confirm = confirm_password_dialog.findViewById(R.id.btn_confirm_dialog);
+
+
+        confirm_password_dialog.show();
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (use.listarUsuarioP().get(0).getUsu_contrasena().equals(editTextPassword.getText().toString())) {
+                    getUser();
+                    confirm_password_dialog.dismiss();
+                } else {
+                    Toast.makeText(getContext(), "Contaseña Incorrecta", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirm_password_dialog.dismiss();
+            }
+        });
+
 
     }
 }

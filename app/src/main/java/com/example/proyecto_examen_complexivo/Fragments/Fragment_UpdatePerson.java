@@ -55,10 +55,25 @@ public class Fragment_UpdatePerson extends Fragment {
         btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Inicio_Login.class);
-                startActivity(intent);
-                DbHelper bd = new DbHelper(getContext());
-                bd.eliminarUsuario();
+                new AlertDialog.Builder(getContext()).setIcon(R.drawable.icon_warning).setTitle("Advertencia").setMessage("¿Esta seguro de Cerrar Sesion?")
+                        //Boton de Si (Se supone: El Usurio es consiente de lo que esta haciendo)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(getContext(), Inicio_Login.class);
+                                startActivity(intent);
+                                DbHelper bd = new DbHelper(getContext());
+                                bd.eliminarUsuario();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }).show();
+
+
+
             }
         });
 
