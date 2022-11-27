@@ -93,7 +93,7 @@ public class ProductoServicioDetalle extends AppCompatActivity {
                 }else {
 
                     Carrito carritoActual = new Carrito();
-                    carritoActual.setId_producto(String.valueOf(productoDetalle.getId()));
+                    carritoActual.setId_producto(CodigoArchivo());
                     carritoActual.setNombre_producto(productoDetalle.getNombre());
                     carritoActual.setPrecio_producto(productoDetalle.getPrecio());
                     carritoActual.setDescricpion_producto(productoDetalle.getDescripcion());
@@ -127,6 +127,24 @@ public class ProductoServicioDetalle extends AppCompatActivity {
     }
 
 
+    public String CodigoArchivo() {
+        //  txtCodigoArchivo = findViewById(R.id.txtCodigoArchivoPdf);
+        Random random = new Random();
+        String abecedario = "ABCDEFGHIJKMOPRSTUVWXYZ";
+        String cadena = "";
+        String archivo = "";
+        int m = 0, pos = 0, num;
+        while (m < 1) {
+            pos = (int) (random.nextDouble() * abecedario.length() - 1 + 0);
+            num = (int) (random.nextDouble() * 9999 + 1000);
+            cadena = cadena + abecedario.charAt(pos) + num;
+            pos = (int) (random.nextDouble() * abecedario.length() - 1 + 0);
+            cadena = cadena + abecedario.charAt(pos);
+            archivo = ("ARCHIVO-" + cadena);
+            m++;
+        }
+        return archivo;
+    }
 
 
 }
