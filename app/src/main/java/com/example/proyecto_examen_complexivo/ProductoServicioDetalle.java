@@ -45,11 +45,6 @@ public class ProductoServicioDetalle extends AppCompatActivity {
         GuardarCarrito();
     }
 
-
-
-
-
-
     public void GuardarCarrito(){
         productoDetalle = (Producto) getIntent().getExtras().getSerializable("itemDetail");
         btnGuardar = findViewById(R.id.btnGuardarCarrito);

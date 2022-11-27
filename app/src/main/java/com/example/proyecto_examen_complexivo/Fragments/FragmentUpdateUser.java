@@ -82,6 +82,7 @@ public class FragmentUpdateUser extends Fragment {
                                         validar = true;
                                     } else if (txt_password.getText().toString().equals(txt_confirm_pasword.getText().toString())) {
                                         if (validar == false) {
+                                            confirm_password_dialog = new Dialog(getActivity());
                                             confirm_password();
 
                                         }
@@ -97,7 +98,6 @@ public class FragmentUpdateUser extends Fragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                             }
                         }).show();
-
             }
 
         });
