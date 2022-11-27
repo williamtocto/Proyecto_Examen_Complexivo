@@ -18,22 +18,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.L;
-import com.example.proyecto_examen_complexivo.ProductoServicioDetalle;
+
 import com.example.proyecto_examen_complexivo.ServicioDetalle;
-import com.example.proyecto_examen_complexivo.adapter.CategoriaPAdapter;
 import com.example.proyecto_examen_complexivo.adapter.CategoriaSAdapter;
-import com.example.proyecto_examen_complexivo.adapter.ProductoAdapter;
 import com.example.proyecto_examen_complexivo.adapter.ServiciosAdapter;
-import com.example.proyecto_examen_complexivo.adapter.SubcategoriaPAdapter;
 import com.example.proyecto_examen_complexivo.adapter.SubcategoriaSAdapter;
 import com.example.proyecto_examen_complexivo.databinding.FragmentServiciosBinding;
-import com.example.proyecto_examen_complexivo.modelo.CategoriaP;
 import com.example.proyecto_examen_complexivo.modelo.CategoriaS;
 import com.example.proyecto_examen_complexivo.modelo.Servicio;
-import com.example.proyecto_examen_complexivo.modelo.SubcategoriaP;
 import com.example.proyecto_examen_complexivo.modelo.SubcategoriaS;
-import com.example.proyecto_examen_complexivo.network.Api;
+
 import com.example.proyecto_examen_complexivo.network.Constantes;
 
 import java.util.ArrayList;

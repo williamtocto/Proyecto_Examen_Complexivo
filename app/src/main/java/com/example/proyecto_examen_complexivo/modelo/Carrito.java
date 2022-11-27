@@ -2,7 +2,6 @@ package com.example.proyecto_examen_complexivo.modelo;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.widget.Toast;
 
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.base_temp.Utilidades;
@@ -21,6 +20,7 @@ public class Carrito implements Serializable {
     private double precio_producto;
     private String descricpion_producto;
     private String img;
+    private int stock;
     private int cantidad;
     private double total_precio;
     private String tipo;
@@ -40,6 +40,22 @@ public class Carrito implements Serializable {
         this.cantidad = cantidad;
         this.total_precio = total_precio;
         this.tipo = tipo;
+        this.comprados = comprados;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public ArrayList<Carrito> getComprados() {
+        return comprados;
+    }
+
+    public void setComprados(ArrayList<Carrito> comprados) {
         this.comprados = comprados;
     }
 

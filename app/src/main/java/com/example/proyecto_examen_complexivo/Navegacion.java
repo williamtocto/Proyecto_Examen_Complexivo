@@ -1,5 +1,6 @@
 package com.example.proyecto_examen_complexivo;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.Menu;
 import android.view.View;
@@ -116,7 +117,10 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
                     getSupportActionBar().setTitle("Servicios");
                     break;
                 case R.id.nav_carrito:
-                    ft.replace(R.id.contentFrame, new detalle_compras()).commit();
+                    /*Intent carritoActi = new Intent(this, CarritoCompras.class);
+                    startActivity(carritoActi);
+                    finish();*/
+                   ft.replace(R.id.contentFrame, new detalle_compras()).commit();
                     getSupportActionBar().setTitle("Carrito");
                     break;
                 case R.id.nav_perfil:

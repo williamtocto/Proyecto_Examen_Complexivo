@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.L;
+import com.example.proyecto_examen_complexivo.DetalleProducto;
 import com.example.proyecto_examen_complexivo.MainActivity;
 import com.example.proyecto_examen_complexivo.ProductoServicioDetalle;
 import com.example.proyecto_examen_complexivo.R;
@@ -233,7 +234,7 @@ public class ProductosFragment extends Fragment implements ProductoAdapter.Recyc
 
     @Override
     public void itemCLick(Producto producto) {
-        Intent intent = new Intent(ProductosFragment.this.getContext(), ProductoServicioDetalle.class);
+        Intent intent = new Intent(ProductosFragment.this.getContext(), DetalleProducto.class);
         intent.putExtra("itemDetail", producto);
         startActivity(intent);
     }

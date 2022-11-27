@@ -93,8 +93,30 @@ public class DbHelper extends   SQLiteOpenHelper {
 
 
     public void editarPersona(String cedula, String nombre, String apellido, String direccion, String telefono, String correo,String cedula_anterior){
-        SQLiteDatabase bd= getWritableDatabase();
+        SQLiteDatabase bd= this.getWritableDatabase();
         bd.execSQL("UPDATE usuario SET cedula='"+cedula+"', nombre='"+nombre+"',apellido='"+ apellido+"',direccion= '"+direccion+"',telefono= '"+telefono+"', correo= '"+correo+"'  WHERE cedula= '"+cedula+"'");
         bd.close();
     }
+
+/*
+    public void eliminarCarrito(String name){
+        SQLiteDatabase bd= getWritableDatabase();
+        String sql="";
+        if (name == null) {
+            sql= "DELETE FROM carrito";
+        }else {
+            sql= "DELETE FROM carrito WHERE nombreProducto='"+name+"'";
+        }
+        bd.execSQL(sql);
+        bd.close();
+
+    }
+
+
+
+    public void editarCarrito(String nombre, String cantidadCompra){
+        SQLiteDatabase bd= this.getWritableDatabase();
+        bd.execSQL("UPDATE carrito SET cantidadCompra="+cantidadCompra+" WHERE nombreProducto='"+nombre+"'");
+        bd.close();
+    }*/
 }

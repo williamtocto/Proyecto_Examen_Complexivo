@@ -93,5 +93,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="gmail">GMAIL:</string>
     <string name="editar">Editar</string>
+    <string name="title_cantidad_title">Unidades Disponibles</string>
 
 </resources>

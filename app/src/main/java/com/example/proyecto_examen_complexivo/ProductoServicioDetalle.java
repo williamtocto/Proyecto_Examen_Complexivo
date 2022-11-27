@@ -1,28 +1,19 @@
 package com.example.proyecto_examen_complexivo;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Base64;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
-import com.example.proyecto_examen_complexivo.adapter.detallecomprasAdapter;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
 import com.example.proyecto_examen_complexivo.modelo.Producto;
 import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+
 import java.util.Random;
 
 public class ProductoServicioDetalle extends AppCompatActivity {

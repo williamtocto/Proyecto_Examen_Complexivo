@@ -14,11 +14,11 @@ public class Producto  implements Serializable {
 
     @SerializedName("nombre")
     @Expose
-    private String  nombre;
+    private String nombre;
 
     @SerializedName("descripcion")
     @Expose
-    private String  descripcion;
+    private String descripcion;
 
     @SerializedName("precio")
     @Expose
@@ -27,9 +27,10 @@ public class Producto  implements Serializable {
     @SerializedName("imagen")
     private String foto;
 
+    @SerializedName("stock")
+    private int stock;
+
     private Long id;
-
-
 
 
     public Producto() {
@@ -45,6 +46,13 @@ public class Producto  implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
     public Long getIdproducto() {
         return idproducto;
