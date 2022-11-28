@@ -175,8 +175,6 @@
                     detalleFactura.setIdproducto(producto);
                     detalleFactura.setIdservicio(servicio);
 
-
-
                     Call<DetalleFactura> res = constantes.getApiService().getdetallefactura(detalleFactura);
                     res.enqueue(new Callback<DetalleFactura>() {
                 @Override
@@ -187,7 +185,7 @@
                     ///////////////////////////aqui para regresar al fragament de producto corregir
                     if (response.isSuccessful()) {
                         FragmentManager fm= getActivity().getSupportFragmentManager();
-                        fm.beginTransaction().replace(R.id.container, new Fragment_UpdatePerson()).commit();
+                        fm.beginTransaction().replace(R.id.container, new ProductosFragment()).commit();
                     }
 
                 }
