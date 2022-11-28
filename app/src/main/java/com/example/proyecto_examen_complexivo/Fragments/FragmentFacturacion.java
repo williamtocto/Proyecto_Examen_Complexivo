@@ -185,7 +185,7 @@
                     ///////////////////////////aqui para regresar al fragament de producto corregir
                     if (response.isSuccessful()) {
                         FragmentManager fm= getActivity().getSupportFragmentManager();
-                        fm.beginTransaction().replace(R.id.container, new ProductosFragment()).commit();
+                        fm.beginTransaction().replace(R.id.contentFrame, new ProductosFragment()).commit();
                     }
 
                 }
