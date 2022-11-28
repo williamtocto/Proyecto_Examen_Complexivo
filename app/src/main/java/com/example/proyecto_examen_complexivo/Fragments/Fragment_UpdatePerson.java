@@ -13,10 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.proyecto_examen_complexivo.Inicio_Login;
-import com.example.proyecto_examen_complexivo.MainActivity;
-import com.example.proyecto_examen_complexivo.Navegacion;
-import com.example.proyecto_examen_complexivo.R;
+import com.example.proyecto_examen_complexivo.*;
 import com.example.proyecto_examen_complexivo.base_temp.DbHelper;
 import com.example.proyecto_examen_complexivo.datos_sqlite.CargarUsuario;
 import com.example.proyecto_examen_complexivo.modelo.Persona;
@@ -60,7 +57,7 @@ public class Fragment_UpdatePerson extends Fragment {
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(getContext(), Inicio_Login.class);
+                                Intent intent = new Intent(getContext(), PantallaInicio.class);
                                 startActivity(intent);
                                 DbHelper bd = new DbHelper(getContext());
                                 bd.eliminarUsuario();
