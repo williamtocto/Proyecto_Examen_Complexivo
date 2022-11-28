@@ -32,7 +32,7 @@ public class Fragment_UpdatePerson extends Fragment {
     Button btn_guardar, btn_cancelar, btn_editar, btn_cerrar_sesion;
     View view;
     long idpersona;
-    boolean validar = false;
+
     Persona per = new Persona();
     String cedula_anterior;
 
@@ -109,41 +109,37 @@ public class Fragment_UpdatePerson extends Fragment {
 
         btn_guardar.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
 
                 new AlertDialog.Builder(getContext()).setIcon(R.drawable.icon_warning).setTitle("Advertencia").setMessage("¿Esta seguro de Cambiar los datos?")
-                        //Boton de Si (Se supone: El Usurio es consiente de lo que esta haciendo)
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                validar = false;
                                 if (txtNombre.getText().toString().isEmpty() || txtApellido.getText().toString().isEmpty() || txtDireccion.getText().toString().isEmpty() || txtTelefono.getText().toString().isEmpty() || txtEmail.getText().toString().isEmpty() || txtCedula.getText().toString().isEmpty()) {
-                                    validar = true;
                                     Toast.makeText(getContext(), "Llene todos los campos", Toast.LENGTH_SHORT).show();
                                 } else {
                                     if (txtCedula.getText().length() < 10) {
                                         Toast.makeText(getContext(), "Cedula incorrecta", Toast.LENGTH_SHORT).show();
-                                        validar = true;
+                                    }else {
+                                        if (txtTelefono.getText().length() < 10) {
+                                            Toast.makeText(getContext(), "Telefono incorrecto", Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+                                            //CARGAR DATOS OBJETO PERSONA
+                                            per.setCedula(txtCedula.getText().toString());
+                                            per.setNombre(txtNombre.getText().toString());
+                                            per.setApellido(txtApellido.getText().toString());
+                                            per.setDireccion(txtDireccion.getText().toString());
+                                            per.setCelular(txtTelefono.getText().toString());
+                                            per.setCorreo(txtEmail.getText().toString());
+                                            confirm_password_dialog = new Dialog(getActivity());
+                                            confirm_password();
+                                        }
                                     }
-                                    if (txtTelefono.getText().length() < 10) {
-                                        Toast.makeText(getContext(), "Telefono incorrecto", Toast.LENGTH_SHORT).show();
-                                        validar = true;
-                                    }
-                                }
-                                if (validar == false) {
-                                    //CARGAR DATOS OBJETO PERSONA
-                                    per.setCedula(txtCedula.getText().toString());
-                                    per.setNombre(txtNombre.getText().toString());
-                                    per.setApellido(txtApellido.getText().toString());
-                                    per.setDireccion(txtDireccion.getText().toString());
-                                    per.setCelular(txtTelefono.getText().toString());
-                                    per.setCorreo(txtEmail.getText().toString());
-                                    confirm_password_dialog = new Dialog(getActivity());
-                                    confirm_password();
 
                                 }
+
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -185,8 +181,6 @@ public class Fragment_UpdatePerson extends Fragment {
         editTextPassword = confirm_password_dialog.findViewById(R.id.txt_password_dialog);
         cancel = confirm_password_dialog.findViewById(R.id.btn_cancelar_dialog);
         confirm = confirm_password_dialog.findViewById(R.id.btn_confirm_dialog);
-
-
         confirm_password_dialog.show();
 
         confirm.setOnClickListener(new View.OnClickListener() {

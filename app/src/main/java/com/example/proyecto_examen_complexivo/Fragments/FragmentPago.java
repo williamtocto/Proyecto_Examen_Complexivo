@@ -86,8 +86,6 @@ public class FragmentPago extends Fragment {
                             Toast.makeText(getContext(), "CVV incorrecto", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getContext(), "Datos Validados correctamente", Toast.LENGTH_SHORT).show();
-
-
                             FragmentFacturacion fr = new FragmentFacturacion();
                             getActivity().getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.contentFrame, fr)

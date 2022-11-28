@@ -25,7 +25,6 @@ public class Registro_Persona<validar> extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up1);
-
         nombre = findViewById(R.id.txt_nombre);
         apellido = findViewById(R.id.txt_apellido);
         direccion = findViewById(R.id.txt_direccion);
@@ -38,30 +37,36 @@ public class Registro_Persona<validar> extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                validar=false;
+                System.out.println(" AQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
                 if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||direccion.getText().toString().isEmpty()
                         ||telefono.getText().toString().isEmpty()||correo.getText().toString().isEmpty()||cedula.getText().toString().isEmpty()){
                     Toast.makeText(Registro_Persona.this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
+                    validar=true;
                 }else{
                     if(cedula.getText().length()<10){
                         Toast.makeText(Registro_Persona.this, "Cedula incorrecta", Toast.LENGTH_SHORT).show();
                         validar =true;
+                    }else{
+                        if(telefono.getText().length()<10){
+                            Toast.makeText(Registro_Persona.this, "Telefono incorrecto", Toast.LENGTH_SHORT).show();
+                            validar = true;
+                        }else{
+                            if (validar==false){
+                                p = new Persona();
+                                p.setCedula(cedula.getText().toString());
+                                p.setNombre(nombre.getText().toString());
+                                p.setApellido(apellido.getText().toString());
+                                p.setDireccion(direccion.getText().toString());
+                                p.setCelular(telefono.getText().toString());
+                                p.setCorreo(correo.getText().toString());
+                                getPersona(cedula.getText().toString());
+                            }
+                        }
                     }
-                    if(telefono.getText().length()<10){
-                        Toast.makeText(Registro_Persona.this, "Telefono incorrecto", Toast.LENGTH_SHORT).show();
-                        validar = true;
-                    }
+
                 }
-                if (validar==false){
-                    p = new Persona();
-                    p.setCedula(cedula.getText().toString());
-                    p.setNombre(nombre.getText().toString());
-                    p.setApellido(apellido.getText().toString());
-                    p.setDireccion(direccion.getText().toString());
-                    p.setCelular(telefono.getText().toString());
-                    p.setCorreo(correo.getText().toString());
-                    getPersona(cedula.getText().toString());
-                }
+
             }
         });
 

@@ -70,7 +70,6 @@ public class ServiciosAdapter extends RecyclerView.Adapter<ServiciosAdapter.View
         }
     }
 
-
     public interface RecyclerItemClick{
         void itemCLick(Servicio servicio);
     }
