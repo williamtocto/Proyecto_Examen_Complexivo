@@ -2,7 +2,7 @@ package com.example.proyecto_examen_complexivo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +10,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
+import com.example.proyecto_examen_complexivo.adapter.DetallecomprasAdapter;
+import com.example.proyecto_examen_complexivo.adapter.ServiciosAdapter;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class EditarProductoDetalle extends AppCompatActivity {
 
@@ -22,7 +27,9 @@ public class EditarProductoDetalle extends AppCompatActivity {
     ImageView img;
     Button btnActualizar, btnEliminar;
     private Carrito producto;
-
+    RecyclerView recyclerViewdetalle;
+    DetallecomprasAdapter adapter;
+    Carrito carrito = new Carrito();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +78,14 @@ public class EditarProductoDetalle extends AppCompatActivity {
 
                 carritoActual.ActualizarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
+
+                ArrayList<Carrito> listCarrito = carrito.getcomprados(EditarProductoDetalle.this);
+                DetallecomprasAdapter.RecyclerItemClick itemClick=DetallecomprasAdapter.itemClick;
+                recyclerViewdetalle=detalle_compras.recyclerView;
+                adapter=new DetallecomprasAdapter(listCarrito,EditarProductoDetalle.this,itemClick);
+                recyclerViewdetalle.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
             }
 
         });
@@ -86,6 +101,15 @@ public class EditarProductoDetalle extends AppCompatActivity {
                 Toast.makeText(EditarProductoDetalle.this, ""+producto.getId_producto(), Toast.LENGTH_SHORT).show();
                 carritoActual.EliminarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EditarProductoDetalle.this, LinearLayoutManager.VERTICAL, false);
+
+                ArrayList<Carrito> listCarrito = carrito.getcomprados(EditarProductoDetalle.this);
+
+                DetallecomprasAdapter.RecyclerItemClick itemClick=DetallecomprasAdapter.itemClick;
+                recyclerViewdetalle=detalle_compras.recyclerView;
+                adapter=new DetallecomprasAdapter(listCarrito,EditarProductoDetalle.this,itemClick);
+                recyclerViewdetalle.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -107,7 +131,6 @@ public class EditarProductoDetalle extends AppCompatActivity {
         txtCantidad = findViewById(R.id.editTextCantidadEditarCarrito);
         img = findViewById(R.id.imgeditarCarrito);
     }
-
 
 
 

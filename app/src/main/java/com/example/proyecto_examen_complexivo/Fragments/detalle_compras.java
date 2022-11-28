@@ -18,23 +18,18 @@ import android.widget.TextView;
 
 import com.example.proyecto_examen_complexivo.EditarProductoDetalle;
 import com.example.proyecto_examen_complexivo.R;
-import com.example.proyecto_examen_complexivo.adapter.detallecomprasAdapter;
+import com.example.proyecto_examen_complexivo.adapter.DetallecomprasAdapter;
 import com.example.proyecto_examen_complexivo.databinding.FragmentDetalleComprasBinding;
-import com.example.proyecto_examen_complexivo.facturacion;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
-import com.example.proyecto_examen_complexivo.modelo.Producto;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link detalle_compras#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class detalle_compras extends Fragment implements detallecomprasAdapter.RecyclerItemClick {
+public class detalle_compras extends Fragment implements DetallecomprasAdapter.RecyclerItemClick {
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -47,11 +42,11 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
 
     //carrito
     private ArrayList<Carrito> listCarrito = new ArrayList<>();
-    private detallecomprasAdapter adapter;
+    static DetallecomprasAdapter adapter;
     private TextView txtTotalCompras;
     private Button btnComprar;
     //recyclerview
-    private RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -87,7 +82,7 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
         Carrito carrito = new Carrito();
         listCarrito = carrito.getcomprados(detalle_compras.this.getContext());
       //  listCarrito.clear();
-//        adapter.notifyDataSetChanged();
+      //        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -97,7 +92,7 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
         binding = FragmentDetalleComprasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         //carrito
-        adapter = new detallecomprasAdapter(listCarrito, getContext(), this);
+        adapter = new DetallecomprasAdapter(listCarrito, getContext(), this);
         recyclerView= binding.recyclecompras;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
@@ -122,8 +117,6 @@ public class detalle_compras extends Fragment implements detallecomprasAdapter.R
             @Override
             public void onClick(View view) {
                 abrirFragmnet();
-               // Intent intent = new Intent(detalle_compras.this.getContext(), facturacion.class);
-              //  startActivity(intent);
             }
         });
 
