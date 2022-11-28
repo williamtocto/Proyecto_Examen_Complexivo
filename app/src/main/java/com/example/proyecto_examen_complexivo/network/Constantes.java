@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Constantes {
     private static Retrofit retrofit = null;
 
-    public static final String API_BASE_URL="http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/";
+    public static final String API_BASE_URL="https://bryantenemea.com/";
 
     public static Api getApiService(){
         if(retrofit == null){
