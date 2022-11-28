@@ -61,6 +61,7 @@
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/menu/barra_menu.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/willi/OneDrive/Documentos/Nueva carpeta/Proyecto_Examen_Complexivo/app/src/main/res/menu/search_button.xml" value="0.23958333333333334" />
+        <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15462962962962962" />
         <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_carrito_compras.xml" value="0.1" />
         <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_detalle_producto.xml" value="0.14285714285714285" />
         <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/activity_editar_producto_detalle.xml" value="0.33" />
@@ -70,7 +71,7 @@
         <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/fragment_update_person.xml" value="0.22" />
         <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/item_carrito.xml" value="0.1" />
         <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/item_detalle_compras.xml" value="0.15534420289855072" />
-        <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/item_productos.xml" value="0.15534420289855072" />
+        <entry key="..\:/curso/Proyecto_Examen_Complexivo/app/src/main/res/layout/item_productos.xml" value="0.1" />
       </map>
     </option>
   </component>

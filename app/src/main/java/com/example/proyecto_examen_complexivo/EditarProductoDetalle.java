@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyecto_examen_complexivo.Fragments.detalle_compras;
 import com.example.proyecto_examen_complexivo.adapter.DetallecomprasAdapter;
-import com.example.proyecto_examen_complexivo.adapter.ServiciosAdapter;
 import com.example.proyecto_examen_complexivo.modelo.Carrito;
 import com.squareup.picasso.Picasso;
 
