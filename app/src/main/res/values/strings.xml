@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Proyecto_Examen_Complexivo</string>
+    <string name="app_name">Odiseum</string>
     <string name="title_view_login">Login</string>
     <string name="label_login_user">Usuario</string>
     <string name="label_login_clave">Contraseña</string>
