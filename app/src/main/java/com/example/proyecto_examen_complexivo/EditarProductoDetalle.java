@@ -78,7 +78,6 @@ public class EditarProductoDetalle extends AppCompatActivity {
 
                 carritoActual.ActualizarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
-
                 ArrayList<Carrito> listCarrito = carrito.getcomprados(EditarProductoDetalle.this);
                 DetallecomprasAdapter.RecyclerItemClick itemClick=DetallecomprasAdapter.itemClick;
                 recyclerViewdetalle=detalle_compras.recyclerView;
@@ -102,9 +101,7 @@ public class EditarProductoDetalle extends AppCompatActivity {
                 carritoActual.EliminarCarrito(EditarProductoDetalle.this, producto.getId_producto());
                 finish();
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EditarProductoDetalle.this, LinearLayoutManager.VERTICAL, false);
-
                 ArrayList<Carrito> listCarrito = carrito.getcomprados(EditarProductoDetalle.this);
-
                 DetallecomprasAdapter.RecyclerItemClick itemClick=DetallecomprasAdapter.itemClick;
                 recyclerViewdetalle=detalle_compras.recyclerView;
                 adapter=new DetallecomprasAdapter(listCarrito,EditarProductoDetalle.this,itemClick);
@@ -120,8 +117,7 @@ public class EditarProductoDetalle extends AppCompatActivity {
         txtPrecio.setText(String.valueOf(producto.getPrecio_producto()));
         txtDescripcion.setText(producto.getDescricpion_producto());
         txtCantidad.setText(String.valueOf(producto.getCantidad()));
-        Picasso.get().load(producto.getImg()).resize(300,450).centerCrop()
-                .into(img);
+        Picasso.get().load(producto.getImg()).resize(300,450).centerCrop().into(img);
     }
 
     private void initViews(){
